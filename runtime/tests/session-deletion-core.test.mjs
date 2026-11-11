@@ -3,6 +3,7 @@
 // engine, no user data.
 //   node --test runtime/tests/session-deletion-core.test.mjs
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { mkdir, mkdtemp, readdir, rm, symlink, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -53,7 +54,7 @@ function storage() {
       const dir = join(root, 'aa', id);
       return files[id] === undefined ? undefined : { currentPath: join(dir, files[id][0]) };
     },
-    async readGenerationHeader(id) {
+    async readGenerationHeader(_selected, id) {
       const current = headers[id] ?? header;
       return current === undefined ? undefined : { header: current };
     },
@@ -212,21 +213,108 @@ test('a reminder on any member refuses the tree before disposal', async () => {
 test('a failed child cleanup is retried and the tree still completes', async () => {
   await addSession('c1', { origin: 'subagent', parentSession: 's1' });
   await addSession('c2', { origin: 'subagent', parentSession: 's1' });
+  // Explicit projection-cache peer: an I/O failure rejects its per-id delete,
+  // leaving that id's stored record until dshGoForget is called successfully.
+  const records = new Set(['s1', 'c1', 'c2']);
   let failed = false;
   const cleanup = async (id) => {
     cleanups.push(id);
     if (id === 'c2' && !failed) {
       failed = true;
-      throw Object.assign(new Error('cache down'), { code: 'failed' });
+      throw Object.assign(new Error('cache write failed'), { code: 'EIO' });
     }
+    records.delete(id);
   };
-  await assert.rejects(seam.delete('s1', hooks({ cleanup })), (e) => e.code === 'failed');
+  await assert.rejects(seam.delete('s1', hooks({ cleanup })), (e) => e.code === 'EIO');
   assert.equal(seam.deleted('s1'), false);
   assert.equal(seam.deleted('c2'), true);
   assert.equal(seam.deleted('c1'), false);
-  // Retry resumes from the tombstoned child and finishes the requested chat.
-  await seam.delete('s1', hooks());
+  assert.deepEqual(await readdir(directory('c2')), []);
+  assert.equal(records.has('c2'), true);
+  // Repeat the same parent request after the cache's failure has cleared.
+  await seam.delete('s1', hooks({ cleanup }));
   for (const id of ['s1', 'c1', 'c2']) assert.equal(seam.deleted(id), true, id);
+  assert.deepEqual([...records], [], 'successful parent retry must finish child cleanup');
+  assert.deepEqual(cleanups, ['c2', 'c2', 'c1', 's1']);
+  assert.deepEqual(emitted, ['c2', 'c1', 's1']);
+});
+
+test('a reopened seam skips malformed markers and resumes cleanup only for the requested tree', async () => {
+  await addSession('c1', { origin: 'subagent', parentSession: 's1' });
+  await addSession('g1', { origin: 'subagent', parentSession: 'c1', delegationDepth: 2 });
+  await addSession('other');
+  await addSession('outside', { origin: 'subagent', parentSession: 'other' });
+  const records = new Set(['s1', 'c1', 'g1', 'other', 'outside']);
+  const unavailable = new Set(['g1', 'outside']);
+  const cleanup = async (id) => {
+    cleanups.push(id);
+    if (unavailable.has(id)) throw Object.assign(new Error('cache write failed'), { code: 'EIO' });
+    records.delete(id);
+  };
+  for (const id of ['other', 's1']) {
+    await assert.rejects(seam.delete(id, hooks({ cleanup })), { code: 'EIO' });
+    assert.equal(seam.deleted(id), false);
+  }
+  assert.equal(leases.size, 0);
+  assert.equal(seam.pending.size, 0);
+  // The real listing excludes tombstones, and their logs/headers no longer exist.
+  corpus = corpus.filter(({ id }) => !seam.deleted(id));
+  delete headers.g1;
+  delete headers.outside;
+  seam = createDeletionSeam(storage(), { acquire, parseGeneration, notFound });
+  // Invalid historical entries have no recoverable edge and must not block
+  // cleanup of the valid tree. These are fixtures, not a partial-publication path.
+  for (const [id, text] of [
+    ['invalid-json', '{'],
+    ['invalid-shape', 'null'],
+    ['invalid-parent', JSON.stringify({ version: 1, id: 'invalid-parent', parentSession: 42 })],
+  ]) {
+    const slot = join(root, '.dsh-go-lifecycle', createHash('sha256').update(id).digest('hex'));
+    await mkdir(slot, { recursive: true });
+    await writeFile(join(slot, 'deleted.json'), text);
+  }
+  validations = [];
+  disposals = [];
+  taskChecks = [];
+  // A second explicit request still reports the failed child; no automatic retry
+  // or successful parent receipt is allowed while the storage fault remains.
+  await assert.rejects(seam.delete('s1', hooks({ cleanup })), { code: 'EIO' });
+  assert.equal(seam.deleted('s1'), false);
+  assert.equal(seam.deleted('c1'), false);
+  assert.equal(leases.size, 0);
+  assert.equal(seam.pending.size, 0);
+  assert.equal(validations.includes('g1'), false);
+  assert.equal(disposals.some(([id]) => id === 'g1'), false);
+  assert.equal(taskChecks.includes('g1'), false);
+
+  unavailable.delete('g1');
+  await seam.delete('s1', hooks({ cleanup }));
+  assert.deepEqual([...records], ['other', 'outside']);
+  assert.equal(cleanups.filter((id) => id === 'g1').length, 3);
+  assert.equal(cleanups.filter((id) => id === 'outside').length, 1);
+  assert.deepEqual(emitted, ['g1', 'c1', 's1']);
+  assert.equal(seam.deleted('other'), false);
+  assert.equal(leases.size, 0);
+  assert.equal(seam.pending.size, 0);
+});
+
+test('a historical ordinary fork parent id does not become a tombstone child edge', async () => {
+  await addSession('fork', { parentSession: 's1', isSeeded: true });
+  const records = new Set(['s1', 'fork']);
+  let unavailable = true;
+  const cleanup = async (id) => {
+    cleanups.push(id);
+    if (id === 'fork' && unavailable) throw Object.assign(new Error('cache write failed'), { code: 'EIO' });
+    records.delete(id);
+  };
+  await assert.rejects(seam.delete('fork', hooks({ cleanup })), { code: 'EIO' });
+  unavailable = false;
+  await seam.delete('s1', hooks({ cleanup }));
+  assert.deepEqual([...records], ['fork']);
+  assert.deepEqual(cleanups, ['fork', 's1']);
+  // Its own explicit retry still uses the existing directory-only marker.
+  await seam.delete('fork', hooks({ cleanup }));
+  assert.deepEqual([...records], []);
 });
 
 test('a symlinked session directory is refused instead of deleting elsewhere', async () => {
