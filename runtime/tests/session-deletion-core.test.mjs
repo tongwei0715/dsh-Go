@@ -9,6 +9,8 @@ import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import fs from 'node:fs/promises';
+import { syncBuiltinESMExports } from 'node:module';
 import { afterEach, beforeEach, test } from 'node:test';
 
 const { createDeletionSeam } = await import(pathToFileURL(resolve('runtime/session-deletion/core.mjs')));
@@ -124,6 +126,29 @@ test('removes every stored generation, clears derived state, and leaves a durabl
   assert.equal(existsSync(join(root, '.dsh-go-lifecycle')), true);
   // A stale id is not admitted into a new materialisation either.
   assert.throws(() => seam.assertParent({ id: 'child', origin: 'subagent', parentSession: 's1' }), (e) => e.code === 'not-found');
+});
+
+test('deletion and a reopened retry work without hard-link permission', async t => {
+  const originalLink = fs.link;
+  fs.link = async () => { throw Object.assign(new Error('app-domain hard links denied'), { code: 'EACCES' }); };
+  syncBuiltinESMExports();
+  t.after(() => { fs.link = originalLink; syncBuiltinESMExports(); });
+  await seam.delete('s1', hooks());
+  assert.equal(seam.deleted('s1'), true);
+  assert.deepEqual(await readdir(directory('s1')), []);
+  assert.deepEqual(cleanups, ['s1']);
+  assert.equal(seam.pending.size, 0);
+  assert.equal(leases.size, 0);
+  const marker = join(root, '.dsh-go-lifecycle', createHash('sha256').update('s1').digest('hex'), 'deleted.json');
+  const before = await fs.stat(marker);
+  const reopened = createDeletionSeam(storage(), { acquire, parseGeneration, notFound });
+  assert.equal(reopened.deleted('s1'), true);
+  assert.throws(() => reopened.assertAdmit('s1'), { code: 'not-found' });
+  await reopened.delete('s1', hooks());
+  assert.equal((await fs.stat(marker)).ino, before.ino, 'retry must retain the published marker');
+  assert.deepEqual(cleanups, ['s1', 's1']);
+  assert.equal(reopened.pending.size, 0);
+  assert.equal(leases.size, 0);
 });
 
 test('unrelated files beside the logs are left alone', async () => {

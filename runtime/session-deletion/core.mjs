@@ -3,7 +3,7 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { createHash, randomUUID } from 'node:crypto';
 import { readFileSync, statSync } from 'node:fs';
-import { link, lstat, mkdir, open, readdir, readFile, realpath, rm } from 'node:fs/promises';
+import { lstat, mkdir, open, readdir, readFile, realpath, rename, rm } from 'node:fs/promises';
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -80,7 +80,7 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
         }));
         await handle.sync();
       } finally { await handle.close(); }
-      await link(temporary, marker(id));
+      await rename(temporary, marker(id));
     } finally { await rm(temporary, { force: true }); }
     await syncMarkerDirectories(id);
   };
@@ -169,7 +169,7 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
         }
         const files = await logFiles(dir);
         if (!retry) await writeMarker(id, dir, header); // Durable point of no return; retry completes cleanup.
-        else await syncMarkerDirectories(id); // A previous attempt may have failed after linking the marker.
+        else await syncMarkerDirectories(id); // A previous attempt may have failed after publishing the marker.
         storage.coldLogMemo.delete(id);
         storage.migrationPreparations.get(id)?.controller.abort();
         storage.migrationPreparations.delete(id);
