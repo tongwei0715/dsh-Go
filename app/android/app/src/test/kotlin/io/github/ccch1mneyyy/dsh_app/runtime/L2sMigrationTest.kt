@@ -50,7 +50,7 @@ class L2sMigrationTest {
             do candidate = store.resolve(".l2s." + original.fileName + "%04d".format(suffix++)) while (Files.exists(candidate))
             intermediate = candidate
             val final = Paths.get("$intermediate.0002")
-            Files.move(original, final)
+            Files.move(original, final, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
             Files.createSymbolicLink(intermediate, final)
             Files.createSymbolicLink(original, intermediate)
         }
@@ -84,8 +84,9 @@ class L2sMigrationTest {
     private fun symlink(path: String) = Files.isSymbolicLink(File(root, path).toPath())
     private fun storeEntries() = Files.list(store).use { it.map { p -> p.fileName.toString() }.sorted().toList() }
     private fun temps() = root.walkTopDown().filter { L2sMigration.TEMP.matches(it.name) }.toList()
-    private fun migrate(free: Long = Long.MAX_VALUE, flush: () -> Unit = {}, beforeRename: () -> Unit = {}, binds: List<String> = BINDS) =
-        L2sMigration(root, flush, { free }, binds).run(beforeRename = beforeRename)
+    private fun migrate(free: Long = Long.MAX_VALUE, flush: () -> Unit = {}, beforeRename: () -> Unit = {},
+        binds: List<String> = BINDS, beforeDelete: () -> Unit = {}) =
+        L2sMigration(root, flush, { free }, binds).run(beforeRename = beforeRename, beforeDelete = beforeDelete)
 
     /** chmod 000 for [block], as PRoot's bind placeholders read to the app on Android 16. */
     private fun <T> unreadable(path: String, block: () -> T): T {
@@ -269,16 +270,32 @@ class L2sMigrationTest {
         link("root/a", "root/c")
         val before = storeEntries()
         val result = migrate(free = L2sMigration.MARGIN) as L2sMigration.Result.NotEnoughSpace
-        assertEquals(2 * (4096 + 12_288L), result.need)
+        assertEquals(3 * (4096 + 12_288L), result.need)
         assertEquals(before, storeEntries())
         assertTrue(symlink("root/a") && symlink("root/b") && symlink("root/c"))
         assertEquals("x".repeat(10_000), text("root/c"))
 
-        // A file left with one name needs no copy, hence no room.
+        // The final name also needs a copy until its intermediate has been removed.
         unlink("root/b")
         unlink("root/c")
-        assertEquals(L2sMigration.Result.Done(1, 0), migrate(free = 0))
+        assertEquals(4096 + 12_288L, (migrate(free = 0) as L2sMigration.Result.NotEnoughSpace).need)
+        assertEquals(L2sMigration.Result.Done(1, 0), migrate())
         assertTrue(regular("root/a"))
+    }
+
+    @Test fun spaceEstimateUsesTheBatchPeakRatherThanAllTemporaryCopies() {
+        val size = 200L shl 20
+        for (name in listOf("a", "b")) {
+            val source = file("root/$name", "")
+            java.io.RandomAccessFile(source, "rw").use { it.setLength(size) }
+            link("root/$name", "root/$name-copy")
+        }
+        // Each two-name group exceeds the batch byte limit. The first retains one
+        // extra copy before the second stages two; no large copy runs in this test.
+        val result = migrate(free = 0) as L2sMigration.Result.NotEnoughSpace
+        assertEquals(3 * (4096 + size), result.need)
+        assertTrue(symlink("root/a") && symlink("root/b"))
+        assertTrue(temps().isEmpty())
     }
 
     @Test fun copiesAreFlushedBeforeAnyNameIsReplacedOncePerBatch() {
@@ -352,6 +369,103 @@ class L2sMigrationTest {
                 assertEquals(content, text(name))
             }
             assertEquals("stop $stop", emptyList<String>(), storeEntries())
+        }
+    }
+
+    @Test fun anInterruptionAfterTheLastRenameLeavesNoDanglingIntermediate() {
+        file("root/a", "A")
+        link("root/a", "root/b")
+        try {
+            migrate(beforeDelete = { throw java.io.IOException("stopped before cleanup") })
+            fail("no interruption")
+        } catch (error: java.io.IOException) {
+            assertEquals("stopped before cleanup", error.message)
+        }
+        assertTrue(regular("root/a") && regular("root/b"))
+        Files.list(store).use { entries ->
+            entries.filter { Files.isSymbolicLink(it) }.forEach { assertTrue("dangling $it", Files.exists(it)) }
+        }
+        // Existing PRoot fixture semantics: a new link of the same basename must
+        // not mistake the old intermediate for a free slot and move its source away.
+        link("root/a", "root/c")
+        assertProotConsistent(mapOf("root/a" to "A", "root/b" to "A", "root/c" to "A"))
+        migrate()
+        assertEquals(emptyList<String>(), storeEntries())
+        for (name in listOf("root/a", "root/b", "root/c")) {
+            assertTrue(regular(name))
+            assertEquals("A", text(name))
+        }
+    }
+
+    @Test fun nestedAndOrphanChainsStayResolvableAfterEachCleanupStep() {
+        fun reset(orphan: Boolean) {
+            base.listFiles()!!.forEach { it.deleteRecursively() }
+            Files.createDirectories(store)
+            file("root/a", "nested")
+            link("root/a", "root/b")
+            link("root/.l2s/.l2s.a0001.0002", "root/x")
+            if (orphan) for (name in listOf("root/a", "root/b", "root/x")) File(root, name).delete()
+        }
+        for (orphan in listOf(false, true)) {
+            reset(orphan)
+            val steps = storeEntries().size
+            for (stop in 0 until steps) {
+                reset(orphan)
+                var at = 0
+                try {
+                    migrate(beforeDelete = { if (at++ == stop) throw java.io.IOException("cleanup $stop") })
+                    fail("no interruption at $stop")
+                } catch (error: java.io.IOException) {
+                    assertEquals("cleanup $stop", error.message)
+                }
+                Files.list(store).use { entries ->
+                    entries.filter { Files.isSymbolicLink(it) }.forEach { assertTrue("dangling $it", Files.exists(it)) }
+                }
+                if (!orphan) for (name in listOf("root/a", "root/b", "root/x")) {
+                    assertTrue(regular(name))
+                    assertEquals("nested", text(name))
+                }
+                migrate()
+                assertEquals(emptyList<String>(), storeEntries())
+            }
+        }
+    }
+
+    @Test fun aRenameInterruptionKeepsOrphanPrefixesInTheNextRunsCleanup() {
+        for (stop in 0 until 4) {
+            base.listFiles()!!.forEach { it.deleteRecursively() }
+            Files.createDirectories(store)
+            file("root/a", "nested")
+            link("root/a", "root/b")
+            link("root/.l2s/.l2s.a0001.0002", "root/x")
+            var renames = 0
+            try {
+                migrate(beforeRename = { if (renames++ == 2) throw java.io.IOException("before x") })
+                fail("no rename interruption")
+            } catch (error: java.io.IOException) {
+                assertEquals("before x", error.message)
+            }
+            assertTrue(regular("root/a") && regular("root/b") && symlink("root/x"))
+            // Only x remains a name on the second scan. The old a/b prefix still
+            // points into its chain and must be removed before those inner nodes.
+            var deletes = 0
+            try {
+                migrate(beforeDelete = { if (deletes++ == stop) throw java.io.IOException("cleanup $stop") })
+                fail("no cleanup interruption at $stop")
+            } catch (error: java.io.IOException) {
+                assertEquals("cleanup $stop", error.message)
+            }
+            Files.list(store).use { entries ->
+                entries.filter { Files.isSymbolicLink(it) }.forEach { assertTrue("dangling $it", Files.exists(it)) }
+            }
+            for (name in listOf("root/a", "root/b", "root/x")) assertEquals("nested", text(name))
+            link("root/a", "root/c")
+            migrate()
+            for (name in listOf("root/a", "root/b", "root/c", "root/x")) {
+                assertTrue(regular(name))
+                assertEquals("nested", text(name))
+            }
+            assertEquals(emptyList<String>(), storeEntries())
         }
     }
 

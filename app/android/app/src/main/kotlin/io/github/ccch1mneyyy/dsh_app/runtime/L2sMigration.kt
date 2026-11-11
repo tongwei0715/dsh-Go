@@ -21,8 +21,8 @@ import java.security.SecureRandom
  * leaves symlinks with host-absolute targets: the intermediate
  * `.l2s.<name><NNNN>` to the stored file, and every name to the intermediate.
  *
- * For each stored file with names N1..Nk, N1..Nk-1 get a copy (mode and mtime
- * kept) renamed over them, then the stored file itself is renamed over Nk.
+ * For each stored file, every name gets a copy (mode and mtime kept) renamed
+ * over it. Intermediates are removed before the stored file, so none dangle.
  * Each step is one rename, so every name keeps reading the same content and a
  * killed run resumes on the next start. PRoot also keeps working on a
  * half-done tree: it only lowers a count when a name that is still its symlink
@@ -46,7 +46,7 @@ class L2sMigration(
         data class NotEnoughSpace(val need: Long, val free: Long) : Result()
     }
 
-    private class Group(val stored: Path, val names: MutableList<Path> = ArrayList(), val chain: MutableSet<Path> = HashSet())
+    private class Group(val stored: Path, val names: MutableList<Path> = ArrayList())
 
     private val root = rootfs.canonicalFile.toPath()
     private val rootPath = root.toString()
@@ -60,9 +60,9 @@ class L2sMigration(
     /**
      * Throws on any IO error, leaving every name readable; the next run picks
      * up from there. [onSlow] runs once when this takes more than a moment.
-     * [beforeRename] is a test seam for interrupting the run.
+     * [beforeRename] and [beforeDelete] are test seams for interrupting the run.
      */
-    fun run(onSlow: () -> Unit = {}, beforeRename: () -> Unit = {}): Result {
+    fun run(onSlow: () -> Unit = {}, beforeRename: () -> Unit = {}, beforeDelete: () -> Unit = {}): Result {
         // A symlinked store would point the deletions below somewhere else.
         if (!Files.isDirectory(store, LinkOption.NOFOLLOW_LINKS)) return Result.Done(0, 0)
         val started = System.nanoTime()
@@ -97,7 +97,6 @@ class L2sMigration(
                     val through = chain(destination)
                     if (through != null) groups.getOrPut(through.last()) { Group(through.last()) }.apply {
                         names.add(file)
-                        chain += through.dropLast(1)
                     } else if (destination.parent == store) {
                         // A damaged PRoot chain can leave its content under a new
                         // count suffix. It is not safe to call that file an orphan.
@@ -110,7 +109,18 @@ class L2sMigration(
             }
         })
 
-        val need = groups.values.sumOf { blocks(Files.size(it.stored)) * (it.names.size - 1) }
+        // A previous run may have converted every name of an outer prefix, while
+        // another name still uses its inner chain. Include those orphan prefixes too.
+        val predecessors = HashMap<Path, MutableList<Path>>()
+        Files.newDirectoryStream(store).use { entries ->
+            for (entry in entries) {
+                if (Files.readAttributes(entry, BasicFileAttributes::class.java, LinkOption.NOFOLLOW_LINKS).isSymbolicLink) {
+                    predecessors.getOrPut(target(entry)) { ArrayList() }.add(entry)
+                }
+            }
+        }
+        val ordered = groups.values.sortedBy { it.stored }
+        val need = requiredSpace(ordered)
         if (need > 0) {
             val free = freeBytes()
             if (free < need + MARGIN) return Result.NotEnoughSpace(need, free)
@@ -124,7 +134,7 @@ class L2sMigration(
             val copies = ArrayList<Pair<Path, Path>>()
             var renamed = 0
             try {
-                for (group in batch) for (name in group.names.dropLast(1)) {
+                for (group in batch) for (name in group.names) {
                     tick()
                     val temp = name.resolveSibling(TEMP_PREFIX + "%016x".format(random.nextLong()) + ".tmp")
                     Files.copy(group.stored, temp, StandardCopyOption.COPY_ATTRIBUTES)
@@ -132,19 +142,19 @@ class L2sMigration(
                 }
                 if (copies.isNotEmpty()) flush()
                 for (group in batch) {
-                    repeat(group.names.size - 1) {
+                    repeat(group.names.size) {
                         val (temp, name) = copies[renamed]
                         beforeRename()
                         Files.move(temp, name, StandardCopyOption.ATOMIC_MOVE)
                         renamed++
                         links++
                     }
-                    beforeRename()
-                    Files.move(group.stored, group.names.last(), StandardCopyOption.ATOMIC_MOVE)
-                    links++
-                    // Right away: PRoot takes a dangling intermediate's name as free for a new
-                    // link, then fails to create it after it already moved that file in.
-                    for (entry in group.chain) Files.deleteIfExists(entry)
+                    // Every outer link goes before its target, including nested intermediates.
+                    // PRoot mistakes a dangling intermediate for a free new-link slot.
+                    for (entry in removalOrder(listOf(group.stored), predecessors)) {
+                        beforeDelete()
+                        Files.deleteIfExists(entry)
+                    }
                 }
             } finally {
                 for (at in renamed until copies.size) runCatching { Files.deleteIfExists(copies[at].first) }
@@ -153,24 +163,70 @@ class L2sMigration(
             files = 0
             bytes = 0L
         }
-        for (group in groups.values.sortedBy { it.stored }) {
+        for (group in ordered) {
             group.names.sort()
             batch += group
-            files += group.names.size - 1
-            bytes += blocks(Files.size(group.stored)) * (group.names.size - 1)
+            files += group.names.size
+            bytes += blocks(Files.size(group.stored)) * group.names.size
             if (files >= BATCH_FILES || bytes >= BATCH_BYTES) commit()
         }
         commit()
 
         // What is left was named by nothing: intermediates of files removed outside PRoot,
-        // files whose names were all deleted without it. Symlinks first, for the same reason
-        // as above. Directories are not PRoot's; they stay, and so does compatible launch.
+        // files whose names were all deleted without it. Keep the same outer-to-inner order.
+        // Directories are not PRoot's; they stay, and so does compatible launch.
         if (keepOrphans) return Result.Done(links, 0)
         val left = Files.newDirectoryStream(store).use { it.toList() }
             .filterNot { Files.isDirectory(it, LinkOption.NOFOLLOW_LINKS) }
-            .sortedByDescending { Files.isSymbolicLink(it) }
-        for (entry in left) Files.deleteIfExists(entry)
+        for (entry in removalOrder(left, predecessors)) {
+            beforeDelete()
+            Files.deleteIfExists(entry)
+        }
         return Result.Done(links, left.size)
+    }
+
+    /** Delete links before their targets, so interrupting cleanup cannot break a valid store chain. */
+    private fun removalOrder(roots: Collection<Path>, predecessors: Map<Path, List<Path>>): List<Path> {
+        val order = ArrayList<Path>()
+        val seen = HashSet<Path>()
+        val pending = java.util.ArrayDeque<Pair<Path, Boolean>>()
+        for (root in roots) {
+            pending.addLast(root to false)
+            while (pending.isNotEmpty()) {
+                val (entry, expanded) = pending.removeLast()
+                if (expanded) {
+                    order.add(entry)
+                } else if (seen.add(entry)) {
+                    pending.addLast(entry to true)
+                    for (from in predecessors[entry].orEmpty()) pending.addLast(from to false)
+                }
+            }
+        }
+        // Cycles were already unresolvable; seen retains the previous orphan cleanup behavior.
+        return order
+    }
+
+    /** Peak extra space: completed batches retain copies minus their original backing files. */
+    private fun requiredSpace(groups: List<Group>): Long {
+        var retained = 0L
+        var copies = 0L
+        var originals = 0L
+        var files = 0
+        var peak = 0L
+        for (group in groups) {
+            val size = blocks(Files.size(group.stored))
+            copies += size * group.names.size
+            originals += size
+            files += group.names.size
+            peak = maxOf(peak, retained + copies)
+            if (files >= BATCH_FILES || copies >= BATCH_BYTES) {
+                retained += copies - originals
+                copies = 0L
+                originals = 0L
+                files = 0
+            }
+        }
+        return peak
     }
 
     /** The store entries starting at [first], ending with the stored file; null if not a complete store chain. */
