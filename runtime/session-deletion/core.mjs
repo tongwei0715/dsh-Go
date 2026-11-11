@@ -3,7 +3,7 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { createHash, randomUUID } from 'node:crypto';
 import { readFileSync, statSync } from 'node:fs';
-import { link, lstat, mkdir, open, readdir, realpath, rm } from 'node:fs/promises';
+import { link, lstat, mkdir, open, readdir, readFile, realpath, rm } from 'node:fs/promises';
 import { dirname, isAbsolute, join, relative, resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -68,13 +68,16 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
     await syncDir(root);
     await syncDir(dirname(root));
   };
-  const writeMarker = async (id, dir) => {
+  const writeMarker = async (id, dir, header) => {
     await mkdir(slot(id), { recursive: true, mode: 0o700 });
     const temporary = join(slot(id), `.${randomUUID()}.tmp`);
     try {
       const handle = await open(temporary, 'wx', 0o600);
       try {
-        await handle.writeFile(JSON.stringify({ version: 1, directory: relative(root, dir) }));
+        await handle.writeFile(JSON.stringify({
+          version: 1, directory: relative(root, dir),
+          ...(header.origin === 'subagent' ? { id, parentSession: header.parentSession } : {}),
+        }));
         await handle.sync();
       } finally { await handle.close(); }
       await link(temporary, marker(id));
@@ -87,6 +90,24 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
     if (record.version !== 1 || typeof rel !== 'string' || isAbsolute(rel)
       || rel.split(/[\\/]/).includes('..') || rel.split(/[\\/]/).length !== 2) throw failure('failed');
     return resolve(root, rel);
+  };
+  const deletedChildren = async () => {
+    let entries;
+    try { entries = await readdir(control, { withFileTypes: true }); }
+    catch (error) { if (error.code === 'ENOENT') return []; throw error; }
+    const children = [];
+    for (const entry of entries) {
+      if (!entry.isDirectory() || !/^[a-f0-9]{64}$/.test(entry.name)) continue;
+      let record;
+      try { record = JSON.parse(await readFile(join(control, entry.name, 'deleted.json'), 'utf8')); }
+      catch (error) { if (error.code === 'ENOENT' || error instanceof SyntaxError) continue; throw error; }
+      // Older markers retain the directory but cannot recover a parent relation.
+      if (record?.id === undefined || record.parentSession === undefined) continue;
+      if (record.version !== 1 || typeof record.id !== 'string' || key(record.id) !== entry.name
+        || typeof record.parentSession !== 'string') continue;
+      children.push({ header: { id: record.id, origin: 'subagent', parentSession: record.parentSession } });
+    }
+    return children;
   };
   const safeDirectory = async (dir) => {
     // A configured root may itself be a symlink; child/project symlinks are not admitted.
@@ -130,11 +151,13 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
       await safeDirectory(dir);
       artifact = await acquire(dir, id);
       await mutation(async () => {
+        let header;
         if (!retry) {
           // Re-read under both leases and the shared mutation fence. Migration reads are
           // observation-only; no old generation is ever resumed or published by delete.
           const metadata = await storage.readGenerationHeader(await storage.findLog(id), id);
           if (metadata === undefined) throw failure('failed');
+          header = metadata.header;
           if (!cascade && isSubagent(metadata.header)) throw failure('session-related');
           // Descendants are removed before their parent; a child here means another
           // writer raced the planned tree, so the tree this call planned is incomplete.
@@ -145,7 +168,7 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
           if (goal?.phase === 'active') throw failure('session-active');
         }
         const files = await logFiles(dir);
-        if (!retry) await writeMarker(id, dir); // Durable point of no return; retry completes cleanup.
+        if (!retry) await writeMarker(id, dir, header); // Durable point of no return; retry completes cleanup.
         else await syncMarkerDirectories(id); // A previous attempt may have failed after linking the marker.
         storage.coldLogMemo.delete(id);
         storage.migrationPreparations.get(id)?.controller.abort();
@@ -198,7 +221,9 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
         const retry = deleted(id);
         if (!retry) {
           const live = storage.ctx.get('sessions')?.list() ?? [];
-          const corpus = [...await storage.list(), ...live.map((session) => ({ header: session.header }))];
+          // A child may have lost its logs before its cleanup failed. Its durable
+          // parent relation keeps the next parent request (also after restart) complete.
+          const corpus = [...await storage.list(), ...live.map((session) => ({ header: session.header })), ...await deletedChildren()];
           const target = corpus.find(({ header }) => header.id === id);
           if (target !== undefined && isSubagent(target.header)) throw failure('session-related');
           // Subagent sessions belong to the chat that started them: deleting the chat
@@ -231,9 +256,9 @@ export function createDeletionSeam(storage, { acquire, parseGeneration, notFound
           // Validate the whole tree before disposing anything: one active member must
           // leave every session intact and usable. Disposal tears down leaves first and
           // the requested chat last, so a failure can never brick the chat itself.
-          for (const node of nodes) if (await hooks.inspectTasks?.(node)) throw failure('session-related');
-          for (const node of nodes) await hooks.validate?.(node);
-          for (const node of [...children].reverse()) await hooks.dispose?.(node, { cascade: true });
+          for (const node of nodes) if (!deleted(node) && await hooks.inspectTasks?.(node)) throw failure('session-related');
+          for (const node of nodes) if (!deleted(node)) await hooks.validate?.(node);
+          for (const node of [...children].reverse()) if (!deleted(node)) await hooks.dispose?.(node, { cascade: true });
           await hooks.dispose?.(id, { cascade: false });
           for (const node of nodes) draining.delete(node);
         }
