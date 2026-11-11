@@ -122,3 +122,31 @@ test('failure to acquire the exclusive temp does not run cleanup for an unowned 
   await f.handle.flush();
   await f.handle.close();
 });
+
+test('first publish needs no hard link and competing writers cannot replace its log', async t => {
+  const f = await fixture(t);
+  const other = new Context();
+  t.after(() => other.fiber.dispose());
+  await apply(other, { root: f.root, compression: 'none', listConcurrency: 1 });
+  // Both creates precede materialization; separate backends have independent claims.
+  const contender = await other.sessionPersistence.create(f.handle.header);
+  const originalLink = fs.link;
+  fs.link = async () => { throw Object.assign(Error('controlled app-domain link denial'), { code: 'EACCES' }); };
+  syncBuiltinESMExports();
+  t.after(() => { fs.link = originalLink; syncBuiltinESMExports(); });
+
+  await f.handle.append(f.events);
+  const path = join(f.directory, 'session.v4.jsonl');
+  const committed = await fs.readFile(path);
+  await assert.rejects(contender.flush(), { name: 'SessionAlreadyOwnedError' });
+  await f.handle.close();
+  // After acquiring the released lease, the old create must recheck the existing log.
+  await assert.rejects(contender.flush(), /a log already exists on disk/);
+  await contender.close();
+  assert.deepEqual(await fs.readFile(path), committed);
+  const reader = await other.sessionPersistence.open(f.id, 'read');
+  assert.deepEqual((await reader.read()).events, f.events);
+  await reader.close();
+  assert.deepEqual(await fs.readFile(f.foreign), f.sentinel);
+  assert.deepEqual((await fs.readdir(f.directory)).filter(name => name.endsWith('.tmp')), ['session.v4.jsonl.000000000000.tmp']);
+});
