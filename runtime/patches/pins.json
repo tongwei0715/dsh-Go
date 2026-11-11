@@ -56,6 +56,14 @@
         }
       }
     },
+    "jsonl-materialize-rename.diff": {
+      "0.2.2-rc.1": {
+        "node_modules/@deepseek-ai/dsh-session-persistence-jsonl/lib/index.js": {
+          "after": "17167c6139f1a982723e5336c42567b7e51b0c2ff54dd9e175ed90a26cbe0e34",
+          "before": "8a766569e14937ae833441cc75985e14ddbf5d07a201279d6386ef7cc8fea67b"
+        }
+      }
+    },
     "piai-anthropic-opus55-thinking.diff": {
       "0.2.2-rc.1": {
         "node_modules/@earendil-works/pi-ai/dist/api/anthropic-messages.js": {
@@ -147,6 +155,14 @@
         "node_modules/@deepseek-ai/schemastery/lib/index.mjs": {
           "after": "f9caeae34766dc34b091d52ec9a8308f2cedd8a4cd0d5528dd59f6284bef9cee",
           "before": "cfcbe46c7416bdb35ce891c252152bbf519e08199bede5930dd7cb880c65f1ef"
+        }
+      }
+    },
+    "session-queue-steer-deletion.diff": {
+      "0.2.2-rc.1": {
+        "node_modules/@deepseek-ai/dsh-api-session-controller/lib/index.js": {
+          "after": "36025e1ec0ee5adb57e11444670b6edd4a29de6fd724dc02737ae5fc947f4cd4",
+          "before": "7c48bc2b02595c987149f0187239a2599eccbc73f876fe30c722495a8ad36523"
         }
       }
     },
