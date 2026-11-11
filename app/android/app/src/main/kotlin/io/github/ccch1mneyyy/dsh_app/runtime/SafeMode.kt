@@ -623,10 +623,16 @@ function withLock (file, fn) {
   const lock = file + '.lock'
   const deadline = Date.now() + 5000
   for (;;) {
+    let fd
     try {
-      fs.writeFileSync(lock, process.pid + '\n', { flag: 'wx', mode: 0o600 })
+      fd = fs.openSync(lock, 'wx', 0o600)
+      try { fs.writeFileSync(fd, process.pid + '\n') } finally { fs.closeSync(fd) }
       break
     } catch (e) {
+      if (fd !== undefined) {
+        fs.rmSync(lock, { force: true })
+        throw e
+      }
       if (e.code !== 'EEXIST') throw e
       const pid = parseInt(String(readText(lock) || '').trim(), 10)
       if (pid > 0 && !alive(pid)) {

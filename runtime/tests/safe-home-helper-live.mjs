@@ -144,6 +144,42 @@ test('helper atomic write preserves unrelated temp files on success', t => {
   assert.equal(readFileSync(unrelated, 'utf8'), 'keep this earlier file');
 });
 
+test('helper lock record write failure leaves no lock and permits a later repair', { skip: process.platform !== 'linux' }, t => {
+  const f = fixture(t);
+  const file = join(f.original, 'profiles/web/package.json');
+  const before = readFileSync(file, 'utf8');
+  const preload = join(f.dir, 'lock-write-failure.cjs');
+  writeFileSync(preload, `
+const fs = require('node:fs');
+const write = fs.writeFileSync;
+fs.writeFileSync = function(file, ...args) {
+  const target = typeof file === 'number' ? fs.readlinkSync('/proc/self/fd/' + file) : String(file);
+  if (target === process.env.DSH_TEST_LOCK) {
+    if (typeof file !== 'number') {
+      const fd = fs.openSync(file, args[1].flag, args[1].mode);
+      fs.closeSync(fd);
+    }
+    throw Object.assign(new Error('fixture ENOSPC while writing lock pid'), { code: 'ENOSPC' });
+  }
+  return write.call(this, file, ...args);
+};
+`);
+  const failed = spawnSync(process.execPath, ['--require', preload, f.helper, 'disable', 'original-plugin'], {
+    cwd: f.dir, encoding: 'utf8', timeout: 10000,
+    env: { ...process.env, DSH_HOME: f.rescue, DSH_APP_ORIGINAL_HOME: f.original,
+      DSH_APP_SAFE_DIR: f.dir, DSH_TEST_LOCK: file + '.lock' },
+  });
+  assert.ifError(failed.error);
+  assert.notEqual(failed.status, 0);
+  assert.match(failed.stderr, /ENOSPC/);
+  assert.equal(readFileSync(file, 'utf8'), before);
+  assert.equal(existsSync(file + '.lock'), false);
+  const retried = f.run('disable', 'original-plugin');
+  assert.equal(retried.status, 0, retried.stderr);
+  assert.deepEqual(JSON.parse(readFileSync(file, 'utf8')).dsh.profile.bundles, []);
+  assert.equal(existsSync(file + '.lock'), false);
+});
+
 test('helper atomic write failure cleans its temp and preserves the profile', { skip: process.platform !== 'linux' }, t => {
   const f = fixture(t);
   const profile = join(f.original, 'profiles/web');
