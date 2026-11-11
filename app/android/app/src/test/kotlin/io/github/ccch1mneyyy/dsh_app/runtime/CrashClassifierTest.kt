@@ -4,6 +4,13 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class CrashClassifierTest {
+    @Test fun launchTokensDoNotHideCountsOrPaginationCursors() {
+        val readable = "max_token=1024 prompt_token=5 next_token=page-cursor-123 clientToken=12345678"
+        assertEquals(readable, CrashClassifier.redact(readable))
+        assertEquals("$readable token=••• access_token=••• GITHUB_TOKEN=•••",
+            CrashClassifier.redact("$readable token=7 access_token=42 GITHUB_TOKEN=synthetic"))
+    }
+
     private val fatal = listOf("dsh: startup failed: required row missing")
 
     @Test fun classifiesAllFiveFailureKinds() {
