@@ -1,5 +1,5 @@
 {
-  "stateDiagnosticsSubject": "DSH Go diagnostics bundle",
+  "stateDiagnosticsSubject": "Wenwen.ai diagnostics bundle",
   "stateStoragePermission": "No storage permission to save to Downloads",
   "stateDiagnosticsStorageFull": "Not enough storage to create the diagnostics bundle",
   "stateDiagnosticsExportFailed": "Couldn’t export diagnostics bundle",
@@ -75,7 +75,7 @@
   "stateIconNight": "Nightfall",
   "stateIconFrost": "Frost white",
   "stateIconInk": "Ink",
-  "stateAppDisclaimer": "Built on DeepSeek Harness · Unofficial DeepSeek app",
+  "stateAppDisclaimer": "When in doubt, ask Wenwen.ai! (https://wenwenai.cn) · Built on DeepSeek Harness",
   "stateWallpaper": "Wallpaper",
   "stateFileMissing": "File not found. It may have been deleted or moved.",
   "stateFileNoApp": "No app on this phone can open this file type",
@@ -373,5 +373,5 @@
   "stateUiWeb": "Web",
   "statePluginRegistryProgressUnknown": "Downloading from {registry} (registry {attempt}/null)",
   "stateProviderTokenCountInvalid": "Enter a number, like 128K",
-  "appSlogan": "Anytime, anywhere. Just Go!"
+  "appSlogan": "When in doubt, ask Wenwen.ai!"
 }

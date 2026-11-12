@@ -1,5 +1,5 @@
 {
-  "stateDiagnosticsSubject": "DSH Go 诊断包",
+  "stateDiagnosticsSubject": "问问Ai 诊断包",
   "stateStoragePermission": "没有存储权限，存不进「下载」",
   "stateDiagnosticsStorageFull": "存储空间不足，没能生成诊断包",
   "stateDiagnosticsExportFailed": "没能导出诊断包",
@@ -75,7 +75,7 @@
   "stateIconNight": "夜幕",
   "stateIconFrost": "霜白",
   "stateIconInk": "墨",
-  "stateAppDisclaimer": "基于 DeepSeek Harness 构建 · 非 DeepSeek 官方应用",
+  "stateAppDisclaimer": "遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 基于 DeepSeek Harness 构建",
   "stateWallpaper": "壁纸",
   "stateFileMissing": "找不到这个文件了，可能已被删除或移走",
   "stateFileNoApp": "手机上没有能打开这类文件的应用",
@@ -783,5 +783,5 @@
     }
   },
   "stateProviderTokenCountInvalid": "填写数字，如 128K",
-  "appSlogan": "随时随刻，想go就Go！"
+  "appSlogan": "遇事不决，问问Ai！"
 }

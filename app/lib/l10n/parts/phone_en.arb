@@ -21,7 +21,7 @@
   "phoneEngineTitle": "Local engine",
   "phoneEngineLocal": "This phone’s engine",
   "phoneEngineLogs": "Logs",
-  "phoneEngineAutoStart": "Start when DSH Go opens",
+  "phoneEngineAutoStart": "Start when Wenwen.ai opens",
   "phoneEngineKeepAlive": "Background running",
   "phoneEngineKeepAliveHint": "Prevent Android from stopping the engine",
   "phoneEngineDiagnostics": "Diagnostics",
@@ -114,7 +114,7 @@
   "phoneActionFailedLater": "Couldn’t complete. Try again later.",
   "phoneDndDisabled": "Non-disruptive mode is off",
   "phoneDndEnabled": "Non-disruptive mode is on",
-  "phoneDndShizukuPermissionFailed": "Permission not granted. Allow DSH Go in Shizuku’s “Application management”.",
+  "phoneDndShizukuPermissionFailed": "Permission not granted. Allow Wenwen.ai in Shizuku’s “Application management”.",
   "phoneDndPairedConnect": "Paired. Tap “Connect”.",
   "phoneDndTitle": "Non-disruptive mode",
   "phoneDndSubtitle": "Works on a hidden screen while you use your phone",
@@ -148,18 +148,18 @@
   "phoneDndSuiAllSet": "Sui is ready.",
   "phoneDndSuiPermissionFailed": "Couldn’t ask Sui for permission. Check that the Sui module is enabled and try again.",
   "phoneDndRootWaiting": "Waiting for root. Answer your root manager’s prompt.",
-  "phoneDndRootConnected": "Root is connected. If it drops, choose it here again; DSH Go asks for root on its own only with “Keep root channel” on above.",
-  "phoneDndRootConnectedKept": "Root is connected. If it drops, DSH Go asks your root manager again on its own.",
+  "phoneDndRootConnected": "Root is connected. If it drops, choose it here again; Wenwen.ai asks for root on its own only with “Keep root channel” on above.",
+  "phoneDndRootConnectedKept": "Root is connected. If it drops, Wenwen.ai asks your root manager again on its own.",
   "phoneDndRootRetry": "Ask for root again",
   "phoneDndInstallShizuku": "Install Shizuku first (free and open source). If you use tools like Ice Box or Brevent, you may already have it.",
   "phoneDndOpenShizukuSite": "Open Shizuku website",
   "phoneDndStartShizuku": "Open Shizuku and follow “Start via Wireless debugging” (requires Wi-Fi). This page refreshes when you return.",
-  "phoneDndGrantShizukuHint": "Shizuku is running. Allow DSH Go to use it next.",
-  "phoneDndGrantShizuku": "Allow DSH Go",
+  "phoneDndGrantShizukuHint": "Shizuku is running. Allow Wenwen.ai to use it next.",
+  "phoneDndGrantShizuku": "Allow Wenwen.ai",
   "phoneDndShizukuAllSet": "Shizuku is ready.",
   "phoneDndShizukuInstalled": "Shizuku installed",
   "phoneDndShizukuRunning": "Shizuku running",
-  "phoneDndShizukuGranted": "DSH Go allowed",
+  "phoneDndShizukuGranted": "Wenwen.ai allowed",
   "phoneDndShizukuCompatibility": "This Android version has compatibility issues with the official Shizuku release.",
   "phoneDndWirelessDebuggingOn": "Wireless debugging on",
   "phoneDndPaired": "Paired",
@@ -195,7 +195,7 @@
   "phoneEnabled": "On",
   "phoneDisabled": "Off",
   "phoneOpenAccessibilityFailed": "Can’t open settings. Find DSH in Settings → Accessibility.",
-  "phoneOpenAppInfoFailed": "Can’t open app info. Find DSH Go in Settings → Apps.",
+  "phoneOpenAppInfoFailed": "Can’t open app info. Find Wenwen.ai in Settings → Apps.",
   "phoneStopFailed": "Couldn’t stop. Tap “Stop” on the floating bar or notification.",
   "phoneControlTitle": "Phone control",
   "phoneControlSubtitle": "Reads the screen and taps for you. Stop anytime.",
@@ -273,9 +273,9 @@
   "phoneRestrictedOpenInfoStep": "Return here and tap “Open app info”.",
   "phoneRestrictedBackAccessibility": "Return to “Accessibility” and turn on DSH.",
   "phoneRestrictedMenuStep": "Tap the three dots at the top right, choose “Allow restricted settings”, then verify your lock screen password.",
-  "phoneRestrictedTryOverlay": "First try turning on DSH Go in floating window settings. When “Restricted setting” appears, tap “OK”. The option below appears only after this step.",
-  "phoneRestrictedBackOverlay": "Return to floating window settings and turn on DSH Go.",
-  "phoneRestrictedHuaweiOverlay": "HarmonyOS 4 and earlier usually skip this step. Turn on DSH Go directly in floating window settings.",
+  "phoneRestrictedTryOverlay": "First try turning on Wenwen.ai in floating window settings. When “Restricted setting” appears, tap “OK”. The option below appears only after this step.",
+  "phoneRestrictedBackOverlay": "Return to floating window settings and turn on Wenwen.ai.",
+  "phoneRestrictedHuaweiOverlay": "HarmonyOS 4 and earlier usually skip this step. Turn on Wenwen.ai directly in floating window settings.",
   "phoneRestrictedHuaweiAccessibility": "HarmonyOS 4 and earlier usually skip this step. Turn on DSH directly in “Accessibility”.",
   "phoneRestrictedVivoNote": "The location varies by OriginOS version. If there are no three dots, scroll to the bottom of App info.",
   "phoneRestrictedAdvancedStep": "In “Advanced settings”, find “Allow restricted settings” and turn it on.",
@@ -411,7 +411,7 @@
   "phoneControlEnabledRestarting": "On · Restarting the engine",
   "phoneControlDisabledRestarting": "Off · Restarting the engine",
   "phoneControlEnabledPending": "On · Takes effect when the engine starts",
-  "phoneReturnAfterDone": "Back to DSH Go when done",
+  "phoneReturnAfterDone": "Back to Wenwen.ai when done",
   "phoneReturnAfterDoneHint": "Closes the bar, opens the chat",
   "phoneFloatingBar": "Floating bar",
   "phoneIdleOpacity": "Idle opacity",
@@ -454,7 +454,13 @@
   "phonePreviewDescription": "Frames are read only while the preview is visible and stay on this device. The preview is view-only.",
   "phonePreviewOpen": "View background screen",
   "phonePreviewTask": "Preview task {taskId}",
-  "@phonePreviewTask": {"placeholders": {"taskId": {"type": "String"}}},
+  "@phonePreviewTask": {
+    "placeholders": {
+      "taskId": {
+        "type": "String"
+      }
+    }
+  },
   "phonePreviewInUse": "Another task is being previewed",
   "phonePreviewOff": "The task ended or preview is off",
   "phonePreviewUnavailable": "Preview is unavailable or the screen is protected",
@@ -627,14 +633,26 @@
   "phoneSkillBundlePublishedUnverified": "The files were published, but full verification has not succeeded. Do not save again.",
   "phoneSkillBundleUnknown": "The save result is not confirmed. Files may already have been written. Do not save again.",
   "phoneSkillBundleRevision": "Route revision: {revision}",
-  "@phoneSkillBundleRevision": {"placeholders": {"revision": {"type": "String"}}},
+  "@phoneSkillBundleRevision": {
+    "placeholders": {
+      "revision": {
+        "type": "String"
+      }
+    }
+  },
   "phoneSkillReplayReview": "Review phone route",
   "phoneSkillReplaySourceChanged": "The local session or connection changed. Select the route again from the current local conversation.",
   "phoneSkillReplayUnavailable": "This route is not available for controlled execution on this phone. The ordinary skill template remains available.",
   "phoneSkillReplayConfirm": "I have reviewed this route and the app selected for this use.",
   "phoneSkillReplayToComposer": "Insert into this conversation",
   "phoneSkillReplayStartText": "A phone route has been selected and reviewed locally. Call only mcp__phone__replay with {request}. If unavailable or refused, hand back to the user/model; do not replay it as ordinary actions.",
-  "@phoneSkillReplayStartText": {"placeholders": {"request": {"type": "String"}}},
+  "@phoneSkillReplayStartText": {
+    "placeholders": {
+      "request": {
+        "type": "String"
+      }
+    }
+  },
   "phoneSkillReplayQueue": "Send route (queue)",
   "phoneSkillReplayQueued": "The route message was accepted or queued. This does not mean the route has executed successfully.",
   "phoneSkillReplaySendUncertain": "Delivery of the route message was not confirmed. It has not been prepared or replayed again. Check the original conversation."

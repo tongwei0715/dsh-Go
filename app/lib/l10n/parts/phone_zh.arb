@@ -114,7 +114,7 @@
   "phoneActionFailedLater": "没有成功，稍后再试",
   "phoneDndDisabled": "不打扰模式已关闭",
   "phoneDndEnabled": "不打扰模式已启用",
-  "phoneDndShizukuPermissionFailed": "没有拿到授权。可以在 Shizuku 的「应用管理」里给 DSH Go 授权",
+  "phoneDndShizukuPermissionFailed": "没有拿到授权。可以在 Shizuku 的「应用管理」里给 问问Ai 授权",
   "phoneDndPairedConnect": "配对成功，点「连接」",
   "phoneDndTitle": "不打扰模式",
   "phoneDndSubtitle": "在看不见的屏幕上操作，不耽误你用手机",
@@ -148,18 +148,18 @@
   "phoneDndSuiAllSet": "Sui 这边准备好了。",
   "phoneDndSuiPermissionFailed": "没能请求 Sui 授权。确认 Sui 模块已启用后再试。",
   "phoneDndRootWaiting": "正在等待 root 授权，请在 root 管理器的弹窗里选择。",
-  "phoneDndRootConnected": "root 已连接。断开后要回到这里再选一次；打开上面的「保持 root 通道」，DSH Go 才会自己再去申请。",
-  "phoneDndRootConnectedKept": "root 已连接。断开后 DSH Go 会自己向 root 管理器再次申请。",
+  "phoneDndRootConnected": "root 已连接。断开后要回到这里再选一次；打开上面的「保持 root 通道」，问问Ai 才会自己再去申请。",
+  "phoneDndRootConnectedKept": "root 已连接。断开后 问问Ai 会自己向 root 管理器再次申请。",
   "phoneDndRootRetry": "重新申请 root 授权",
   "phoneDndInstallShizuku": "先装 Shizuku（免费、开源）。已经在用冰箱、黑阈这类工具的话，多半已经装了。",
   "phoneDndOpenShizukuSite": "打开 Shizuku 官网",
   "phoneDndStartShizuku": "打开 Shizuku，按里面「通过无线调试启动」的说明做一遍（要连 Wi‑Fi）。回到这里会自动刷新。",
-  "phoneDndGrantShizukuHint": "Shizuku 已在运行，还要给 DSH Go 授权。",
-  "phoneDndGrantShizuku": "授权给 DSH Go",
+  "phoneDndGrantShizukuHint": "Shizuku 已在运行，还要给 问问Ai 授权。",
+  "phoneDndGrantShizuku": "授权给 问问Ai",
   "phoneDndShizukuAllSet": "Shizuku 这边准备好了。",
   "phoneDndShizukuInstalled": "已安装 Shizuku",
   "phoneDndShizukuRunning": "Shizuku 正在运行",
-  "phoneDndShizukuGranted": "已授权给 DSH Go",
+  "phoneDndShizukuGranted": "已授权给 问问Ai",
   "phoneDndShizukuCompatibility": "这版 Android 与官方版 Shizuku 存在兼容问题。",
   "phoneDndWirelessDebuggingOn": "无线调试已打开",
   "phoneDndPaired": "已配对",
@@ -195,7 +195,7 @@
   "phoneEnabled": "已开启",
   "phoneDisabled": "已关闭",
   "phoneOpenAccessibilityFailed": "打不开系统设置，请到「设置 → 无障碍」里找到 DSH",
-  "phoneOpenAppInfoFailed": "打不开应用信息，请到「设置 → 应用」里找到 DSH Go",
+  "phoneOpenAppInfoFailed": "打不开应用信息，请到「设置 → 应用」里找到 问问Ai",
   "phoneStopFailed": "没能停止，可以点悬浮条或通知上的「停止」",
   "phoneControlTitle": "手机操控",
   "phoneControlSubtitle": "看屏幕、帮你点按，随时可以停",
@@ -273,9 +273,9 @@
   "phoneRestrictedOpenInfoStep": "回到这里，点「打开应用信息」。",
   "phoneRestrictedBackAccessibility": "回到「无障碍」，打开 DSH。",
   "phoneRestrictedMenuStep": "点右上角的三个点，选「允许受限制的设置」，按提示验证锁屏密码。",
-  "phoneRestrictedTryOverlay": "先去「悬浮窗」设置里点一次 DSH Go 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
-  "phoneRestrictedBackOverlay": "回到「悬浮窗」设置，打开 DSH Go。",
-  "phoneRestrictedHuaweiOverlay": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「悬浮窗」设置打开 DSH Go。",
+  "phoneRestrictedTryOverlay": "先去「悬浮窗」设置里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
+  "phoneRestrictedBackOverlay": "回到「悬浮窗」设置，打开 问问Ai。",
+  "phoneRestrictedHuaweiOverlay": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「悬浮窗」设置打开 问问Ai。",
   "phoneRestrictedHuaweiAccessibility": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 DSH。",
   "phoneRestrictedVivoNote": "不同 OriginOS 版本位置可能不同。右上角没有三个点时，把应用信息页往下翻到底找一找。",
   "phoneRestrictedAdvancedStep": "在「高级设置」里找到「允许受限制的设置」，打开它。",
@@ -626,7 +626,7 @@
   "phoneControlEnabledRestarting": "已开启，引擎正在重启",
   "phoneControlDisabledRestarting": "已关闭，引擎正在重启",
   "phoneControlEnabledPending": "已开启，引擎启动后生效",
-  "phoneReturnAfterDone": "完成后返回 DSH Go",
+  "phoneReturnAfterDone": "完成后返回 问问Ai",
   "phoneReturnAfterDoneHint": "收起悬浮条，回到对话看结果",
   "phoneFloatingBar": "悬浮条",
   "phoneIdleOpacity": "闲置时不透明度",
@@ -669,7 +669,13 @@
   "phonePreviewDescription": "仅在预览可见时取帧。画面只留在本机；预览不可点击。",
   "phonePreviewOpen": "查看后台屏",
   "phonePreviewTask": "预览任务 {taskId}",
-  "@phonePreviewTask": {"placeholders": {"taskId": {"type": "String"}}},
+  "@phonePreviewTask": {
+    "placeholders": {
+      "taskId": {
+        "type": "String"
+      }
+    }
+  },
   "phonePreviewInUse": "正在预览另一任务",
   "phonePreviewOff": "任务已结束或预览已关闭",
   "phonePreviewUnavailable": "画面暂不可预览，或受到保护",
@@ -856,14 +862,26 @@
   "phoneSkillBundlePublishedUnverified": "文件已发布，但尚未通过完整核验。不要重复保存。",
   "phoneSkillBundleUnknown": "保存结果尚未确认，文件可能已经写入。不要重复保存。",
   "phoneSkillBundleRevision": "路线版本：{revision}",
-  "@phoneSkillBundleRevision": {"placeholders": {"revision": {"type": "String"}}},
+  "@phoneSkillBundleRevision": {
+    "placeholders": {
+      "revision": {
+        "type": "String"
+      }
+    }
+  },
   "phoneSkillReplayReview": "核对手机路线",
   "phoneSkillReplaySourceChanged": "本机会话或连接已改变，请返回当前本机会话重新选择。",
   "phoneSkillReplayUnavailable": "此路线尚不能在当前本机安全执行。仍可按普通技能模板使用。",
   "phoneSkillReplayConfirm": "我已核对这条路线与本次选择的 App。",
   "phoneSkillReplayToComposer": "放入当前对话",
   "phoneSkillReplayStartText": "本机已选择并核对手机路线。请仅调用 mcp__phone__replay，参数 {request}。若不可用或被拒绝，交回用户/模型，不要改为普通动作重放。",
-  "@phoneSkillReplayStartText": {"placeholders": {"request": {"type": "String"}}},
+  "@phoneSkillReplayStartText": {
+    "placeholders": {
+      "request": {
+        "type": "String"
+      }
+    }
+  },
   "phoneSkillReplayQueue": "发送路线（排队）",
   "phoneSkillReplayQueued": "路线消息已被接收或排队，尚不代表路线执行成功。",
   "phoneSkillReplaySendUncertain": "路线消息未确认发送成功；没有自动重新准备或重放。请核对原对话结果。"

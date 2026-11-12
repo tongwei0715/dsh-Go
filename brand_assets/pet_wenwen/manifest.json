@@ -1,0 +1,12 @@
+{
+  "id": "wenwen-bot",
+  "name": "问问仔 (WenWen)",
+  "author": "wenwenai.cn",
+  "description": "遇事不决，问问Ai！专属像素助手桌宠",
+  "states": {
+    "working": "pet_working.png",
+    "completed": "pet_completed.png",
+    "confirm": "pet_confirm.png",
+    "sleeping": "pet_sleeping.png"
+  }
+}

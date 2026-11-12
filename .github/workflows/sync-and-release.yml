@@ -1,0 +1,160 @@
+name: Sync Upstream & Build WenWenAi (dsh-Go) Release
+
+on:
+  schedule:
+    # 每天北京时间 10:30 (UTC 02:30) 自动检查上游 ccch1mneyyy/dsh-Go 是否有新版本
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_build:
+        description: '即使当前 Tag 已发布也强制重新构建并发布'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+env:
+  FLUTTER_VERSION: 3.47.7
+  JAVA_VERSION: '17'
+  TZ: Asia/Shanghai
+
+jobs:
+  sync-and-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: 1. 检出当前衍生仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2. 同步上游 ccch1mneyyy/dsh-Go 最新源码与 Release Tag
+        id: upstream_sync
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "WenWenAi Bot"
+          git config user.email "bot@wenwenai.cn"
+          git remote add upstream https://github.com/ccch1mneyyy/dsh-Go.git || true
+          git fetch upstream --tags
+
+          UPSTREAM_TAG=$(gh release view --repo ccch1mneyyy/dsh-Go --json tagName -q .tagName || git tag -l "v*" --sort=-v:refname | head -n 1)
+          UPSTREAM_VER="${UPSTREAM_TAG#v}"
+          echo "Upstream latest release tag: ${UPSTREAM_TAG} (ver: ${UPSTREAM_VER})"
+          echo "upstream_tag=${UPSTREAM_TAG}" >> "$GITHUB_OUTPUT"
+          echo "upstream_ver=${UPSTREAM_VER}" >> "$GITHUB_OUTPUT"
+
+          if gh release view "${UPSTREAM_TAG}" --repo "${{ github.repository }}" >/dev/null 2>&1 && [ "${{ github.event.inputs.force_build }}" != "true" ]; then
+            echo "Release ${UPSTREAM_TAG} already exists on ${{ github.repository }}. Skipping."
+            echo "should_build=false" >> "$GITHUB_OUTPUT"
+          else
+            git merge --no-edit "upstream/main" -X theirs || true
+            echo "should_build=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 3. 安装 Pillow 并执行「问问Ai (wenwenai.cn)」幂等品牌与问问仔桌宠重塑
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        run: |
+          python3 -m pip install --upgrade pip pillow
+          python3 scripts/rebrand_wenwenai.py \
+            --repo-root . \
+            --app-id "cn.wenwenai.app" \
+            --app-name "问问Ai" \
+            --app-name-en "Wenwen.ai" \
+            --slogan "遇事不决，问问Ai！" \
+            --slogan-en "When in doubt, ask Wenwen.ai!" \
+            --domain "wenwenai.cn" \
+            --github-repo "${{ github.repository }}"
+
+      - name: 4. 提取上游 Release 预编译 Ubuntu+Node.js+DSH 运行时并校验完整性
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        run: |
+          TAG="${{ steps.upstream_sync.outputs.upstream_tag }}"
+          VER="${{ steps.upstream_sync.outputs.upstream_ver }}"
+          mkdir -p /tmp/upstream_apk runtime/out/arm64-v8a/assets runtime/out/arm64-v8a/jniLibs/arm64-v8a
+
+          curl -fSL --retry 3 -o /tmp/upstream_apk/upstream.apk \
+            "https://github.com/ccch1mneyyy/dsh-Go/releases/download/${TAG}/dsh-go-${VER}-arm64.apk"
+
+          unzip -o -q /tmp/upstream_apk/upstream.apk "assets/runtime/*" -d runtime/out/arm64-v8a/
+          unzip -o -j -q /tmp/upstream_apk/upstream.apk \
+            "lib/arm64-v8a/libproot.so" \
+            "lib/arm64-v8a/libproot-loader.so" \
+            "lib/arm64-v8a/libtalloc.so" \
+            "lib/arm64-v8a/libandroid-shmem.so" \
+            -d runtime/out/arm64-v8a/jniLibs/arm64-v8a/
+
+          rm -rf /tmp/upstream_apk
+          python3 -I tooling/check_runtime_bundle.py arm64
+
+      - name: 5. 配置 JDK 17 与 Flutter ${{ env.FLUTTER_VERSION }}
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: 6. 安装 Flutter 工具链
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: 7. 写入专属永久签名密钥并编译正式版 arm64 APK (v1+v2+v3 三重签名)
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/android/wenwen-release.jks
+          cat <<EOF > app/android/key.properties
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          storeFile=../wenwen-release.jks
+          EOF
+
+          VER="${{ steps.upstream_sync.outputs.upstream_ver }}"
+          (cd app && flutter pub get && flutter gen-l10n)
+          bash tooling/build-apk.sh -f arm64 --build-name "${VER}" --keep-daemon \
+            -- --dart-define=DSH_UPDATE_MIRROR=https://wenwenai.cn \
+               --dart-define=DSH_UPDATE_FEED=https://wenwenai.cn/dsh-go/update.json
+
+          rm -f app/android/wenwen-release.jks app/android/key.properties
+
+      - name: 8. 生成 update.json / SHA256SUMS 并发布到 GitHub Releases
+        if: steps.upstream_sync.outputs.should_build == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.upstream_sync.outputs.upstream_tag }}"
+          VER="${{ steps.upstream_sync.outputs.upstream_ver }}"
+
+          cat <<EOF > /tmp/notes.md
+          ### 问问Ai v${VER} — 遇事不决，问问Ai！（官方网站 https://wenwenai.cn）
+          - **全能内置 Linux 容器**：免 Root、免 Termux，手机本机直接运行 Ubuntu 24.04 + Node.js 24.22.1 + DSH 引擎，支持远程接管电脑主机。
+          - **专属四状态像素桌宠「问问仔」**：干活敲代码、完成欢呼、敏感操作举手待确认、待机休眠打盹，支持 App 外桌面悬浮窗陪伴。
+          - **平滑覆盖升级**：使用固定永久证书签名，升级仅替换受管引擎目录，完整保留已安装的 apt/npm/pip 工具包与对话数据。
+          - **开源致谢**：基于上游 [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) (${TAG}) 同步构建，遵循 GNU AGPL-3.0 协议。
+          EOF
+
+          python3 tooling/release_assets.py \
+            --version "${VER}" \
+            --notes /tmp/notes.md \
+            --delta-from 0 \
+            --out dist
+
+          # 同时提供 wenwen-ai-<VER>-arm64.apk 别名方便官网直链下载
+          cp "dist/dsh-go-${VER}-arm64.apk" "dist/wenwen-ai-${VER}-arm64.apk"
+          (cd dist && sha256sum *.apk > SHA256SUMS)
+
+          if gh release view "${TAG}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release upload "${TAG}" dist/* --clobber --repo "${{ github.repository }}"
+          else
+            gh release create "${TAG}" dist/* --repo "${{ github.repository }}" -t "问问Ai ${TAG} (dsh-Go 全能桌宠版)" -F /tmp/notes.md
+          fi
+
+          rm -rf runtime/out dist
+          git add app/ brand_assets/ docs/ scripts/ tooling/ NOTICE_DERIVATIVE.md .github/workflows/sync-and-release.yml
+          git commit -m "chore(release): 问问Ai ${TAG} synced from upstream ccch1mneyyy/dsh-Go" || true
+          git push origin HEAD:main

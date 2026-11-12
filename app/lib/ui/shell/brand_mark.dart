@@ -77,35 +77,55 @@ class _BrandPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     canvas.save();
+    // 问问Ai 120x120 矢量网格绘制
+    final scaleX = size.width / 120.0;
+    final scaleY = size.height / 120.0;
+    canvas.scale(scaleX, scaleY);
+
     if (style == _Style.tile) {
-      const box = BrandGlyph.tileBox;
-      canvas.scale(size.width / box.width, size.height / box.height);
-      canvas.translate(-box.left, -box.top);
-      canvas.drawPath(BrandGlyph.tile, Paint()..shader = BrandGlyph.tileFill);
-      _glass(canvas, dark: true);
-    } else {
-      const box = BrandGlyph.box;
-      canvas.scale(size.height / box.height);
-      canvas.translate(-box.left, -box.top);
-      if (style == _Style.mono) {
-        final paint = Paint()..color = color!;
-        canvas.drawPath(BrandGlyph.body, paint);
-        canvas.drawPath(BrandGlyph.bubble, paint);
-      } else {
-        _glass(canvas, dark: style == _Style.dark);
-      }
+      final bgPaint = Paint()..color = const Color(0xFF2F5BFF);
+      canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(0, 0, 120, 120), const Radius.circular(28)), bgPaint);
+    }
+
+    final Color leftColor = style == _Style.mono ? color! : const Color(0xFFFFC93C);
+    final Color rightColor = style == _Style.mono
+        ? color!.withValues(alpha: 0.85)
+        : (style == _Style.light && ! (style == _Style.tile) ? const Color(0xFF2F5BFF) : const Color(0xFFFFFFFF));
+    final Color qColor = style == _Style.mono
+        ? const Color(0xFF000000)
+        : (rightColor == const Color(0xFFFFFFFF) ? const Color(0xFF2F5BFF) : const Color(0xFFFFFFFF));
+
+    // 左上黄色气泡
+    final pLeft = Paint()..color = leftColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(18, 20, 58, 46), const Radius.circular(16)), pLeft);
+    final tailLeft = Path()..moveTo(26, 62)..lineTo(40, 62)..lineTo(24, 78)..close();
+    canvas.drawPath(tailLeft, pLeft);
+
+    // 右下气泡
+    final pRight = Paint()..color = rightColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(40, 44, 62, 48), const Radius.circular(17)), pRight);
+    final tailRight = Path()..moveTo(72, 90)..lineTo(92, 90)..lineTo(94, 106)..close();
+    canvas.drawPath(tailRight, pRight);
+
+    // 问号与圆点
+    final qPaint = Paint()
+      ..color = qColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5.5
+      ..strokeCap = StrokeCap.round;
+    final qPath = Path()
+      ..moveTo(62, 62)
+      ..cubicTo(62, 54, 80, 54, 80, 63)
+      ..cubicTo(80, 70, 71, 70, 71, 76);
+    canvas.drawPath(qPath, qPaint);
+    canvas.drawCircle(const Offset(71, 85), 3.4, Paint()..color = qColor);
+
+    // 右上角 AI 胶囊徽章
+    if (style != _Style.mono) {
+      canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(74, 12, 36, 22), const Radius.circular(11)), Paint()..color = const Color(0xFF14213D));
+      canvas.drawCircle(const Offset(99.5, 14.8), 1.8, Paint()..color = const Color(0xFFFFC93C));
     }
     canvas.restore();
-  }
-
-  /// The colour glyph: the tail's gradient over the whole silhouette, the fin (behind
-  /// the stem) and the belly (in front of it) over that, then the bubble.
-  static void _glass(Canvas canvas, {required bool dark}) {
-    canvas
-      ..drawPath(BrandGlyph.body, Paint()..shader = dark ? BrandGlyph.tailDark : BrandGlyph.tailLight)
-      ..drawPath(BrandGlyph.fin, Paint()..shader = dark ? BrandGlyph.finDark : BrandGlyph.finLight)
-      ..drawPath(BrandGlyph.belly, Paint()..shader = dark ? BrandGlyph.bellyDark : BrandGlyph.bellyLight)
-      ..drawPath(BrandGlyph.bubble, Paint()..shader = dark ? BrandGlyph.bubbleDark : BrandGlyph.bubbleLight);
   }
 
   @override
