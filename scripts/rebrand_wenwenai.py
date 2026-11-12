@@ -366,8 +366,8 @@ def rebuild_whale_and_widgets(repo_root: Path, pet_src_dir: Path) -> None:
     if wt_dart.is_file():
         wtxt = wt_dart.read_text(encoding="utf-8")
         wtxt = re.sub(
-            r'\.\.colorFilter\s*=\s*ColorFilter\.mode\([^)]+\)',
-            '..colorFilter = ColorFilter.mode(Colors.white.withValues(alpha: weight), BlendMode.modulate)',
+            r'\.\.(?:colorFilter|color)\s*=[^\n]+',
+            '..color = Color.fromRGBO(255, 255, 255, weight),',
             wtxt,
         )
         wt_dart.write_text(wtxt, encoding="utf-8")
@@ -376,7 +376,8 @@ def rebuild_whale_and_widgets(repo_root: Path, pet_src_dir: Path) -> None:
     es_dart = repo_root / "app" / "lib" / "ui" / "chat" / "empty_state.dart"
     if es_dart.is_file():
         etxt = es_dart.read_text(encoding="utf-8")
-        etxt = etxt.replace("color: whaleColorFor(theme.brightness).withValues(alpha: 0.4),", "color: Colors.white,")
+        etxt = etxt.replace("color: whaleColorFor(theme.brightness).withValues(alpha: 0.4),", "color: const Color(0xFFFFFFFF),")
+        etxt = etxt.replace("color: Colors.white,", "color: const Color(0xFFFFFFFF),")
         es_dart.write_text(etxt, encoding="utf-8")
 
     star_webp = repo_root / "app" / "assets" / "star" / "star_whale.webp"
