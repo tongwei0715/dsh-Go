@@ -58,7 +58,7 @@ object SafePolicy {
     fun onFailure(
         state: SafeState, strikes: Int, failure: RunFailure, autoSafe: Boolean,
         probationNotice: String = "正常模式还是起不来，已回到安全模式。", // l10n:keep test default
-        autoNotice: String = "DSH 连续两次启动失败，已用安全模式启动。你的对话都在。", // l10n:keep test default
+        autoNotice: String = "问问Ai 连续两次启动失败，已用安全模式启动。你的对话都在。", // l10n:keep test default
     ): Outcome {
         // Safe-mode runs never count against the main profile; uncounted kinds change nothing.
         if (failure.safeMode || !failure.kind.counts) return Outcome(state, strikes, false, null, null)

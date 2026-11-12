@@ -212,7 +212,7 @@ class AppIconArt {
   static AppIconArt of(AppIcon icon) => switch (icon) {
     // The default icon; on the phone its glyph is the original art, here the
     // brand master's glass (the same fit).
-    AppIcon.mist => const AppIconArt._(Color(0xFF9AB0E8), Color(0xFF405AAD), AppIconGlyph.glassDark),
+    AppIcon.mist => const AppIconArt._(Color(0xFF2F5BFF), Color(0xFF1D44DB), AppIconGlyph.glassDark),
     AppIcon.night => const AppIconArt._(Color(0xFF2C3D6C), Color(0xFF0C122D), AppIconGlyph.glassDark),
     AppIcon.frost => const AppIconArt._(Color(0xFFFCFDFF), Color(0xFFDDE5F8), AppIconGlyph.glassLight),
     AppIcon.ink => const AppIconArt._(Color(0xFF292B30), Color(0xFF0D0E11), AppIconGlyph.mono, Color(0xFFF5F7FB)),
@@ -261,20 +261,22 @@ class _IconPainter extends CustomPainter {
         const Rect.fromLTWH(0, 0, 108, 108),
         Paint()..shader = ui.Gradient.linear(AppIconArt.start, AppIconArt.end, [art.from, art.to]),
       );
-    switch (art.glyph) {
-      case AppIconGlyph.mono:
-        final paint = Paint()..color = art.mono!;
-        canvas
-          ..drawPath(BrandGlyph.body, paint)
-          ..drawPath(BrandGlyph.bubble, paint);
-      case AppIconGlyph.glassDark || AppIconGlyph.glassLight:
-        final dark = art.glyph == AppIconGlyph.glassDark;
-        canvas
-          ..drawPath(BrandGlyph.body, Paint()..shader = dark ? BrandGlyph.tailDark : BrandGlyph.tailLight)
-          ..drawPath(BrandGlyph.fin, Paint()..shader = dark ? BrandGlyph.finDark : BrandGlyph.finLight)
-          ..drawPath(BrandGlyph.belly, Paint()..shader = dark ? BrandGlyph.bellyDark : BrandGlyph.bellyLight)
-          ..drawPath(BrandGlyph.bubble, Paint()..shader = dark ? BrandGlyph.bubbleDark : BrandGlyph.bubbleLight);
-    }
+    // 绘制问问Ai双气泡前景
+    final pLeft = Paint()..color = const Color(0xFFFFC93C);
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(28, 30, 32, 25), const Radius.circular(9)), pLeft);
+    final pRight = Paint()..color = const Color(0xFFFFFFFF);
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(42, 44, 34, 26), const Radius.circular(9)), pRight);
+    final qPaint = Paint()
+      ..color = const Color(0xFF2F5BFF)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3.2
+      ..strokeCap = StrokeCap.round;
+    final qPath = Path()
+      ..moveTo(54, 54)
+      ..cubicTo(54, 49, 64, 49, 64, 54.5)
+      ..cubicTo(64, 58, 59, 58, 59, 61.5);
+    canvas.drawPath(qPath, qPaint);
+    canvas.drawCircle(const Offset(59, 66.5), 2.0, Paint()..color = const Color(0xFF2F5BFF));
     canvas
       ..restore()
       // Half of it falls outside the clip: a 1 px line just inside the edge.

@@ -16,7 +16,7 @@
   "searchKwPhone": "无障碍,操作手机,自动点击,代操作,点按",
   "searchKwAppRules": "名单,黑名单,白名单,禁止,应用",
   "searchKwDnd": "免打扰,Shizuku,Sui,root,ADB,后台操作",
-  "searchKwEngine": "引擎,运行环境,启动,停止,重启,DSH",
+  "searchKwEngine": "引擎,运行环境,启动,停止,重启,问问Ai",
   "searchKwBackground": "后台保活,保活,后台,电池优化,自启动,被杀,杀后台,省电",
   "searchKwSystemAccess": "权限一览,授权,悬浮窗,无障碍,后台弹出界面,麦克风,文件访问,通知权限,受限制的设置,补开权限",
   "searchKwDiagnostics": "日志,排障,诊断包,问题反馈,报错",

@@ -233,6 +233,21 @@
     setTimeout(syncBackground, 50);
   });
 
+
+  // WENWEN_WEB_BRAND_PATCH
+  function rebrandWebDom() {
+    var walker = document.createTreeWalker(document.body || document.documentElement, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      var v = node.nodeValue;
+      if (!v) continue;
+      if (v === '探索未至之境' || v === 'Into the Unknown') node.nodeValue = '遇事不决，问问Ai！';
+      else if (v === 'deepseek' || v === 'DeepSeek Harness') node.nodeValue = '问问Ai';
+      else if (v === 'HARNESS') node.nodeValue = 'WENWENAI.CN';
+    }
+  }
+  setInterval(rebrandWebDom, 600);
+
   window.__dshApp = {
     toggleSidebar: function () { setSidebar(!sidebarOpen()); },
     closeSidebar: function () { setSidebar(false); },

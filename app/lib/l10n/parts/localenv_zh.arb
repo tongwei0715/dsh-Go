@@ -1,5 +1,5 @@
 {
-  "localEnvChooseTitle": "DSH 在哪里运行？",
+  "localEnvChooseTitle": "问问Ai 在哪里运行？",
   "localEnvChooseMessage": "之后可以在设置里更改",
   "localEnvThisPhoneDetail": "存储约 {storage} MB · 内存约 {memory} MB",
   "@localEnvThisPhoneDetail": {
@@ -28,10 +28,10 @@
       }
     }
   },
-  "localEnvRemoteDetail": "连接电脑或服务器上的 DSH",
+  "localEnvRemoteDetail": "连接电脑或服务器上的 问问Ai",
   "localEnvRecommended": "推荐",
   "localEnvInstallTitle": "安装本机运行环境",
-  "localEnvInstallMessage": "在这台手机上运行 DSH",
+  "localEnvInstallMessage": "在这台手机上运行 问问Ai",
   "localEnvFactStorage": "约 {storage} MB 存储空间",
   "@localEnvFactStorage": {
     "placeholders": {

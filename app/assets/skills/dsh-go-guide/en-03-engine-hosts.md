@@ -1,15 +1,15 @@
 # Engine and remote hosts
 
-DSH can run right on this phone (this phone's engine), or on your computer or server with your phone connecting to it. Chats, workspaces and plugins belong to each host.
+Wenwen.ai can run right on this phone (this phone's engine), or on your computer or server with your phone connecting to it. Chats, workspaces and plugins belong to each host.
 
 ## This phone or remote
 
-The first time you open the app, choose where DSH runs:
+The first time you open the app, choose where Wenwen.ai runs:
 
 - **This phone**: installs the runtime on your phone; everything runs on this phone. The option shows the storage and memory it needs.
-- **Remote host**: uses DSH on your computer or server, with nothing installed on the phone. Recommended when the phone is short on memory or storage.
+- **Remote host**: uses Wenwen.ai on your computer or server, with nothing installed on the phone. Recommended when the phone is short on memory or storage.
 
-You can add DSH to this phone anytime: tap **Install runtime** on the engine page, or tap **This phone** when switching hosts. It starts once installed.
+You can add Wenwen.ai to this phone anytime: tap **Install runtime** on the engine page, or tap **This phone** when switching hosts. It starts once installed.
 
 ## This phone's engine
 
@@ -18,7 +18,7 @@ You can add DSH to this phone anytime: tap **Install runtime** on the engine pag
 
 - **Start**, **Stop**, **Restart**: stopping asks first; both stopping and restarting interrupt active chats.
 - If the engine fails to start, the page shows the cause and ways to fix it, such as retrying, **Start in Safe mode** or viewing logs.
-- **Start when Wenwen.ai opens**: on by default. As long as DSH is installed on this phone, opening the app starts it, even while you use a remote host. Turn it off if you don't need that.
+- **Start when Wenwen.ai opens**: on by default. As long as Wenwen.ai is installed on this phone, opening the app starts it, even while you use a remote host. Turn it off if you don't need that.
 - **Automatic Safe mode**: on by default. After two failed starts in a row, starts without plugins.
 - **Start in Safe mode**: enter Safe mode by hand. Once fixed, tap **Return to normal mode**. Entering and leaving both restart the engine.
 - **Logs**: the engine's live output.
@@ -26,7 +26,7 @@ You can add DSH to this phone anytime: tap **Install runtime** on the engine pag
 
 ## Updates and installed tools
 
-Normal engine updates replace only app-managed engine components, without rebuilding your Linux system. Apt tools such as gh, npm global packages in their default location, Python/pip packages, settings and workspaces stay. Bundled DSH, Node, pnpm, the bridge and their dedicated directories remain app-managed; do not install your own software there. A Node version change may still require rebuilding third-party native extensions: preserving files does not guarantee extension compatibility.
+Normal engine updates replace only app-managed engine components, without rebuilding your Linux system. Apt tools such as gh, npm global packages in their default location, Python/pip packages, settings and workspaces stay. Bundled Wenwen.ai, Node, pnpm, the bridge and their dedicated directories remain app-managed; do not install your own software there. A Node version change may still require rebuilding third-party native extensions: preserving files does not guarantee extension compatibility.
 
 Older runtimes are adopted after checking the architecture, Ubuntu version and Python. If compatibility cannot be confirmed, the update manifest is invalid, or a leftover process has not stopped, the update stops with an explanation. It never automatically wipes or rebuilds the environment. Retry an interrupted installation; do not delete recovery directories by hand.
 
@@ -69,28 +69,28 @@ On launch, the app reconnects to the host you used last. To start on this phone 
 
 ## Add an SSH host
 
-The host needs SSH enabled and DSH installed (`npm i -g @deepseek-ai/dsh`).
+The host needs SSH enabled and Wenwen.ai installed (`npm i -g @deepseek-ai/dsh`).
 
 1. On the remote hosts page, tap **Add SSH host**.
 2. Enter the **Host** and **Username**. **Port** defaults to 22. The name is optional.
 3. Sign in with a **Password** or a **Private key**. You can **Import from file**, and add a **Private key passphrase (optional)**. Passwords and keys stay on this phone.
-4. **Instance management** defaults to **Managed**: **Start command** defaults to `dsh web`; if you installed DSH with nvm, enter its full path. For an instance you manage yourself, select **Attach only** and enter its **Remote DSH port** and **DSH launch token** from its launch URL. **Working directory (optional)** is where new chats start; use an absolute path in attach-only mode.
+4. **Instance management** defaults to **Managed**: **Start command** defaults to `dsh web`; if you installed Wenwen.ai with nvm, enter its full path. For an instance you manage yourself, select **Attach only** and enter its **Remote Wenwen.ai port** and **Wenwen.ai launch token** from its launch URL. **Working directory (optional)** is where new chats start; use an absolute path in attach-only mode.
 5. Tap **Test connection**. The first time, **Trust this host?** appears: check the fingerprint on the host, and tap **Trust and connect** if it matches.
 6. Tap **Save**, then select the host in the list.
 
-In managed mode, testing starts or reuses DSH on the host, and it keeps running afterwards. **Attach only** opens an SSH tunnel to the specified port on remote `127.0.0.1`. It never discovers instances, starts, stops or restarts DSH, or reads/writes managed state files. Start the instance yourself first and keep it running. If connection fails, check the port and token; the app never restarts it as a repair. The token stays in secure storage on this phone, like the SSH password and private key.
+In managed mode, testing starts or reuses Wenwen.ai on the host, and it keeps running afterwards. **Attach only** opens an SSH tunnel to the specified port on remote `127.0.0.1`. It never discovers instances, starts, stops or restarts Wenwen.ai, or reads/writes managed state files. Start the instance yourself first and keep it running. If connection fails, check the port and token; the app never restarts it as a repair. The token stays in secure storage on this phone, like the SSH password and private key.
 
-Managed mode refuses to replace a live instance whose start command differs or launch log is missing. A rejected token or refused reused port never authorizes a restart either. Check the settings or use **Attach only** first. If you really intend to replace the app-recorded instance, choose **Restart managed DSH** in the DSH section of Edit host and confirm. This may interrupt other clients and active chats; normal **Test connection** never performs it. Confirmed dead managed processes can still be started automatically.
+Managed mode refuses to replace a live instance whose start command differs or launch log is missing. A rejected token or refused reused port never authorizes a restart either. Check the settings or use **Attach only** first. If you really intend to replace the app-recorded instance, choose **Restart managed Wenwen.ai** in the Wenwen.ai section of Edit host and confirm. This may interrupt other clients and active chats; normal **Test connection** never performs it. Confirmed dead managed processes can still be started automatically.
 
 **SSH compression** is on by default, negotiating compression after authentication. Unsupported servers continue uncompressed. Turn it off in the host form if needed; save and establish a new SSH connection to apply.
 
-To change or delete a host, tap **Edit** next to it to open **Edit host**; **Delete this host** is at the bottom. Deleting removes only the settings, password, key and launch token saved on this phone; DSH and chats on the host stay.
+To change or delete a host, tap **Edit** next to it to open **Edit host**; **Delete this host** is at the bottom. Deleting removes only the settings, password, key and launch token saved on this phone; Wenwen.ai and chats on the host stay.
 
 ## DSH Remote
 
 No network setup, end-to-end encrypted. Good for computers on another network.
 
-1. Install the remote plugin in the host's DSH and sign in.
+1. Install the remote plugin in the host's Wenwen.ai and sign in.
 2. On the remote hosts page, choose the same sign-in provider you used on that host, for example “Continue with GitHub”, and sign in with the same account. If the page lists no providers and shows only **Sign in in browser**, tap that button.
 3. Select an online host. On first connection, check that the identity fingerprint matches the one the host's remote plugin shows, then tap **Trust and connect**.
 
@@ -103,4 +103,4 @@ Connections automatically try LAN / P2P, then TURN, and finally Relay without a 
 
 **Compact history** is off by default. Supporting DSH Remote Hosts summarize historical tool arguments and output to reduce history transfer; message text, live replies, approvals and original Host records stay unchanged. Switch to another host (or this phone) and back, or restart the app, to apply. The current client and its automatic reconnects retain their original mode to avoid mixing cached history. After turning it off, select the host again and reopen the chat to load full history. Older Hosts continue sending full history; SSH is unaffected.
 
-DSH Remote connects to one host at a time; switching disconnects the previous one. Over DSH Remote: you can send images only, DSH Web doesn't open in the app, plugins can only be turned on or off, and DS Bot and chat log export aren't available.
+DSH Remote connects to one host at a time; switching disconnects the previous one. Over DSH Remote: you can send images only, Wenwen.ai Web doesn't open in the app, plugins can only be turned on or off, and DS Bot and chat log export aren't available.

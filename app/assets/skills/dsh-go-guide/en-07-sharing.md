@@ -25,7 +25,7 @@ Pick a template and whether to show the **Question** and **Model and steps**, th
 
 ### File
 
-Choose a **Chat file** (`.dshgo`, to replay and continue in Wenwen.ai), a **Web page** (opens in any browser, even offline) or Markdown (plain text, readable anywhere). **Preview** it if you like, then **Save** (to Download/DSH-Go) or **Share**.
+Choose a **Chat file** (`.dshgo`, to replay and continue in Wenwen.ai), a **Web page** (opens in any browser, even offline) or Markdown (plain text, readable anywhere). **Preview** it if you like, then **Save** (to Download/Wenwen.ai) or **Share**.
 
 ### Text
 

@@ -118,10 +118,10 @@
   "accessOverlayWhy": "宠物才能出现在别的 App 上",
   "accessOverlayGreyed": "开关是灰的？",
   "accessRestrictedTitle": "先允许受限制的设置",
-  "accessRestrictedTap": "在无障碍里点一下「DSH 手机操控」，出现「受限制的设置」时点确定",
+  "accessRestrictedTap": "在无障碍里点一下「问问Ai 手机操控」，出现「受限制的设置」时点确定",
   "accessRestrictedMenu": "在应用信息里点右上角的三个点，选「允许受限制的设置」",
   "accessRestrictedAdvanced": "在应用信息的「高级设置」里打开「允许受限制的设置」",
-  "accessRestrictedBack": "回到无障碍，打开「DSH 手机操控」",
+  "accessRestrictedBack": "回到无障碍，打开「问问Ai 手机操控」",
   "accessRestrictedHelp": "看图示",
   "accessOpenA11y": "去无障碍",
   "accessOpenAppInfo": "去应用信息",
@@ -1799,7 +1799,7 @@
   "botsPetWhaleGirl": "问问灵",
   "botsPetNone": "不显示",
   "botsPets": "宠物",
-  "botsPetSource": "来自 DSH-TUI",
+  "botsPetSource": "问问Ai 原创伴侣",
   "botsPetImport": "导入",
   "botsPetImportHint": "导入你自己的像素宠物：一个 zip，里面是 pack.json 和序列帧 PNG，格式见仓库里的 docs/design/pets.md。长按导入的宠物可以删除。",
   "botsPetImportDone": "「{name}」来了",
@@ -1828,7 +1828,7 @@
   "botsPetCodexWebp": "WebP 图转成了 PNG",
   "botsPetCodexCustomTracks": "自定义的动作行没接到任何状态上",
   "botsPetCodexFps": "帧率换算成毫秒时取了整",
-  "botsPetCodexOneShot": "只播一次的动作，播完回到哪里由 DSH 决定",
+  "botsPetCodexOneShot": "只播一次的动作，播完回到哪里由 问问Ai 决定",
   "botsPetCodexMissingAuthor": "包里没写作者",
   "botsPetCodexMissingLicense": "包里没写授权",
   "botsPetCodexMissingSource": "包里没写来源",
@@ -2199,7 +2199,7 @@
   "catalogEngineSummary": "本机引擎状态与日志",
   "catalogDiagnostics": "诊断",
   "catalogDiagnosticsSummary": "导出诊断包",
-  "catalogWebSummary": "DSH 官方界面",
+  "catalogWebSummary": "问问Ai 网页工作台",
   "catalogPluginPanel": "插件面板",
   "catalogHostPluginMissing": "这台主机没有这个插件",
   "catalogAllFeatures": "全部功能",
@@ -2344,7 +2344,7 @@
   "chatTranscribingEllipsis": "正在转写…",
   "chatConnectToSend": "连接引擎后即可发送",
   "chatGeneratingSteerHint": "生成中 · 可直接插话",
-  "chatComposerHint": "给 DSH 发消息…",
+  "chatComposerHint": "给 问问Ai 发消息…",
   "chatStopGenerating": "停止生成",
   "chatVoiceInput": "语音输入",
   "chatStopVoiceInput": "停止语音输入",
@@ -2483,7 +2483,7 @@
   "chatAlertCaution": "小心",
   "chatImage": "图片",
   "chatImageNotFound": "找不到图片",
-  "chatImageOffline": "未连接 DSH",
+  "chatImageOffline": "未连接 问问Ai",
   "chatImageTooLarge": "图片过大",
   "chatImageReadFailed": "无法读取文件",
   "chatImageDisplayFailed": "无法显示",
@@ -2568,7 +2568,7 @@
   "chatSaveToDownloads": "存到「下载」",
   "chatCopyPath": "复制路径",
   "chatOpenInDefaultApp": "用默认应用打开",
-  "chatDownloadsFolderHint": "下载/DSH-Go 文件夹",
+  "chatDownloadsFolderHint": "下载/问问Ai 文件夹",
   "chatSavedToDownloadsPath": "已存到 下载/{path}",
   "@chatSavedToDownloadsPath": {
     "placeholders": {
@@ -3263,7 +3263,7 @@
   "companionModeLight": "轻量",
   "companionModeLightHint": "只聊天。手机直连模型，不用启动引擎",
   "companionModeFull": "完整",
-  "companionModeFullHint": "主机上的 DSH 引擎，带工具和手机操控",
+  "companionModeFullHint": "主机上的 问问Ai 引擎，带工具和手机操控",
   "companionLightNoKey": "轻量模式要用 DeepSeek API Key，在设置里填上就能和我聊啦。",
   "companionLightBadKey": "API Key 好像不对，或者已经失效了。",
   "companionLightBusy": "那边有点忙，等一下再和我说吧。",
@@ -3564,7 +3564,7 @@
   "engineAccountSigningIn": "登录中",
   "engineAccountSignedOut": "未登录",
   "engineAccountUsageFact": "用量从账号余额中扣除",
-  "engineAccountBrowserFact": "在浏览器中登录，密码不经过 DSH",
+  "engineAccountBrowserFact": "在浏览器中登录，密码不经过 问问Ai",
   "engineAccountCredentialsFact": "登录凭据只保存在本机",
   "engineSubagentTitle": "子代理",
   "engineAgentLoopTitle": "Agent 循环",
@@ -3594,7 +3594,7 @@
   "engineFieldNew": "新建",
   "engineFieldRequired": "必填",
   "engineGeneralMissing": "这台主机没有通用设置",
-  "engineSettingsVersionRequired": "需要 DSH 0.2.1 或更新版本",
+  "engineSettingsVersionRequired": "需要 问问Ai 0.2.1 或更新版本",
   "engineGeneralWebDisplay": "网页版显示",
   "engineGeneralWebSending": "网页版发送",
   "engineGeneralWebOnlyHint": "这组设置仅影响当前主机的网页版，不改变原生聊天。",
@@ -4341,7 +4341,7 @@
   "featuresPresetStandardDescription": "代码、文件和资料，适合大多数任务",
   "featuresPresetPtcDescription": "批量调用工具，再筛选、统计、汇总",
   "featuresPresetMinimalDescription": "只用终端和读图，适合测试对比",
-  "featuresPresetCreatorDescription": "让 Agent 写插件，定制 DSH 本身",
+  "featuresPresetCreatorDescription": "让 Agent 写插件，定制 问问Ai 本身",
   "featuresHostUnreachable": "连不上「{name}」",
   "@featuresHostUnreachable": {
     "placeholders": {
@@ -4384,7 +4384,7 @@
       }
     }
   },
-  "featuresJobOutputSubject": "DSH 任务输出",
+  "featuresJobOutputSubject": "问问Ai 任务输出",
   "featuresJobOutputReadFailed": "没能读取输出",
   "featuresJobOutputWaiting": "等待输出…",
   "featuresJobOutputEmpty": "没有输出",
@@ -4886,7 +4886,7 @@
   "featuresExportRemoteHint": "经 DSH Remote 中转时拿不到日志，可以在电脑上的网页版导出",
   "featuresExportShareHint": "附在问题反馈里，或发给自己",
   "featuresExportSaveDownloads": "存到「下载」",
-  "featuresExportDownloadsHint": "存进 下载/DSH-Go",
+  "featuresExportDownloadsHint": "存进 下载/问问Ai",
   "featuresExportContents": "含这个对话和子代理的全部记录与附件",
   "featuresSkillUseHere": "在对话里用",
   "featuresSkillUseNew": "新对话里用",
@@ -5235,7 +5235,7 @@
   "hubPluginStars": "星标",
   "hubPluginSource": "来源",
   "hubPluginInstalledVersion": "已装版本",
-  "hubPluginRequiresDsh": "需要 DSH",
+  "hubPluginRequiresDsh": "需要 问问Ai",
   "hubPluginPackageName": "包名",
   "hubPluginHomepage": "主页",
   "hubPluginRepository": "代码仓库",
@@ -5247,7 +5247,7 @@
   "hubPluginInstalling": "安装中…",
   "hubPluginAllowBuilds": "允许构建脚本并重试",
   "hubPluginRetryInstall": "重试安装",
-  "hubPluginOfficial": "DSH 官方",
+  "hubPluginOfficial": "问问Ai 官方",
   "hubPluginNotLoaded": "没有正常加载",
   "hubPluginComponents": "组件",
   "hubPluginSafeModeRemove": "安全模式下不能卸载",
@@ -5445,7 +5445,7 @@
   "hubPrivacy": "隐私与分享",
   "hubPrivacySharing": "分享",
   "hubInterfaceHome": "首页",
-  "hubInterfaceWebHint": "DSH 官方网页版",
+  "hubInterfaceWebHint": "问问Ai 网页工作台",
   "hubInterfaceOpenWeb": "打开网页版",
   "hubInterfacePhoneLayout": "手机布局",
   "hubTableTint": "表格底色",
@@ -5559,10 +5559,10 @@
   "liveChipQuestion": "待回答",
   "liveChipDone": "完成",
   "liveChipFailed": "出错",
-  "livePublicRunning": "DSH 正在干活",
-  "livePublicWaiting": "DSH 在等你处理",
-  "livePublicDone": "DSH 做完了",
-  "livePublicFailed": "DSH 出错了",
+  "livePublicRunning": "问问Ai 正在干活",
+  "livePublicWaiting": "问问Ai 在等你处理",
+  "livePublicDone": "问问Ai 做完了",
+  "livePublicFailed": "问问Ai 出错了",
   "liveSettingsTitle": "实时活动",
   "liveSettingsSwitch": "显示实时活动",
   "liveSettingsSubtitle": "干活、等你处理、操作手机时，显示在状态栏胶囊和锁屏上；支持的手机会放进灵动岛",
@@ -5574,7 +5574,7 @@
   "localeSystem": "跟随系统",
   "localeZh": "简体中文",
   "localeEn": "English",
-  "localEnvChooseTitle": "DSH 在哪里运行？",
+  "localEnvChooseTitle": "问问Ai 在哪里运行？",
   "localEnvChooseMessage": "之后可以在设置里更改",
   "localEnvThisPhoneDetail": "存储约 {storage} MB · 内存约 {memory} MB",
   "@localEnvThisPhoneDetail": {
@@ -5603,10 +5603,10 @@
       }
     }
   },
-  "localEnvRemoteDetail": "连接电脑或服务器上的 DSH",
+  "localEnvRemoteDetail": "连接电脑或服务器上的 问问Ai",
   "localEnvRecommended": "推荐",
   "localEnvInstallTitle": "安装本机运行环境",
-  "localEnvInstallMessage": "在这台手机上运行 DSH",
+  "localEnvInstallMessage": "在这台手机上运行 问问Ai",
   "localEnvFactStorage": "约 {storage} MB 存储空间",
   "@localEnvFactStorage": {
     "placeholders": {
@@ -6108,7 +6108,7 @@
   "phoneDiagnosticsShare": "分享诊断包",
   "phoneDiagnosticsShareHint": "附在问题反馈里",
   "phoneDiagnosticsSave": "存到「下载」",
-  "phoneDiagnosticsSaveHint": "存进 下载/DSH-Go",
+  "phoneDiagnosticsSaveHint": "存进 下载/问问Ai",
   "phoneDiagnosticsNote": "含版本、设备、日志和最近一次崩溃，不含 Key 和令牌",
   "phoneDiagnosticsExport": "导出诊断包",
   "phoneSafeMode": "安全模式",
@@ -6161,7 +6161,7 @@
   "phoneEngineSafeUnsupported": "这个版本的运行环境不支持安全模式，请更新 App",
   "phoneEngineRuntimeIncomplete": "App 内的运行环境包不完整，请重新安装 App",
   "phoneLogEmpty": "还没有日志",
-  "phoneLogShareTitle": "DSH 引擎日志",
+  "phoneLogShareTitle": "问问Ai 引擎日志",
   "phoneLogCopyAll": "复制全部",
   "phoneBackgroundAllow": "去放行",
   "phoneToolScreen": "看屏幕",
@@ -6191,7 +6191,7 @@
   "phoneActionLogSubtitle": "只记做了什么，不记屏幕内容",
   "phoneActionLogRefresh": "刷新",
   "phoneActionLogEmpty": "还没有记录",
-  "phoneActionLogEmptyHint": "DSH 在手机上的每一步都会记在这里",
+  "phoneActionLogEmptyHint": "问问Ai 在手机上的每一步都会记在这里",
   "phoneAppRuleDeny": "不碰",
   "phoneAppRuleConfirm": "每一步都确认",
   "phoneAppRuleNormal": "照常",
@@ -6268,9 +6268,9 @@
   "phoneDndConnected": "已连接",
   "phoneDndDeveloperOptionsStep": "打开开发者选项：在「关于手机」里连点「版本号」7 次。小米在「我的设备 → 全部参数与信息」里点「OS 版本」，vivo 点「软件版本号」。",
   "phoneDndWirelessDebuggingStep": "在开发者选项里打开「无线调试」，要连着 Wi‑Fi。开发者选项一般在「系统」或「其他设置」里。",
-  "phoneDndStartPairingStep": "回到这里点「开始配对」，DSH 会发一条通知。",
+  "phoneDndStartPairingStep": "回到这里点「开始配对」，问问Ai 会发一条通知。",
   "phoneDndGetPairingCodeStep": "在「无线调试」里点「使用配对码配对设备」，屏幕上会出现 6 位配对码。",
-  "phoneDndEnterPairingCodeStep": "下拉通知栏，把配对码填进 DSH 的通知。配对成功后点「连接」。",
+  "phoneDndEnterPairingCodeStep": "下拉通知栏，把配对码填进 问问Ai 的通知。配对成功后点「连接」。",
   "phoneDndStartPairing": "开始配对",
   "phoneDndPairingNotificationSent": "通知已发出，去「无线调试」里拿配对码",
   "phoneDndManualEntry": "手动填写",
@@ -6296,7 +6296,7 @@
   "phoneDisableFailed": "没能关闭，稍后再试",
   "phoneEnabled": "已开启",
   "phoneDisabled": "已关闭",
-  "phoneOpenAccessibilityFailed": "打不开系统设置，请到「设置 → 无障碍」里找到 DSH",
+  "phoneOpenAccessibilityFailed": "打不开系统设置，请到「设置 → 无障碍」里找到 问问Ai",
   "phoneOpenAppInfoFailed": "打不开应用信息，请到「设置 → 应用」里找到 问问Ai",
   "phoneStopFailed": "没能停止，可以点悬浮条或通知上的「停止」",
   "phoneControlTitle": "手机操控",
@@ -6330,7 +6330,7 @@
   "phoneControlAllowed": "已允许",
   "phoneControlTry": "试一下",
   "phoneControlReadScreen": "读一下当前屏幕",
-  "phoneControlReadScreenHint": "看看 DSH 读到了什么，不发给模型",
+  "phoneControlReadScreenHint": "看看 问问Ai 读到了什么，不发给模型",
   "phoneControlEnableAccessibilityFirst": "先打开无障碍服务",
   "phoneControlLoading": "读取中",
   "phoneControlRules": "规则",
@@ -6359,7 +6359,7 @@
   "phoneDisclosureStopTitle": "你随时能停",
   "phoneDisclosureStopBody": "操作时屏幕上有悬浮条，可以暂停、停止或插话。手机要亮屏、解锁。",
   "phoneDisclosureTitle": "开启手机操控前",
-  "phoneDisclosureIntro": "DSH 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：",
+  "phoneDisclosureIntro": "问问Ai 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：",
   "phoneDisclosureRestartNote": "开启后引擎会重启一次，进行中的回复会中断",
   "phoneDisclosureNotNow": "先不开",
   "phoneDisclosureAgreeEnable": "同意并开启",
@@ -6371,17 +6371,17 @@
   "phoneRestrictedOpenAccessibility": "去开无障碍",
   "phoneRestrictedOverlay": "悬浮窗",
   "phoneRestrictedOpenOverlay": "去开悬浮窗",
-  "phoneRestrictedTryAccessibility": "先去「无障碍」里点一次 DSH 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
+  "phoneRestrictedTryAccessibility": "先去「无障碍」里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
   "phoneRestrictedOpenInfoStep": "回到这里，点「打开应用信息」。",
-  "phoneRestrictedBackAccessibility": "回到「无障碍」，打开 DSH。",
+  "phoneRestrictedBackAccessibility": "回到「无障碍」，打开 问问Ai。",
   "phoneRestrictedMenuStep": "点右上角的三个点，选「允许受限制的设置」，按提示验证锁屏密码。",
   "phoneRestrictedTryOverlay": "先去「悬浮窗」设置里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
   "phoneRestrictedBackOverlay": "回到「悬浮窗」设置，打开 问问Ai。",
   "phoneRestrictedHuaweiOverlay": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「悬浮窗」设置打开 问问Ai。",
-  "phoneRestrictedHuaweiAccessibility": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 DSH。",
+  "phoneRestrictedHuaweiAccessibility": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 问问Ai。",
   "phoneRestrictedVivoNote": "不同 OriginOS 版本位置可能不同。右上角没有三个点时，把应用信息页往下翻到底找一找。",
   "phoneRestrictedAdvancedStep": "在「高级设置」里找到「允许受限制的设置」，打开它。",
-  "phoneRestrictedOppoNote": "ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 DSH 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。",
+  "phoneRestrictedOppoNote": "ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 问问Ai 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。",
   "phoneRestrictedHuaweiNote": "如果在无障碍里看到「受限制的设置」提示，按「原生 / 其他」的步骤做。",
   "phoneRestrictedTitle": "允许受限制的设置",
   "phoneRestrictedSteps": "步骤",
@@ -6415,9 +6415,9 @@
   "phoneFailureLaunch": "本机运行环境未能启动",
   "phoneFailureLaunchHint": "查看日志了解原因，或连接远程主机继续使用",
   "phoneFailureNoSpaceHint": "清理一些空间后重试",
-  "phoneFailureStartup": "DSH 启动失败",
-  "phoneFailureCrashedEarly": "DSH 启动后很快崩溃了",
-  "phoneFailureCrashedLate": "DSH 运行中崩溃了",
+  "phoneFailureStartup": "问问Ai 启动失败",
+  "phoneFailureCrashedEarly": "问问Ai 启动后很快崩溃了",
+  "phoneFailureCrashedLate": "问问Ai 运行中崩溃了",
   "phoneFailureFatal": "引擎报告了致命错误",
   "phoneFailureRestore": "恢复配置",
   "phoneFailureEnterSafe": "进入安全模式",
@@ -6437,7 +6437,7 @@
   "phoneSafeRestoreFailed": "没能恢复",
   "phoneSafeStopIncomplete": "还无法确认引擎已停止，未更改配置。请查看引擎日志后重试。",
   "phoneSafeRestartIncomplete": "配置操作已完成，但引擎还未停止，暂未重启。请等待停止完成后再启动。",
-  "phoneSafeRestoreIntro": "DSH 会回到上次正常运行时的配置：",
+  "phoneSafeRestoreIntro": "问问Ai 会回到上次正常运行时的配置：",
   "phoneSafeRestoreSettings": "• 设置恢复到当时的版本（现在的另存为备份）",
   "phoneSafeRestoreNote": "不会卸载任何插件，也不需要联网。停用的插件以后可以重新打开。",
   "phoneSafeLeaveTitle": "恢复正常模式？",
@@ -6512,7 +6512,7 @@
       }
     }
   },
-  "phoneAppRulesLoosenTitle": "让 DSH 操作「{app}」？",
+  "phoneAppRulesLoosenTitle": "让 问问Ai 操作「{app}」？",
   "@phoneAppRulesLoosenTitle": {
     "placeholders": {
       "app": {
@@ -6598,7 +6598,7 @@
       }
     }
   },
-  "phoneControlRemoteHint": "「{host}」上的 DSH 操作不了这台手机，切回「本机」后可用",
+  "phoneControlRemoteHint": "「{host}」上的 问问Ai 操作不了这台手机，切回「本机」后可用",
   "@phoneControlRemoteHint": {
     "placeholders": {
       "host": {
@@ -6638,7 +6638,7 @@
       }
     }
   },
-  "phoneSafeRestoreAt": "DSH 会回到 {when} 正常运行时的配置：",
+  "phoneSafeRestoreAt": "问问Ai 会回到 {when} 正常运行时的配置：",
   "@phoneSafeRestoreAt": {
     "placeholders": {
       "when": {
@@ -6704,7 +6704,7 @@
       }
     }
   },
-  "phoneAppRulesLoosenBody": "银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；DSH 默认不输密码、不付款。",
+  "phoneAppRulesLoosenBody": "银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；问问Ai 默认不输密码、不付款。",
   "phoneAppRulesSkipStepsBody": "微信这类 App 有风控，曾有手机助手操作后账号被强制下线。改成照常后，只有发消息这类操作还会先问你。",
   "phoneResetDeletesChatsWorkspaces": "对话和工作区",
   "phoneResetBodyChatsWorkspaces": "会删除对话和工作区，然后重新安装运行环境。",
@@ -6818,7 +6818,7 @@
   "phoneSelfCheckRefresh": "刷新状态",
   "phoneSelfCheckSave": "保存脱敏报告",
   "phoneSelfCheckSaving": "保存中…",
-  "phoneSelfCheckSaved": "报告已存入下载/DSH-Go。",
+  "phoneSelfCheckSaved": "报告已存入下载/问问Ai。",
   "phoneSelfCheckSaveFailed": "报告保存失败。",
   "phoneSelfCheckReportHint": "仅在你点击保存时导出。本机报告只含固定结果，不含截图、识别文字、日志、账户数据或运行标识。",
   "phoneSelfCheckRunState": "{state, select, idle{尚未开始} running{部分自检进行中} cleaning{正在清理；取消不代表已撤销派发的输入} done{执行和清理已结束，请逐项查看下方结果} cancelled{已取消，已观察到的操作仍保留} cleanup_pending{清理尚未确认，资源仍保留} other{状态不可用}}",
@@ -7433,11 +7433,11 @@
   "pluginsGistReadFailed": "没能读取 Gist",
   "pluginsListReadFailed": "没能读取插件列表",
   "pluginsReadingPlugins": "正在读取插件…",
-  "pluginsDshOfficial": "DSH 官方",
+  "pluginsDshOfficial": "问问Ai 官方",
   "pluginsOfficialToggleOnly": "官方组件只能开关，不能卸载；对这台主机上的所有对话生效",
   "pluginsOfficial": "官方",
   "pluginsNoThirdParty": "还没装第三方插件",
-  "pluginsPluginsDescription": "插件能给 DSH 加工具、记忆和模型",
+  "pluginsPluginsDescription": "插件能给 问问Ai 加工具、记忆和模型",
   "pluginsBrowseMarket": "逛逛插件市场",
   "pluginsLoading": "正在加载",
   "pluginsIslandClosed": "插件界面已关闭",
@@ -7490,7 +7490,7 @@
     }
   },
   "pluginsFeatured": "推荐",
-  "pluginsInstalledRemoteRestart": "已安装「{name}」，重启{host}上的 DSH 后生效",
+  "pluginsInstalledRemoteRestart": "已安装「{name}」，重启{host}上的 问问Ai 后生效",
   "@pluginsInstalledRemoteRestart": {
     "placeholders": {
       "name": {
@@ -7533,7 +7533,7 @@
   "pluginsRestartEngine": "重启引擎",
   "pluginsAllowBuildScripts": "允许构建脚本？",
   "pluginsBuildScriptPackages": "下面这些包要在安装时运行脚本：",
-  "pluginsBuildScriptWarning": "脚本会以 DSH 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。",
+  "pluginsBuildScriptWarning": "脚本会以 问问Ai 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。",
   "@pluginsBuildScriptWarning": {
     "placeholders": {
       "host": {
@@ -7580,7 +7580,7 @@
   "pluginsRestartNow": "立即重启",
   "pluginsUninstallFailed": "没能卸载",
   "pluginsThatComputer": "那台电脑",
-  "pluginsCommandAfterInstall": "装好后重启那台电脑上的 DSH，再回来刷新",
+  "pluginsCommandAfterInstall": "装好后重启那台电脑上的 问问Ai，再回来刷新",
   "pluginsError": "出错",
   "pluginsInventoryTitle": "插件清单",
   "pluginsGlobalPlugins": "全局插件",
@@ -7654,9 +7654,9 @@
   "pluginsCopyCommand": "复制命令",
   "pluginsCommandCopied": "命令已复制",
   "pluginsMissingFiles": "插件文件缺失，重新安装可修复",
-  "pluginsNotDshPlugin": "不是 DSH 插件，无法加载",
-  "pluginsIncompatible": "与当前 DSH 版本不兼容，未加载",
-  "pluginsRequiresDshVersion": "需要 DSH {requiredVersion}，当前 {currentVersion}，未加载",
+  "pluginsNotDshPlugin": "不是 问问Ai 插件，无法加载",
+  "pluginsIncompatible": "与当前 问问Ai 版本不兼容，未加载",
+  "pluginsRequiresDshVersion": "需要 问问Ai {requiredVersion}，当前 {currentVersion}，未加载",
   "@pluginsRequiresDshVersion": {
     "placeholders": {
       "requiredVersion": {
@@ -7933,7 +7933,7 @@
   },
   "pluginsCouldNotInstall": "没能安装",
   "pluginsEngineRestartToApply": "重启引擎后生效",
-  "pluginsRemoteRestartToApply": "重启{host}上的 DSH 后生效",
+  "pluginsRemoteRestartToApply": "重启{host}上的 问问Ai 后生效",
   "@pluginsRemoteRestartToApply": {
     "placeholders": {
       "host": {
@@ -8040,7 +8040,7 @@
       }
     }
   },
-  "pluginsUninstalledRestartRemote": "已卸载「{title}」，重启{host}上的 DSH 后完全移除",
+  "pluginsUninstalledRestartRemote": "已卸载「{title}」，重启{host}上的 问问Ai 后完全移除",
   "@pluginsUninstalledRestartRemote": {
     "placeholders": {
       "title": {
@@ -8054,7 +8054,7 @@
   "pluginsEnableFailed": "没能启用",
   "pluginsDisableFailed": "没能停用",
   "pluginsEnabledRestartLocal": "已启用，重启引擎后生效",
-  "pluginsEnabledRestartRemote": "已启用，重启{host}上的 DSH 后生效",
+  "pluginsEnabledRestartRemote": "已启用，重启{host}上的 问问Ai 后生效",
   "@pluginsEnabledRestartRemote": {
     "placeholders": {
       "host": {
@@ -8063,7 +8063,7 @@
     }
   },
   "pluginsDisabledRestartLocal": "已停用，重启引擎后生效",
-  "pluginsDisabledRestartRemote": "已停用，重启{host}上的 DSH 后生效",
+  "pluginsDisabledRestartRemote": "已停用，重启{host}上的 问问Ai 后生效",
   "@pluginsDisabledRestartRemote": {
     "placeholders": {
       "host": {
@@ -8079,10 +8079,10 @@
       }
     }
   },
-  "pluginsPermissionLocalThirdParty": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。",
-  "pluginsPermissionLocalTrusted": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。",
-  "pluginsPermissionRemoteThirdParty": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。",
-  "pluginsPermissionRemoteTrusted": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。",
+  "pluginsPermissionLocalThirdParty": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。",
+  "pluginsPermissionLocalTrusted": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。",
+  "pluginsPermissionRemoteThirdParty": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。",
+  "pluginsPermissionRemoteTrusted": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。",
   "pluginsSelectedQrCount": "已选 {count} 项 · 可生成二维码",
   "@pluginsSelectedQrCount": {
     "placeholders": {
@@ -8570,25 +8570,25 @@
   "remoteDshMode": "实例管理",
   "remoteManaged": "托管启动",
   "remoteAttachOnly": "只连接",
-  "remoteManagedHelp": "自动启动或复用 App 托管的 DSH；不会自动替换存活但无法复用的实例。",
-  "remoteAttachOnlyHelp": "只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 DSH。",
-  "remoteDshPort": "远端 DSH 端口",
-  "remoteDshToken": "DSH 登录令牌",
+  "remoteManagedHelp": "自动启动或复用 App 托管的 问问Ai；不会自动替换存活但无法复用的实例。",
+  "remoteAttachOnlyHelp": "只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 问问Ai。",
+  "remoteDshPort": "远端 问问Ai 端口",
+  "remoteDshToken": "问问Ai 登录令牌",
   "remoteDshTokenHelp": "填写既有实例启动链接中的 token，仅保存在这台手机的安全存储中。",
-  "remoteAttachWorkingDirectoryHelp": "既有实例不执行目录探测；请填写远端绝对路径，留空使用 DSH 默认目录。",
+  "remoteAttachWorkingDirectoryHelp": "既有实例不执行目录探测；请填写远端绝对路径，留空使用 问问Ai 默认目录。",
   "remoteSshCompression": "SSH 压缩",
   "remoteSshCompressionHelp": "默认开启；与服务器协商认证后压缩，不支持时使用未压缩传输。",
-  "remoteRestartManaged": "重启托管 DSH",
-  "remoteRestartManagedWarning": "这会停止 App 记录的远端 DSH 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。",
-  "remoteErrSharedInstance": "远端托管 DSH 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 DSH”。",
-  "remoteErrAttachSettings": "请填写有效的远端 DSH 端口和登录令牌",
-  "remoteDshAttached": "已连接既有 DSH",
+  "remoteRestartManaged": "重启托管 问问Ai",
+  "remoteRestartManagedWarning": "这会停止 App 记录的远端 问问Ai 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。",
+  "remoteErrSharedInstance": "远端托管 问问Ai 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 问问Ai”。",
+  "remoteErrAttachSettings": "请填写有效的远端 问问Ai 端口和登录令牌",
+  "remoteDshAttached": "已连接既有 问问Ai",
   "remoteStartupSection": "启动",
   "remoteAutoConnectOnStartup": "连接上次使用的主机",
   "remoteAutoConnectOnStartupHint": "关闭后从本机开始",
   "remoteStepConnect": "连接服务器",
   "remoteStepVerifyHostKey": "验证主机指纹",
-  "remoteStepStartDsh": "启动 DSH",
+  "remoteStepStartDsh": "启动 问问Ai",
   "remoteStepTunnel": "建立隧道",
   "remoteConnecting": "正在连接",
   "remoteConnected": "已连接",
@@ -8621,7 +8621,7 @@
   "remoteErrHostRejected": "主机拒绝了连接",
   "remoteErrHostNotOwned": "主机不在你的 DSH Remote 账号下",
   "remoteErrUpdateNeeded": "版本不匹配，请更新 问问Ai 和主机上的远程插件",
-  "remoteErrVersionIncompatible": "主机上的 DSH 或远程插件需要更新",
+  "remoteErrVersionIncompatible": "主机上的 问问Ai 或远程插件需要更新",
   "remoteErrSignInTimeout": "登录超时",
   "remoteSignInCancelled": "已取消登录",
   "remoteErrBrowserSignInUnsupported": "服务器不支持浏览器登录",
@@ -8633,7 +8633,7 @@
   "remoteUnavailable": "暂不可用",
   "remoteErrHostNotFound": "找不到这台主机",
   "remoteConnectionStopped": "远程连接已停止",
-  "remoteBootstrapReusePort": "复用已在运行的 DSH（端口 {port}）",
+  "remoteBootstrapReusePort": "复用已在运行的 问问Ai（端口 {port}）",
   "@remoteBootstrapReusePort": {
     "placeholders": {
       "port": {
@@ -8641,7 +8641,7 @@
       }
     }
   },
-  "remoteBootstrapStarting": "正在远端启动 DSH…",
+  "remoteBootstrapStarting": "正在远端启动 问问Ai…",
   "remoteErrCommandNotFound": "远端找不到「{command}」",
   "@remoteErrCommandNotFound": {
     "placeholders": {
@@ -8652,9 +8652,9 @@
   },
   "remoteErrDshMissing": "主机上没有 dsh，装好后重试，或在启动命令里填完整路径",
   "remoteStartCommandExample": "启动命令示例：~/.nvm/versions/node/v22.0.0/bin/dsh web",
-  "remoteErrDshStartTimeout": "远端 DSH 启动超时",
-  "remoteErrDshExited": "远端 DSH 启动后立即退出",
-  "remoteErrDshStart": "没能在远端启动 DSH",
+  "remoteErrDshStartTimeout": "远端 问问Ai 启动超时",
+  "remoteErrDshExited": "远端 问问Ai 启动后立即退出",
+  "remoteErrDshStart": "没能在远端启动 问问Ai",
   "remoteExitCode": "退出码 {code}",
   "@remoteExitCode": {
     "placeholders": {
@@ -8667,15 +8667,15 @@
   "remoteErrFingerprintChanged": "主机指纹和上次不一致，已断开",
   "remoteErrFingerprintUnconfirmed": "还没有确认主机指纹",
   "remoteHostTrustCancelled": "已取消信任主机",
-  "remoteCheckingDsh": "检查远端的 DSH…",
-  "remoteErrDshPort": "远端 DSH 端口连不上",
-  "remoteDshReused": "复用了远端已在运行的 DSH",
-  "remoteDshStarted": "已在远端启动 DSH",
-  "remoteErrDshTokenRejected": "远端 DSH 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例",
-  "remoteErrDshSignIn": "没能登录远端 DSH",
-  "remoteErrDshTunnel": "没能通过隧道连接 DSH",
-  "remoteErrDshSignInExpired": "远端 DSH 登录已失效",
-  "remoteErrDshStopped": "远端 DSH 已停止运行",
+  "remoteCheckingDsh": "检查远端的 问问Ai…",
+  "remoteErrDshPort": "远端 问问Ai 端口连不上",
+  "remoteDshReused": "复用了远端已在运行的 问问Ai",
+  "remoteDshStarted": "已在远端启动 问问Ai",
+  "remoteErrDshTokenRejected": "远端 问问Ai 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例",
+  "remoteErrDshSignIn": "没能登录远端 问问Ai",
+  "remoteErrDshTunnel": "没能通过隧道连接 问问Ai",
+  "remoteErrDshSignInExpired": "远端 问问Ai 登录已失效",
+  "remoteErrDshStopped": "远端 问问Ai 已停止运行",
   "remoteErrSshDisconnected": "SSH 连接已断开",
   "remoteErrSshUnresponsive": "SSH 连接没有响应",
   "remoteRetryCount": "已重试 {count} 次",
@@ -9135,7 +9135,7 @@
     }
   },
   "remoteSwitchHost": "切换主机",
-  "remoteThisPhoneDsh": "这台手机上的 DSH",
+  "remoteThisPhoneDsh": "这台手机上的 问问Ai",
   "remoteRemoteLabel": "远程",
   "remoteRemotePlatform": "远程 · {platform}",
   "@remoteRemotePlatform": {
@@ -9159,9 +9159,9 @@
   "remotePassword": "密码",
   "remoteRestoreServer": "改回默认服务器 dsh.r2049.cn",
   "remoteConsole": "远程控制台",
-  "remoteHostsIntro": "在手机上接着用电脑或服务器上的 DSH",
+  "remoteHostsIntro": "在手机上接着用电脑或服务器上的 问问Ai",
   "remoteSshHosts": "SSH 主机",
-  "remoteSshRequirements": "需要那台主机开着 SSH，并装好 DSH",
+  "remoteSshRequirements": "需要那台主机开着 SSH，并装好 问问Ai",
   "remoteAddSshHost": "添加 SSH 主机",
   "remoteSshDirect": "不经过第三方服务器",
   "remoteOtherMethods": "其他方式",
@@ -9214,9 +9214,9 @@
   "remoteSignOut": "退出",
   "remoteErrHostsRetry": "没能获取主机列表 · 轻点重试",
   "remoteNoHosts": "还没有主机",
-  "remoteRelaySetupHelp": "在主机的 DSH 里装好远程插件并登录",
+  "remoteRelaySetupHelp": "在主机的 问问Ai 里装好远程插件并登录",
   "remoteRelaySignOutTitle": "退出 DSH Remote？",
-  "remoteRelaySignOutBody": "这台手机会从账号中移除。主机上的 DSH 和对话不受影响，随时可以重新登录。",
+  "remoteRelaySignOutBody": "这台手机会从账号中移除。主机上的 问问Ai 和对话不受影响，随时可以重新登录。",
   "remoteRelaySignInTitle": "登录 DSH Remote",
   "remoteRelaySignInHelp": "无需配置网络，连接端到端加密",
   "remoteBrowserSignIn": "在浏览器中登录",
@@ -9247,7 +9247,7 @@
       }
     }
   },
-  "remoteDeleteHostBody": "这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 DSH 和对话不受影响。",
+  "remoteDeleteHostBody": "这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 问问Ai 和对话不受影响。",
   "remoteErrReadKey": "没能读取：{error}",
   "@remoteErrReadKey": {
     "placeholders": {
@@ -9259,7 +9259,7 @@
   "remoteErrPublicKeyFile": "这不是私钥文件，请选不带 .pub 的那个（例如 id_ed25519）",
   "remotePrivateKeyImported": "已导入私钥，原文件可以删掉了",
   "remoteEditHost": "编辑主机",
-  "remoteSshHostIntro": "连接你电脑或服务器上的 DSH",
+  "remoteSshHostIntro": "连接你电脑或服务器上的 问问Ai",
   "remoteHostBasicInfo": "基本信息",
   "remoteHostNameHint": "比如：电脑、家里的 Mac",
   "remoteHost": "主机",
@@ -9540,7 +9540,7 @@
       }
     }
   },
-  "remoteSshInstallCommand": "还没装 DSH？在主机上运行 {command}",
+  "remoteSshInstallCommand": "还没装 问问Ai？在主机上运行 {command}",
   "@remoteSshInstallCommand": {
     "placeholders": {
       "command": {
@@ -9802,7 +9802,7 @@
   "searchKwPhone": "无障碍,操作手机,自动点击,代操作,点按",
   "searchKwAppRules": "名单,黑名单,白名单,禁止,应用",
   "searchKwDnd": "免打扰,Shizuku,Sui,root,ADB,后台操作",
-  "searchKwEngine": "引擎,运行环境,启动,停止,重启,DSH",
+  "searchKwEngine": "引擎,运行环境,启动,停止,重启,问问Ai",
   "searchKwBackground": "后台保活,保活,后台,电池优化,自启动,被杀,杀后台,省电",
   "searchKwSystemAccess": "权限一览,授权,悬浮窗,无障碍,后台弹出界面,麦克风,文件访问,通知权限,受限制的设置,补开权限",
   "searchKwDiagnostics": "日志,排障,诊断包,问题反馈,报错",
@@ -10098,7 +10098,7 @@
     }
   },
   "shellEngineLogs": "引擎日志",
-  "shellWelcomeMessage": "把 DeepSeek 智能体\n装进口袋",
+  "shellWelcomeMessage": "遇事不决，\n问问Ai！",
   "shellGetStarted": "开始",
   "shellSearchChats": "搜索对话",
   "shellCollapseChatList": "收起对话列表",
@@ -10478,7 +10478,7 @@
     }
   },
   "shellConfigSlotName": "slot 名格式不对",
-  "shellConfigUnknownSlot": "当前 DSH 没有这个 slot，先保留",
+  "shellConfigUnknownSlot": "当前 问问Ai 没有这个 slot，先保留",
   "shellConfigUnseatableSlot": "这个位置不放插件",
   "shellConfigPackageName": "包名格式不对",
   "shellConfigActionNoun": "动作",
@@ -10745,7 +10745,7 @@
   "stateIconNight": "夜幕",
   "stateIconFrost": "霜白",
   "stateIconInk": "墨",
-  "stateAppDisclaimer": "遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 基于 DeepSeek Harness 构建",
+  "stateAppDisclaimer": "遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 智能随身助手",
   "stateWallpaper": "壁纸",
   "stateFileMissing": "找不到这个文件了，可能已被删除或移走",
   "stateFileNoApp": "手机上没有能打开这类文件的应用",
@@ -10762,7 +10762,7 @@
   "stateArtifactText": "文本",
   "stateArtifactFile": "文件",
   "statePrivateKeyTooLarge": "文件太大，不像是私钥",
-  "stateBotTeamBusy": "另一个 DSH 正在使用这个团队",
+  "stateBotTeamBusy": "另一个 问问Ai 正在使用这个团队",
   "stateBotOperationFailed": "没能完成操作，再试一次",
   "stateBotMissing": "这台主机没有 DS Bot",
   "stateHostAuthFailed": "没能通过主机的验证",
@@ -10857,7 +10857,7 @@
   "stateLoading": "加载中",
   "stateInventoryWaiting": "等待依赖",
   "stateInventoryConditional": "条件启用",
-  "stateBundleBuiltIn": "DSH 内置",
+  "stateBundleBuiltIn": "问问Ai 内置",
   "stateBundleHeadless": "无界面运行",
   "stateConfigFile": "配置文件",
   "stateGoalEmpty": "目标不能为空",
@@ -10881,10 +10881,10 @@
   "stateRegistryDefault": "默认安装源",
   "stateRegistryNpm": "npm 官方源",
   "stateRegistryMirror": "npmmirror 镜像",
-  "statePluginIncompatible": "这个插件不支持当前的 DSH 版本。",
+  "statePluginIncompatible": "这个插件不支持当前的 问问Ai 版本。",
   "statePluginInstallCancelled": "已取消安装",
   "statePluginNoChanges": "没有改动任何东西",
-  "statePluginIncompatibleTitle": "和当前 DSH 不兼容",
+  "statePluginIncompatibleTitle": "和当前 问问Ai 不兼容",
   "statePluginNetworkFailed": "网络连不上",
   "statePluginSourceUnreachable": "连不上插件源码所在的网站",
   "statePluginDownloadTimeout": "下载超时",
@@ -10907,7 +10907,7 @@
   "statePluginBuildApproval": "构建脚本等待允许",
   "statePluginAlreadyInstalled": "已经装过了",
   "statePluginUninstallFirst": "换版本需先卸载",
-  "statePluginInvalid": "这不是 DSH 插件",
+  "statePluginInvalid": "这不是 问问Ai 插件",
   "statePluginNoEntry": "这个包没有插件入口，已撤销安装",
   "statePluginInUse": "插件正在被使用",
   "statePluginHasDependents": "有其他插件依赖它",
@@ -11271,7 +11271,7 @@
       }
     }
   },
-  "statePluginRuntimeIncompatible": "这个插件不支持当前的 DSH 版本（{version}）。",
+  "statePluginRuntimeIncompatible": "这个插件不支持当前的 问问Ai 版本（{version}）。",
   "@statePluginRuntimeIncompatible": {
     "placeholders": {
       "version": {
@@ -11279,7 +11279,7 @@
       }
     }
   },
-  "statePluginRequiredVersion": "这个插件要求 DSH {wanted}，当前是 {current}。",
+  "statePluginRequiredVersion": "这个插件要求 问问Ai {wanted}，当前是 {current}。",
   "@statePluginRequiredVersion": {
     "placeholders": {
       "wanted": {
@@ -11368,7 +11368,7 @@
     }
   },
   "stateListSeparator": "、",
-  "stateSafeRepairPrompt": "我的 DSH 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。",
+  "stateSafeRepairPrompt": "我的 问问Ai 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。",
   "@stateSafeRepairPrompt": {
     "placeholders": {
       "what": {
@@ -11517,10 +11517,10 @@
   "updateInstallUnconfirmedMessage": "安装包已保留。可先检查系统提示，再重试或用系统安装器打开。",
   "updateSignatureMismatch": "签名不一致，不能直接覆盖",
   "updateSignatureMismatchMessage": "手机上的 问问Ai 签名不同（多半是测试包），需要先卸载旧版再装新版。卸载会清空对话、Linux 环境和设置。",
-  "updateWrongPackage": "不是 DSH 的安装包",
+  "updateWrongPackage": "不是 问问Ai 的安装包",
   "updateWrongPackageMessage": "下载到的文件不对，已删除，请稍后重试。",
   "updateDowngradeBlocked": "不能降级安装",
-  "updateDowngradeBlockedMessage": "手机上的 DSH 比这个安装包还新。",
+  "updateDowngradeBlockedMessage": "手机上的 问问Ai 比这个安装包还新。",
   "updateIncompatible": "和这台手机不兼容",
   "updateIncompatibleMessage": "安装包要求的系统版本或处理器架构和手机不符。",
   "updatePackageCorrupt": "安装包已损坏",
@@ -11586,7 +11586,7 @@
   "updateSystemInstallerFailed": "没能打开系统安装器",
   "updateExportApk": "导出安装包",
   "updateExportApkTitle": "导出安装包？",
-  "updateExportApkMessage": "会把这次下载并校验过的安装包复制到「下载/DSH-Go」，可以用 MT 管理器之类的工具重新签名后再装。\n\n重新签名后，手机上的签名和官方包不同，App 内更新会一直提示「签名不一致」，以后每次更新都要这样手动重签安装。\n\n如果只是系统拦着装不上（小米等机型），先试「安装路线」里的 Shizuku 或本机 ADB，那条路不用重新签名。",
+  "updateExportApkMessage": "会把这次下载并校验过的安装包复制到「下载/问问Ai」，可以用 MT 管理器之类的工具重新签名后再装。\n\n重新签名后，手机上的签名和官方包不同，App 内更新会一直提示「签名不一致」，以后每次更新都要这样手动重签安装。\n\n如果只是系统拦着装不上（小米等机型），先试「安装路线」里的 Shizuku 或本机 ADB，那条路不用重新签名。",
   "updateExportApkDone": "已存到 下载/{path}",
   "@updateExportApkDone": {
     "placeholders": {
@@ -12323,7 +12323,7 @@
   "viewTipSettingsSearch": "长按侧栏的设置键，可以直接搜索设置项",
   "viewTipQuickPanel": "在对话页向左滑，打开快捷入口",
   "viewTipFolderNewChat": "长按侧栏的文件夹，可以直接在里面开新对话",
-  "viewTipSwitchHost": "点侧栏底部的主机名，可以切到电脑上的 DSH",
+  "viewTipSwitchHost": "点侧栏底部的主机名，可以切到电脑上的 问问Ai",
   "viewTipPasteImage": "输入法里的截图和贴图，可以直接贴进输入框",
   "viewTipLauncher": "长按桌面图标，可以直接语音提问或开新对话",
   "viewTipPetBubble": "宠物冒泡时点一下，就跳到等你的那个对话",
@@ -12650,8 +12650,8 @@
   "viewTemplateGlass": "玻璃",
   "viewTemplateCard": "卡片",
   "viewShareProjectQr": "项目主页二维码",
-  "viewShareBrandLine": "手机上的 DSH · 扫码获取",
-  "viewShareBrandLineNoQr": "手机上的 DSH",
+  "viewShareBrandLine": "手机上的 问问Ai · 扫码获取",
+  "viewShareBrandLineNoQr": "手机上的 问问Ai",
   "viewShareSteps": "{count} 步",
   "@viewShareSteps": {
     "placeholders": {
@@ -12671,7 +12671,7 @@
   "viewShareWorkflow": "工作流",
   "viewSharePlugin": "调用插件",
   "viewShareStars": "星标",
-  "viewSharePluginTitle": "DSH 插件「{value}」",
+  "viewSharePluginTitle": "问问Ai 插件「{value}」",
   "@viewSharePluginTitle": {
     "placeholders": {
       "value": {
@@ -13198,7 +13198,7 @@
   "wallpaperSampleNote": "傍晚降温明显，带一件薄外套。",
   "wallpaperSampleTool": "查了 3 个天气来源",
   "searchKwWallpaper": "背景,背景图,聊天背景,自定义背景,换背景,模糊,壁纸图片",
-  "webTitle": "DSH 网页版",
+  "webTitle": "问问Ai 网页工作台",
   "webSshAppOnly": "经 SSH 隧道的地址只能在 App 内打开",
   "webRelayUnavailable": "经 DSH Remote 中转时打不开网页版，请在那台电脑上打开",
   "webSshHost": "SSH 主机",

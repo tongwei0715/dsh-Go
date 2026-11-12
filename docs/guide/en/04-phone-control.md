@@ -1,6 +1,6 @@
 # Phone control
 
-Let DSH read the screen, tap and type to get things done on your phone. Pause or stop it anytime. Phone control works only with this phone's engine and isn't loaded in Safe mode.
+Let Wenwen.ai read the screen, tap and type to get things done on your phone. Pause or stop it anytime. Phone control works only with this phone's engine and isn't loaded in Safe mode.
 
 ## Turn it on
 
@@ -8,9 +8,9 @@ Let DSH read the screen, tap and type to get things done on your phone. Pause or
 `Settings › Phone control` · [Open](dshgo://open/phone)
 
 1. Turn on the switch at the top. The first time, you'll see what's read and where it goes; tap **Agree**. Turning it on or off restarts a running engine, interrupting any reply in progress.
-2. Under **Setup**, tap **Turn on** next to **Accessibility service**, and turn on "DSH Phone Control" in Android's accessibility settings. If the switch won't turn on for a sideloaded app, tap **Accessibility switch disabled?** for brand-specific steps to allow restricted settings.
+2. Under **Setup**, tap **Turn on** next to **Accessibility service**, and turn on "Wenwen.ai Phone Control" in Android's accessibility settings. If the switch won't turn on for a sideloaded app, tap **Accessibility switch disabled?** for brand-specific steps to allow restricted settings.
 3. Tap **Turn on** next to **Notifications** and allow notifications in App info. Approvals and the stop button need them.
-4. Tap **Read current screen** to see what DSH can read. This reading isn't sent to the model.
+4. Tap **Read current screen** to see what Wenwen.ai can read. This reading isn't sent to the model.
 
 During a task, text on the screen is sent to the model you chose; with a vision model, a screenshot may be included. Bank card and ID numbers are masked first.
 
@@ -41,13 +41,13 @@ The default command deadline is 30 seconds, with a 60-second maximum. Commands a
 
 **Stop Android Shell** cancels commands. Turning off Phone control, ending the task, turning off the screen or stopping the engine also invalidates execution. Cancellation attempts to terminate the owned process group; it cannot undo changes or requests already sent to Android services, nor guarantee cleanup of scripts that deliberately detach from the group. After timeout, disconnection or an unknown result, inspect the outcome rather than automatically retrying or replaying through another backend. This is not a sandbox: shell is not root and cannot arbitrarily read other apps’ private data.
 
-## Ask DSH to do something
+## Ask Wenwen.ai to do something
 
 Go back to a chat and say what you want done. While a task runs:
 
 - Keep the screen on and unlocked. Turning the screen off stops the task.
 - Passwords, verification codes, payments and system settings are up to you (unless you turn them on under Lift limits below). When a step needs you, **Your turn** appears; tap **Continue** when you're done. When one of these rules is the reason, the card's title says so, like **Passwords and codes are yours to enter** or **System settings are yours to change**.
-- A task ends on its own when DSH makes no new move for 3 minutes.
+- A task ends on its own when Wenwen.ai makes no new move for 3 minutes.
 
 Alarms, events, maps and sharing don't need the accessibility service.
 
@@ -55,11 +55,11 @@ Alarms, events, maps and sharing don't need the accessibility service.
 
 When a task starts, a floating bar appears at the top of the screen. It takes three shapes, and a tap moves between them:
 
-- Capsule (the default): one line saying what DSH is doing, like "Tap “Send”", with **Pause** and **Stop** on the right. After **Pause**, the button reads **Continue**; tap it to let DSH carry on.
-- Card: tap the line on the capsule to open it. It shows the app DSH is working in, whether approvals are off, the last few steps, and a field to steer DSH another way. Left alone for a few seconds, it goes back to the capsule.
+- Capsule (the default): one line saying what Wenwen.ai is doing, like "Tap “Send”", with **Pause** and **Stop** on the right. After **Pause**, the button reads **Continue**; tap it to let Wenwen.ai carry on.
+- Card: tap the line on the capsule to open it. It shows the app Wenwen.ai is working in, whether approvals are off, the last few steps, and a field to steer Wenwen.ai another way. Left alone for a few seconds, it goes back to the capsule.
 - Ball: tap the dot at the capsule's left end, or **Shrink to a ball** in the card, to shrink it to a ball at the screen edge. Tap the ball to open it. Drag it anywhere; it snaps to the nearest edge and stays there next time. **Hold the ball for a second to stop**: a ring closes round it first, and letting go cancels.
 
-When DSH needs your approval, the capsule says "Waiting for you below" and the approval card appears at the bottom of the screen.
+When Wenwen.ai needs your approval, the capsule says "Waiting for you below" and the approval card appears at the bottom of the screen.
 
 Adjust it under **Floating bar** on the phone control page (shown once phone control is on):
 

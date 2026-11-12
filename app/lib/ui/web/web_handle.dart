@@ -122,7 +122,7 @@ class _HandleSheet extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const SheetTitleBar('DSH'),
+          const SheetTitleBar('问问Ai'),
           SheetGroup(
             margin: const EdgeInsets.fromLTRB(SheetTitleBar.inset, 0, SheetTitleBar.inset, 12),
             children: [

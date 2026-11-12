@@ -317,7 +317,7 @@ class _WhalePainter extends CustomPainter {
         Paint()
           ..filterQuality = FilterQuality.medium
           ..blendMode = i == 0 ? BlendMode.srcOver : BlendMode.plus
-          ..colorFilter = ColorFilter.mode(color.withValues(alpha: color.a * weight), BlendMode.srcIn),
+          ..colorFilter = ColorFilter.mode(Colors.white.withValues(alpha: weight), BlendMode.modulate), BlendMode.modulate), BlendMode.modulate), BlendMode.modulate), BlendMode.modulate), BlendMode.modulate), BlendMode.srcIn),
       );
     }
     if (!single) canvas.restore();

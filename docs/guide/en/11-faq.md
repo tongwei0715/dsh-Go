@@ -58,11 +58,11 @@ The top of the phone control page says what's missing:
 
 - The switch is off, or the engine hasn't started.
 - You're connected to a remote host: switch to **This phone**.
-- DSH isn't installed on this phone: install it first.
+- Wenwen.ai isn't installed on this phone: install it first.
 - Safe mode is on: return to normal mode.
 - Accessibility is off: tap **Turn on**. For a sideloaded app, allow restricted settings first.
 
-If a task stopped midway: turning the screen off, locking the phone, or DSH making no new move for 3 minutes ends it. See [Phone control](04-phone-control.md).
+If a task stopped midway: turning the screen off, locking the phone, or Wenwen.ai making no new move for 3 minutes ends it. See [Phone control](04-phone-control.md).
 
 ## The floating bar is in the way
 

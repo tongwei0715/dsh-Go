@@ -75,7 +75,7 @@
   "catalogEngineSummary": "本机引擎状态与日志",
   "catalogDiagnostics": "诊断",
   "catalogDiagnosticsSummary": "导出诊断包",
-  "catalogWebSummary": "DSH 官方界面",
+  "catalogWebSummary": "问问Ai 网页工作台",
   "catalogPluginPanel": "插件面板",
   "catalogHostPluginMissing": "这台主机没有这个插件",
   "catalogAllFeatures": "全部功能",

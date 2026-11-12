@@ -75,7 +75,7 @@
   "stateIconNight": "夜幕",
   "stateIconFrost": "霜白",
   "stateIconInk": "墨",
-  "stateAppDisclaimer": "遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 基于 DeepSeek Harness 构建",
+  "stateAppDisclaimer": "遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 智能随身助手",
   "stateWallpaper": "壁纸",
   "stateFileMissing": "找不到这个文件了，可能已被删除或移走",
   "stateFileNoApp": "手机上没有能打开这类文件的应用",
@@ -92,7 +92,7 @@
   "stateArtifactText": "文本",
   "stateArtifactFile": "文件",
   "statePrivateKeyTooLarge": "文件太大，不像是私钥",
-  "stateBotTeamBusy": "另一个 DSH 正在使用这个团队",
+  "stateBotTeamBusy": "另一个 问问Ai 正在使用这个团队",
   "stateBotOperationFailed": "没能完成操作，再试一次",
   "stateBotMissing": "这台主机没有 DS Bot",
   "stateHostAuthFailed": "没能通过主机的验证",
@@ -187,7 +187,7 @@
   "stateLoading": "加载中",
   "stateInventoryWaiting": "等待依赖",
   "stateInventoryConditional": "条件启用",
-  "stateBundleBuiltIn": "DSH 内置",
+  "stateBundleBuiltIn": "问问Ai 内置",
   "stateBundleHeadless": "无界面运行",
   "stateConfigFile": "配置文件",
   "stateGoalEmpty": "目标不能为空",
@@ -211,10 +211,10 @@
   "stateRegistryDefault": "默认安装源",
   "stateRegistryNpm": "npm 官方源",
   "stateRegistryMirror": "npmmirror 镜像",
-  "statePluginIncompatible": "这个插件不支持当前的 DSH 版本。",
+  "statePluginIncompatible": "这个插件不支持当前的 问问Ai 版本。",
   "statePluginInstallCancelled": "已取消安装",
   "statePluginNoChanges": "没有改动任何东西",
-  "statePluginIncompatibleTitle": "和当前 DSH 不兼容",
+  "statePluginIncompatibleTitle": "和当前 问问Ai 不兼容",
   "statePluginNetworkFailed": "网络连不上",
   "statePluginSourceUnreachable": "连不上插件源码所在的网站",
   "statePluginDownloadTimeout": "下载超时",
@@ -237,7 +237,7 @@
   "statePluginBuildApproval": "构建脚本等待允许",
   "statePluginAlreadyInstalled": "已经装过了",
   "statePluginUninstallFirst": "换版本需先卸载",
-  "statePluginInvalid": "这不是 DSH 插件",
+  "statePluginInvalid": "这不是 问问Ai 插件",
   "statePluginNoEntry": "这个包没有插件入口，已撤销安装",
   "statePluginInUse": "插件正在被使用",
   "statePluginHasDependents": "有其他插件依赖它",
@@ -601,7 +601,7 @@
       }
     }
   },
-  "statePluginRuntimeIncompatible": "这个插件不支持当前的 DSH 版本（{version}）。",
+  "statePluginRuntimeIncompatible": "这个插件不支持当前的 问问Ai 版本（{version}）。",
   "@statePluginRuntimeIncompatible": {
     "placeholders": {
       "version": {
@@ -609,7 +609,7 @@
       }
     }
   },
-  "statePluginRequiredVersion": "这个插件要求 DSH {wanted}，当前是 {current}。",
+  "statePluginRequiredVersion": "这个插件要求 问问Ai {wanted}，当前是 {current}。",
   "@statePluginRequiredVersion": {
     "placeholders": {
       "wanted": {
@@ -698,7 +698,7 @@
     }
   },
   "stateListSeparator": "、",
-  "stateSafeRepairPrompt": "我的 DSH 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。",
+  "stateSafeRepairPrompt": "我的 问问Ai 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。",
   "@stateSafeRepairPrompt": {
     "placeholders": {
       "what": {

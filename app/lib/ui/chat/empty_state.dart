@@ -281,7 +281,7 @@ class ChatEmptyState extends StatelessWidget {
                       child: WhaleTail(
                         still: true,
                         height: 40,
-                        color: whaleColorFor(theme.brightness).withValues(alpha: 0.4),
+                        color: Colors.white,
                       ),
                     ),
                   ),

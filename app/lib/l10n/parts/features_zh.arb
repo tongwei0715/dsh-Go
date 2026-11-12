@@ -116,7 +116,7 @@
   "featuresPresetStandardDescription": "代码、文件和资料，适合大多数任务",
   "featuresPresetPtcDescription": "批量调用工具，再筛选、统计、汇总",
   "featuresPresetMinimalDescription": "只用终端和读图，适合测试对比",
-  "featuresPresetCreatorDescription": "让 Agent 写插件，定制 DSH 本身",
+  "featuresPresetCreatorDescription": "让 Agent 写插件，定制 问问Ai 本身",
   "featuresHostUnreachable": "连不上「{name}」",
   "@featuresHostUnreachable": {
     "placeholders": {
@@ -159,7 +159,7 @@
       }
     }
   },
-  "featuresJobOutputSubject": "DSH 任务输出",
+  "featuresJobOutputSubject": "问问Ai 任务输出",
   "featuresJobOutputReadFailed": "没能读取输出",
   "featuresJobOutputWaiting": "等待输出…",
   "featuresJobOutputEmpty": "没有输出",
@@ -661,7 +661,7 @@
   "featuresExportRemoteHint": "经 DSH Remote 中转时拿不到日志，可以在电脑上的网页版导出",
   "featuresExportShareHint": "附在问题反馈里，或发给自己",
   "featuresExportSaveDownloads": "存到「下载」",
-  "featuresExportDownloadsHint": "存进 下载/DSH-Go",
+  "featuresExportDownloadsHint": "存进 下载/问问Ai",
   "featuresExportContents": "含这个对话和子代理的全部记录与附件",
   "featuresSkillUseHere": "在对话里用",
   "featuresSkillUseNew": "新对话里用",

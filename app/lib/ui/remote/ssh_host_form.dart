@@ -616,7 +616,7 @@ class _SshHostFormPageState extends ConsumerState<SshHostFormPage> {
               ],
             ),
             SettingsSection(
-              title: 'DSH',
+              title: '问问Ai',
               footer: Text.rich(
                 TextSpan(
                   children: [

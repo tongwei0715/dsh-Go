@@ -6,7 +6,7 @@
   "phoneDiagnosticsShare": "分享诊断包",
   "phoneDiagnosticsShareHint": "附在问题反馈里",
   "phoneDiagnosticsSave": "存到「下载」",
-  "phoneDiagnosticsSaveHint": "存进 下载/DSH-Go",
+  "phoneDiagnosticsSaveHint": "存进 下载/问问Ai",
   "phoneDiagnosticsNote": "含版本、设备、日志和最近一次崩溃，不含 Key 和令牌",
   "phoneDiagnosticsExport": "导出诊断包",
   "phoneSafeMode": "安全模式",
@@ -59,7 +59,7 @@
   "phoneEngineSafeUnsupported": "这个版本的运行环境不支持安全模式，请更新 App",
   "phoneEngineRuntimeIncomplete": "App 内的运行环境包不完整，请重新安装 App",
   "phoneLogEmpty": "还没有日志",
-  "phoneLogShareTitle": "DSH 引擎日志",
+  "phoneLogShareTitle": "问问Ai 引擎日志",
   "phoneLogCopyAll": "复制全部",
   "phoneBackgroundAllow": "去放行",
   "phoneToolScreen": "看屏幕",
@@ -89,7 +89,7 @@
   "phoneActionLogSubtitle": "只记做了什么，不记屏幕内容",
   "phoneActionLogRefresh": "刷新",
   "phoneActionLogEmpty": "还没有记录",
-  "phoneActionLogEmptyHint": "DSH 在手机上的每一步都会记在这里",
+  "phoneActionLogEmptyHint": "问问Ai 在手机上的每一步都会记在这里",
   "phoneAppRuleDeny": "不碰",
   "phoneAppRuleConfirm": "每一步都确认",
   "phoneAppRuleNormal": "照常",
@@ -166,9 +166,9 @@
   "phoneDndConnected": "已连接",
   "phoneDndDeveloperOptionsStep": "打开开发者选项：在「关于手机」里连点「版本号」7 次。小米在「我的设备 → 全部参数与信息」里点「OS 版本」，vivo 点「软件版本号」。",
   "phoneDndWirelessDebuggingStep": "在开发者选项里打开「无线调试」，要连着 Wi‑Fi。开发者选项一般在「系统」或「其他设置」里。",
-  "phoneDndStartPairingStep": "回到这里点「开始配对」，DSH 会发一条通知。",
+  "phoneDndStartPairingStep": "回到这里点「开始配对」，问问Ai 会发一条通知。",
   "phoneDndGetPairingCodeStep": "在「无线调试」里点「使用配对码配对设备」，屏幕上会出现 6 位配对码。",
-  "phoneDndEnterPairingCodeStep": "下拉通知栏，把配对码填进 DSH 的通知。配对成功后点「连接」。",
+  "phoneDndEnterPairingCodeStep": "下拉通知栏，把配对码填进 问问Ai 的通知。配对成功后点「连接」。",
   "phoneDndStartPairing": "开始配对",
   "phoneDndPairingNotificationSent": "通知已发出，去「无线调试」里拿配对码",
   "phoneDndManualEntry": "手动填写",
@@ -194,7 +194,7 @@
   "phoneDisableFailed": "没能关闭，稍后再试",
   "phoneEnabled": "已开启",
   "phoneDisabled": "已关闭",
-  "phoneOpenAccessibilityFailed": "打不开系统设置，请到「设置 → 无障碍」里找到 DSH",
+  "phoneOpenAccessibilityFailed": "打不开系统设置，请到「设置 → 无障碍」里找到 问问Ai",
   "phoneOpenAppInfoFailed": "打不开应用信息，请到「设置 → 应用」里找到 问问Ai",
   "phoneStopFailed": "没能停止，可以点悬浮条或通知上的「停止」",
   "phoneControlTitle": "手机操控",
@@ -228,7 +228,7 @@
   "phoneControlAllowed": "已允许",
   "phoneControlTry": "试一下",
   "phoneControlReadScreen": "读一下当前屏幕",
-  "phoneControlReadScreenHint": "看看 DSH 读到了什么，不发给模型",
+  "phoneControlReadScreenHint": "看看 问问Ai 读到了什么，不发给模型",
   "phoneControlEnableAccessibilityFirst": "先打开无障碍服务",
   "phoneControlLoading": "读取中",
   "phoneControlRules": "规则",
@@ -257,7 +257,7 @@
   "phoneDisclosureStopTitle": "你随时能停",
   "phoneDisclosureStopBody": "操作时屏幕上有悬浮条，可以暂停、停止或插话。手机要亮屏、解锁。",
   "phoneDisclosureTitle": "开启手机操控前",
-  "phoneDisclosureIntro": "DSH 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：",
+  "phoneDisclosureIntro": "问问Ai 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：",
   "phoneDisclosureRestartNote": "开启后引擎会重启一次，进行中的回复会中断",
   "phoneDisclosureNotNow": "先不开",
   "phoneDisclosureAgreeEnable": "同意并开启",
@@ -269,17 +269,17 @@
   "phoneRestrictedOpenAccessibility": "去开无障碍",
   "phoneRestrictedOverlay": "悬浮窗",
   "phoneRestrictedOpenOverlay": "去开悬浮窗",
-  "phoneRestrictedTryAccessibility": "先去「无障碍」里点一次 DSH 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
+  "phoneRestrictedTryAccessibility": "先去「无障碍」里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
   "phoneRestrictedOpenInfoStep": "回到这里，点「打开应用信息」。",
-  "phoneRestrictedBackAccessibility": "回到「无障碍」，打开 DSH。",
+  "phoneRestrictedBackAccessibility": "回到「无障碍」，打开 问问Ai。",
   "phoneRestrictedMenuStep": "点右上角的三个点，选「允许受限制的设置」，按提示验证锁屏密码。",
   "phoneRestrictedTryOverlay": "先去「悬浮窗」设置里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。",
   "phoneRestrictedBackOverlay": "回到「悬浮窗」设置，打开 问问Ai。",
   "phoneRestrictedHuaweiOverlay": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「悬浮窗」设置打开 问问Ai。",
-  "phoneRestrictedHuaweiAccessibility": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 DSH。",
+  "phoneRestrictedHuaweiAccessibility": "华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 问问Ai。",
   "phoneRestrictedVivoNote": "不同 OriginOS 版本位置可能不同。右上角没有三个点时，把应用信息页往下翻到底找一找。",
   "phoneRestrictedAdvancedStep": "在「高级设置」里找到「允许受限制的设置」，打开它。",
-  "phoneRestrictedOppoNote": "ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 DSH 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。",
+  "phoneRestrictedOppoNote": "ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 问问Ai 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。",
   "phoneRestrictedHuaweiNote": "如果在无障碍里看到「受限制的设置」提示，按「原生 / 其他」的步骤做。",
   "phoneRestrictedTitle": "允许受限制的设置",
   "phoneRestrictedSteps": "步骤",
@@ -313,9 +313,9 @@
   "phoneFailureLaunch": "本机运行环境未能启动",
   "phoneFailureLaunchHint": "查看日志了解原因，或连接远程主机继续使用",
   "phoneFailureNoSpaceHint": "清理一些空间后重试",
-  "phoneFailureStartup": "DSH 启动失败",
-  "phoneFailureCrashedEarly": "DSH 启动后很快崩溃了",
-  "phoneFailureCrashedLate": "DSH 运行中崩溃了",
+  "phoneFailureStartup": "问问Ai 启动失败",
+  "phoneFailureCrashedEarly": "问问Ai 启动后很快崩溃了",
+  "phoneFailureCrashedLate": "问问Ai 运行中崩溃了",
   "phoneFailureFatal": "引擎报告了致命错误",
   "phoneFailureRestore": "恢复配置",
   "phoneFailureEnterSafe": "进入安全模式",
@@ -335,7 +335,7 @@
   "phoneSafeRestoreFailed": "没能恢复",
   "phoneSafeStopIncomplete": "还无法确认引擎已停止，未更改配置。请查看引擎日志后重试。",
   "phoneSafeRestartIncomplete": "配置操作已完成，但引擎还未停止，暂未重启。请等待停止完成后再启动。",
-  "phoneSafeRestoreIntro": "DSH 会回到上次正常运行时的配置：",
+  "phoneSafeRestoreIntro": "问问Ai 会回到上次正常运行时的配置：",
   "phoneSafeRestoreSettings": "• 设置恢复到当时的版本（现在的另存为备份）",
   "phoneSafeRestoreNote": "不会卸载任何插件，也不需要联网。停用的插件以后可以重新打开。",
   "phoneSafeLeaveTitle": "恢复正常模式？",
@@ -410,7 +410,7 @@
       }
     }
   },
-  "phoneAppRulesLoosenTitle": "让 DSH 操作「{app}」？",
+  "phoneAppRulesLoosenTitle": "让 问问Ai 操作「{app}」？",
   "@phoneAppRulesLoosenTitle": {
     "placeholders": {
       "app": {
@@ -496,7 +496,7 @@
       }
     }
   },
-  "phoneControlRemoteHint": "「{host}」上的 DSH 操作不了这台手机，切回「本机」后可用",
+  "phoneControlRemoteHint": "「{host}」上的 问问Ai 操作不了这台手机，切回「本机」后可用",
   "@phoneControlRemoteHint": {
     "placeholders": {
       "host": {
@@ -536,7 +536,7 @@
       }
     }
   },
-  "phoneSafeRestoreAt": "DSH 会回到 {when} 正常运行时的配置：",
+  "phoneSafeRestoreAt": "问问Ai 会回到 {when} 正常运行时的配置：",
   "@phoneSafeRestoreAt": {
     "placeholders": {
       "when": {
@@ -602,7 +602,7 @@
       }
     }
   },
-  "phoneAppRulesLoosenBody": "银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；DSH 默认不输密码、不付款。",
+  "phoneAppRulesLoosenBody": "银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；问问Ai 默认不输密码、不付款。",
   "phoneAppRulesSkipStepsBody": "微信这类 App 有风控，曾有手机助手操作后账号被强制下线。改成照常后，只有发消息这类操作还会先问你。",
   "phoneResetDeletesChatsWorkspaces": "对话和工作区",
   "phoneResetBodyChatsWorkspaces": "会删除对话和工作区，然后重新安装运行环境。",
@@ -716,7 +716,7 @@
   "phoneSelfCheckRefresh": "刷新状态",
   "phoneSelfCheckSave": "保存脱敏报告",
   "phoneSelfCheckSaving": "保存中…",
-  "phoneSelfCheckSaved": "报告已存入下载/DSH-Go。",
+  "phoneSelfCheckSaved": "报告已存入下载/问问Ai。",
   "phoneSelfCheckSaveFailed": "报告保存失败。",
   "phoneSelfCheckReportHint": "仅在你点击保存时导出。本机报告只含固定结果，不含截图、识别文字、日志、账户数据或运行标识。",
   "phoneSelfCheckRunState": "{state, select, idle{尚未开始} running{部分自检进行中} cleaning{正在清理；取消不代表已撤销派发的输入} done{执行和清理已结束，请逐项查看下方结果} cancelled{已取消，已观察到的操作仍保留} cleanup_pending{清理尚未确认，资源仍保留} other{状态不可用}}",

@@ -118,11 +118,11 @@
   "pluginsGistReadFailed": "没能读取 Gist",
   "pluginsListReadFailed": "没能读取插件列表",
   "pluginsReadingPlugins": "正在读取插件…",
-  "pluginsDshOfficial": "DSH 官方",
+  "pluginsDshOfficial": "问问Ai 官方",
   "pluginsOfficialToggleOnly": "官方组件只能开关，不能卸载；对这台主机上的所有对话生效",
   "pluginsOfficial": "官方",
   "pluginsNoThirdParty": "还没装第三方插件",
-  "pluginsPluginsDescription": "插件能给 DSH 加工具、记忆和模型",
+  "pluginsPluginsDescription": "插件能给 问问Ai 加工具、记忆和模型",
   "pluginsBrowseMarket": "逛逛插件市场",
   "pluginsLoading": "正在加载",
   "pluginsIslandClosed": "插件界面已关闭",
@@ -175,7 +175,7 @@
     }
   },
   "pluginsFeatured": "推荐",
-  "pluginsInstalledRemoteRestart": "已安装「{name}」，重启{host}上的 DSH 后生效",
+  "pluginsInstalledRemoteRestart": "已安装「{name}」，重启{host}上的 问问Ai 后生效",
   "@pluginsInstalledRemoteRestart": {
     "placeholders": {
       "name": {
@@ -218,7 +218,7 @@
   "pluginsRestartEngine": "重启引擎",
   "pluginsAllowBuildScripts": "允许构建脚本？",
   "pluginsBuildScriptPackages": "下面这些包要在安装时运行脚本：",
-  "pluginsBuildScriptWarning": "脚本会以 DSH 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。",
+  "pluginsBuildScriptWarning": "脚本会以 问问Ai 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。",
   "@pluginsBuildScriptWarning": {
     "placeholders": {
       "host": {
@@ -265,7 +265,7 @@
   "pluginsRestartNow": "立即重启",
   "pluginsUninstallFailed": "没能卸载",
   "pluginsThatComputer": "那台电脑",
-  "pluginsCommandAfterInstall": "装好后重启那台电脑上的 DSH，再回来刷新",
+  "pluginsCommandAfterInstall": "装好后重启那台电脑上的 问问Ai，再回来刷新",
   "pluginsError": "出错",
   "pluginsInventoryTitle": "插件清单",
   "pluginsGlobalPlugins": "全局插件",
@@ -339,9 +339,9 @@
   "pluginsCopyCommand": "复制命令",
   "pluginsCommandCopied": "命令已复制",
   "pluginsMissingFiles": "插件文件缺失，重新安装可修复",
-  "pluginsNotDshPlugin": "不是 DSH 插件，无法加载",
-  "pluginsIncompatible": "与当前 DSH 版本不兼容，未加载",
-  "pluginsRequiresDshVersion": "需要 DSH {requiredVersion}，当前 {currentVersion}，未加载",
+  "pluginsNotDshPlugin": "不是 问问Ai 插件，无法加载",
+  "pluginsIncompatible": "与当前 问问Ai 版本不兼容，未加载",
+  "pluginsRequiresDshVersion": "需要 问问Ai {requiredVersion}，当前 {currentVersion}，未加载",
   "@pluginsRequiresDshVersion": {
     "placeholders": {
       "requiredVersion": {
@@ -618,7 +618,7 @@
   },
   "pluginsCouldNotInstall": "没能安装",
   "pluginsEngineRestartToApply": "重启引擎后生效",
-  "pluginsRemoteRestartToApply": "重启{host}上的 DSH 后生效",
+  "pluginsRemoteRestartToApply": "重启{host}上的 问问Ai 后生效",
   "@pluginsRemoteRestartToApply": {
     "placeholders": {
       "host": {
@@ -725,7 +725,7 @@
       }
     }
   },
-  "pluginsUninstalledRestartRemote": "已卸载「{title}」，重启{host}上的 DSH 后完全移除",
+  "pluginsUninstalledRestartRemote": "已卸载「{title}」，重启{host}上的 问问Ai 后完全移除",
   "@pluginsUninstalledRestartRemote": {
     "placeholders": {
       "title": {
@@ -739,7 +739,7 @@
   "pluginsEnableFailed": "没能启用",
   "pluginsDisableFailed": "没能停用",
   "pluginsEnabledRestartLocal": "已启用，重启引擎后生效",
-  "pluginsEnabledRestartRemote": "已启用，重启{host}上的 DSH 后生效",
+  "pluginsEnabledRestartRemote": "已启用，重启{host}上的 问问Ai 后生效",
   "@pluginsEnabledRestartRemote": {
     "placeholders": {
       "host": {
@@ -748,7 +748,7 @@
     }
   },
   "pluginsDisabledRestartLocal": "已停用，重启引擎后生效",
-  "pluginsDisabledRestartRemote": "已停用，重启{host}上的 DSH 后生效",
+  "pluginsDisabledRestartRemote": "已停用，重启{host}上的 问问Ai 后生效",
   "@pluginsDisabledRestartRemote": {
     "placeholders": {
       "host": {
@@ -764,10 +764,10 @@
       }
     }
   },
-  "pluginsPermissionLocalThirdParty": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。",
-  "pluginsPermissionLocalTrusted": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。",
-  "pluginsPermissionRemoteThirdParty": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。",
-  "pluginsPermissionRemoteTrusted": "插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。",
+  "pluginsPermissionLocalThirdParty": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。",
+  "pluginsPermissionLocalTrusted": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。",
+  "pluginsPermissionRemoteThirdParty": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。",
+  "pluginsPermissionRemoteTrusted": "插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。",
   "pluginsSelectedQrCount": "已选 {count} 项 · 可生成二维码",
   "@pluginsSelectedQrCount": {
     "placeholders": {

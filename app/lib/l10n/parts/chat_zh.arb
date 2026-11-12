@@ -91,7 +91,7 @@
   "chatTranscribingEllipsis": "正在转写…",
   "chatConnectToSend": "连接引擎后即可发送",
   "chatGeneratingSteerHint": "生成中 · 可直接插话",
-  "chatComposerHint": "给 DSH 发消息…",
+  "chatComposerHint": "给 问问Ai 发消息…",
   "chatStopGenerating": "停止生成",
   "chatVoiceInput": "语音输入",
   "chatStopVoiceInput": "停止语音输入",
@@ -230,7 +230,7 @@
   "chatAlertCaution": "小心",
   "chatImage": "图片",
   "chatImageNotFound": "找不到图片",
-  "chatImageOffline": "未连接 DSH",
+  "chatImageOffline": "未连接 问问Ai",
   "chatImageTooLarge": "图片过大",
   "chatImageReadFailed": "无法读取文件",
   "chatImageDisplayFailed": "无法显示",
@@ -315,7 +315,7 @@
   "chatSaveToDownloads": "存到「下载」",
   "chatCopyPath": "复制路径",
   "chatOpenInDefaultApp": "用默认应用打开",
-  "chatDownloadsFolderHint": "下载/DSH-Go 文件夹",
+  "chatDownloadsFolderHint": "下载/问问Ai 文件夹",
   "chatSavedToDownloadsPath": "已存到 下载/{path}",
   "@chatSavedToDownloadsPath": {
     "placeholders": {

@@ -61,7 +61,7 @@
     }
   },
   "shellEngineLogs": "引擎日志",
-  "shellWelcomeMessage": "把 DeepSeek 智能体\n装进口袋",
+  "shellWelcomeMessage": "遇事不决，\n问问Ai！",
   "shellGetStarted": "开始",
   "shellSearchChats": "搜索对话",
   "shellCollapseChatList": "收起对话列表",
@@ -441,7 +441,7 @@
     }
   },
   "shellConfigSlotName": "slot 名格式不对",
-  "shellConfigUnknownSlot": "当前 DSH 没有这个 slot，先保留",
+  "shellConfigUnknownSlot": "当前 问问Ai 没有这个 slot，先保留",
   "shellConfigUnseatableSlot": "这个位置不放插件",
   "shellConfigPackageName": "包名格式不对",
   "shellConfigActionNoun": "动作",

@@ -327,7 +327,7 @@
   "botsPetWhaleGirl": "WenWen Pixel",
   "botsPetNone": "None",
   "botsPets": "Pets",
-  "botsPetSource": "From DSH-TUI",
+  "botsPetSource": "Wenwen.ai Companion",
   "botsPetImport": "Import",
   "botsPetImportHint": "Bring your own pixel pet: a zip with pack.json and PNG frame sheets; the format is in docs/design/pets.md in the repository. Long-press an imported pet to delete it.",
   "botsPetImportDone": "{name} is here",
@@ -342,7 +342,7 @@
   "botsPetCodexWebp": "The WebP sheet was converted to PNG",
   "botsPetCodexCustomTracks": "Custom motion rows are not tied to any state",
   "botsPetCodexFps": "Frame rates were rounded to whole milliseconds",
-  "botsPetCodexOneShot": "Where a play-once motion returns to is decided by DSH",
+  "botsPetCodexOneShot": "Where a play-once motion returns to is decided by Wenwen.ai",
   "botsPetCodexMissingAuthor": "The pack names no author",
   "botsPetCodexMissingLicense": "The pack names no license",
   "botsPetCodexMissingSource": "The pack names no source",
@@ -446,7 +446,7 @@
     }
   },
   "botsMobileUnsupportedTitle": "DS Bot isn't on mobile yet",
-  "botsMobileApiRequired": "Use it in DSH Web for now",
-  "botsMobileApiMissing": "Not on mobile yet. Use it in DSH Web for now",
+  "botsMobileApiRequired": "Use it in Wenwen.ai Web for now",
+  "botsMobileApiMissing": "Not on mobile yet. Use it in Wenwen.ai Web for now",
   "botsCreationConnectionChanged": "The connection changed. Reopen this form to create on the current host."
 }

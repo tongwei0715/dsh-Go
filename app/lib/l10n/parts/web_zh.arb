@@ -1,5 +1,5 @@
 {
-  "webTitle": "DSH 网页版",
+  "webTitle": "问问Ai 网页工作台",
   "webSshAppOnly": "经 SSH 隧道的地址只能在 App 内打开",
   "webRelayUnavailable": "经 DSH Remote 中转时打不开网页版，请在那台电脑上打开",
   "webSshHost": "SSH 主机",

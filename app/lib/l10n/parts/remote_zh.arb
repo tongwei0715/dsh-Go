@@ -2,25 +2,25 @@
   "remoteDshMode": "实例管理",
   "remoteManaged": "托管启动",
   "remoteAttachOnly": "只连接",
-  "remoteManagedHelp": "自动启动或复用 App 托管的 DSH；不会自动替换存活但无法复用的实例。",
-  "remoteAttachOnlyHelp": "只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 DSH。",
-  "remoteDshPort": "远端 DSH 端口",
-  "remoteDshToken": "DSH 登录令牌",
+  "remoteManagedHelp": "自动启动或复用 App 托管的 问问Ai；不会自动替换存活但无法复用的实例。",
+  "remoteAttachOnlyHelp": "只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 问问Ai。",
+  "remoteDshPort": "远端 问问Ai 端口",
+  "remoteDshToken": "问问Ai 登录令牌",
   "remoteDshTokenHelp": "填写既有实例启动链接中的 token，仅保存在这台手机的安全存储中。",
-  "remoteAttachWorkingDirectoryHelp": "既有实例不执行目录探测；请填写远端绝对路径，留空使用 DSH 默认目录。",
+  "remoteAttachWorkingDirectoryHelp": "既有实例不执行目录探测；请填写远端绝对路径，留空使用 问问Ai 默认目录。",
   "remoteSshCompression": "SSH 压缩",
   "remoteSshCompressionHelp": "默认开启；与服务器协商认证后压缩，不支持时使用未压缩传输。",
-  "remoteRestartManaged": "重启托管 DSH",
-  "remoteRestartManagedWarning": "这会停止 App 记录的远端 DSH 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。",
-  "remoteErrSharedInstance": "远端托管 DSH 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 DSH”。",
-  "remoteErrAttachSettings": "请填写有效的远端 DSH 端口和登录令牌",
-  "remoteDshAttached": "已连接既有 DSH",
+  "remoteRestartManaged": "重启托管 问问Ai",
+  "remoteRestartManagedWarning": "这会停止 App 记录的远端 问问Ai 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。",
+  "remoteErrSharedInstance": "远端托管 问问Ai 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 问问Ai”。",
+  "remoteErrAttachSettings": "请填写有效的远端 问问Ai 端口和登录令牌",
+  "remoteDshAttached": "已连接既有 问问Ai",
   "remoteStartupSection": "启动",
   "remoteAutoConnectOnStartup": "连接上次使用的主机",
   "remoteAutoConnectOnStartupHint": "关闭后从本机开始",
   "remoteStepConnect": "连接服务器",
   "remoteStepVerifyHostKey": "验证主机指纹",
-  "remoteStepStartDsh": "启动 DSH",
+  "remoteStepStartDsh": "启动 问问Ai",
   "remoteStepTunnel": "建立隧道",
   "remoteConnecting": "正在连接",
   "remoteConnected": "已连接",
@@ -53,7 +53,7 @@
   "remoteErrHostRejected": "主机拒绝了连接",
   "remoteErrHostNotOwned": "主机不在你的 DSH Remote 账号下",
   "remoteErrUpdateNeeded": "版本不匹配，请更新 问问Ai 和主机上的远程插件",
-  "remoteErrVersionIncompatible": "主机上的 DSH 或远程插件需要更新",
+  "remoteErrVersionIncompatible": "主机上的 问问Ai 或远程插件需要更新",
   "remoteErrSignInTimeout": "登录超时",
   "remoteSignInCancelled": "已取消登录",
   "remoteErrBrowserSignInUnsupported": "服务器不支持浏览器登录",
@@ -65,7 +65,7 @@
   "remoteUnavailable": "暂不可用",
   "remoteErrHostNotFound": "找不到这台主机",
   "remoteConnectionStopped": "远程连接已停止",
-  "remoteBootstrapReusePort": "复用已在运行的 DSH（端口 {port}）",
+  "remoteBootstrapReusePort": "复用已在运行的 问问Ai（端口 {port}）",
   "@remoteBootstrapReusePort": {
     "placeholders": {
       "port": {
@@ -73,7 +73,7 @@
       }
     }
   },
-  "remoteBootstrapStarting": "正在远端启动 DSH…",
+  "remoteBootstrapStarting": "正在远端启动 问问Ai…",
   "remoteErrCommandNotFound": "远端找不到「{command}」",
   "@remoteErrCommandNotFound": {
     "placeholders": {
@@ -84,9 +84,9 @@
   },
   "remoteErrDshMissing": "主机上没有 dsh，装好后重试，或在启动命令里填完整路径",
   "remoteStartCommandExample": "启动命令示例：~/.nvm/versions/node/v22.0.0/bin/dsh web",
-  "remoteErrDshStartTimeout": "远端 DSH 启动超时",
-  "remoteErrDshExited": "远端 DSH 启动后立即退出",
-  "remoteErrDshStart": "没能在远端启动 DSH",
+  "remoteErrDshStartTimeout": "远端 问问Ai 启动超时",
+  "remoteErrDshExited": "远端 问问Ai 启动后立即退出",
+  "remoteErrDshStart": "没能在远端启动 问问Ai",
   "remoteExitCode": "退出码 {code}",
   "@remoteExitCode": {
     "placeholders": {
@@ -99,15 +99,15 @@
   "remoteErrFingerprintChanged": "主机指纹和上次不一致，已断开",
   "remoteErrFingerprintUnconfirmed": "还没有确认主机指纹",
   "remoteHostTrustCancelled": "已取消信任主机",
-  "remoteCheckingDsh": "检查远端的 DSH…",
-  "remoteErrDshPort": "远端 DSH 端口连不上",
-  "remoteDshReused": "复用了远端已在运行的 DSH",
-  "remoteDshStarted": "已在远端启动 DSH",
-  "remoteErrDshTokenRejected": "远端 DSH 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例",
-  "remoteErrDshSignIn": "没能登录远端 DSH",
-  "remoteErrDshTunnel": "没能通过隧道连接 DSH",
-  "remoteErrDshSignInExpired": "远端 DSH 登录已失效",
-  "remoteErrDshStopped": "远端 DSH 已停止运行",
+  "remoteCheckingDsh": "检查远端的 问问Ai…",
+  "remoteErrDshPort": "远端 问问Ai 端口连不上",
+  "remoteDshReused": "复用了远端已在运行的 问问Ai",
+  "remoteDshStarted": "已在远端启动 问问Ai",
+  "remoteErrDshTokenRejected": "远端 问问Ai 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例",
+  "remoteErrDshSignIn": "没能登录远端 问问Ai",
+  "remoteErrDshTunnel": "没能通过隧道连接 问问Ai",
+  "remoteErrDshSignInExpired": "远端 问问Ai 登录已失效",
+  "remoteErrDshStopped": "远端 问问Ai 已停止运行",
   "remoteErrSshDisconnected": "SSH 连接已断开",
   "remoteErrSshUnresponsive": "SSH 连接没有响应",
   "remoteRetryCount": "已重试 {count} 次",
@@ -567,7 +567,7 @@
     }
   },
   "remoteSwitchHost": "切换主机",
-  "remoteThisPhoneDsh": "这台手机上的 DSH",
+  "remoteThisPhoneDsh": "这台手机上的 问问Ai",
   "remoteRemoteLabel": "远程",
   "remoteRemotePlatform": "远程 · {platform}",
   "@remoteRemotePlatform": {
@@ -591,9 +591,9 @@
   "remotePassword": "密码",
   "remoteRestoreServer": "改回默认服务器 dsh.r2049.cn",
   "remoteConsole": "远程控制台",
-  "remoteHostsIntro": "在手机上接着用电脑或服务器上的 DSH",
+  "remoteHostsIntro": "在手机上接着用电脑或服务器上的 问问Ai",
   "remoteSshHosts": "SSH 主机",
-  "remoteSshRequirements": "需要那台主机开着 SSH，并装好 DSH",
+  "remoteSshRequirements": "需要那台主机开着 SSH，并装好 问问Ai",
   "remoteAddSshHost": "添加 SSH 主机",
   "remoteSshDirect": "不经过第三方服务器",
   "remoteOtherMethods": "其他方式",
@@ -646,9 +646,9 @@
   "remoteSignOut": "退出",
   "remoteErrHostsRetry": "没能获取主机列表 · 轻点重试",
   "remoteNoHosts": "还没有主机",
-  "remoteRelaySetupHelp": "在主机的 DSH 里装好远程插件并登录",
+  "remoteRelaySetupHelp": "在主机的 问问Ai 里装好远程插件并登录",
   "remoteRelaySignOutTitle": "退出 DSH Remote？",
-  "remoteRelaySignOutBody": "这台手机会从账号中移除。主机上的 DSH 和对话不受影响，随时可以重新登录。",
+  "remoteRelaySignOutBody": "这台手机会从账号中移除。主机上的 问问Ai 和对话不受影响，随时可以重新登录。",
   "remoteRelaySignInTitle": "登录 DSH Remote",
   "remoteRelaySignInHelp": "无需配置网络，连接端到端加密",
   "remoteBrowserSignIn": "在浏览器中登录",
@@ -679,7 +679,7 @@
       }
     }
   },
-  "remoteDeleteHostBody": "这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 DSH 和对话不受影响。",
+  "remoteDeleteHostBody": "这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 问问Ai 和对话不受影响。",
   "remoteErrReadKey": "没能读取：{error}",
   "@remoteErrReadKey": {
     "placeholders": {
@@ -691,7 +691,7 @@
   "remoteErrPublicKeyFile": "这不是私钥文件，请选不带 .pub 的那个（例如 id_ed25519）",
   "remotePrivateKeyImported": "已导入私钥，原文件可以删掉了",
   "remoteEditHost": "编辑主机",
-  "remoteSshHostIntro": "连接你电脑或服务器上的 DSH",
+  "remoteSshHostIntro": "连接你电脑或服务器上的 问问Ai",
   "remoteHostBasicInfo": "基本信息",
   "remoteHostNameHint": "比如：电脑、家里的 Mac",
   "remoteHost": "主机",
@@ -972,7 +972,7 @@
       }
     }
   },
-  "remoteSshInstallCommand": "还没装 DSH？在主机上运行 {command}",
+  "remoteSshInstallCommand": "还没装 问问Ai？在主机上运行 {command}",
   "@remoteSshInstallCommand": {
     "placeholders": {
       "command": {
