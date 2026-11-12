@@ -49,7 +49,7 @@ jobs:
             echo "Release ${UPSTREAM_TAG} already exists on ${{ github.repository }}. Skipping."
             echo "should_build=false" >> "$GITHUB_OUTPUT"
           else
-            git merge --no-edit "upstream/main" -X theirs || true
+            git merge --no-edit "${UPSTREAM_TAG}" -X theirs || true
             echo "should_build=true" >> "$GITHUB_OUTPUT"
           fi
 
