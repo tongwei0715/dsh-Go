@@ -17,7 +17,7 @@ import '../chat/dsh_ui/dsh_ui.dart';
 import '../chat/run_info.dart' show formatSpan;
 
 /// The project page every card's QR code and footer point at.
-const dshGoProjectUrl = 'https://github.com/$updateRepo';
+const dshGoProjectUrl = 'https://wenwenai.cn';
 
 /// One piece of a share card's body.
 @immutable

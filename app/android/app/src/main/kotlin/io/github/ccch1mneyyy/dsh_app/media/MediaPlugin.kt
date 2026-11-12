@@ -101,7 +101,7 @@ class MediaPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallHandle
         val mime = call.argument<String>("mime") ?: ""
         if (mime !in IMAGE_TYPES) return result.error("invalid", "not a gallery image type: $mime", null)
         val given = call.argument<String>("name")?.trim().orEmpty()
-        val name = if (given.isEmpty()) "DSH_${System.currentTimeMillis()}.${IMAGE_TYPES.getValue(mime)}" else FilesPlugin.safeName(given)
+        val name = if (given.isEmpty()) "WenWen_${System.currentTimeMillis()}.${IMAGE_TYPES.getValue(mime)}" else FilesPlugin.safeName(given)
         enqueueSave(result) { saveNow(bytes, name, mime) }
     }
 

@@ -1,6 +1,3 @@
-// About DSH Go: app information, the original author and personal profiles,
-// then the brand mark, slogan and unofficial-app disclaimer.
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -13,21 +10,20 @@ import '../../state/star_prompt.dart' show starLinkOpenerProvider;
 import '../../state/update_state.dart';
 import '../shell/brand_mark.dart';
 import '../shell/page_frame.dart';
-import '../star/star_prompt_dialog.dart' show openStarProject;
 import '../theme/app_icons.dart';
 import '../theme/theme.dart';
 import '../update/update_tiles.dart';
 import 'settings_widgets.dart';
 
-/// The installed version as the app shows it: `0.9.6 (10271234)`.
 String installedVersionLabel(WidgetRef ref) {
-  // What Android reports as installed (the compiled-in constant until it does).
   final installed = ref.watch(appUpdateProvider.select((s) => s.current));
   return installed.build == null ? installed.name : '${installed.name} (${installed.build})';
 }
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});
+
+  static final Uri _officialSite = Uri.parse('https://wenwenai.cn');
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,11 +42,11 @@ class AboutPage extends ConsumerWidget {
             ),
             const AppUpdateTiles(),
             SettingsTile(
-              key: const ValueKey('settings-star'),
-              spot: Spots.star,
-              onTap: () => unawaited(
-                openStarProject(ProviderScope.containerOf(context, listen: false), ScaffoldMessenger.maybeOf(context)),
-              ),
+              key: const ValueKey('about-official-website'),
+              title: '官方网站',
+              subtitle: 'https://wenwenai.cn',
+              trailing: Icon(AppIcons.openExternal, size: 18, color: colors.textTertiary),
+              onTap: () => unawaited(_openOfficialSite(context, ref)),
             ),
             SettingsTile(
               spot: Spots.licenses,
@@ -64,35 +60,12 @@ class AboutPage extends ConsumerWidget {
             ),
           ],
         ),
-        SettingsSection(
-          title: l10n.hubAboutAuthor,
-          children: [
-            const SettingsTile(title: AppInfo.author),
-            _authorLink(
-              context,
-              ref,
-              'about-author-bilibili',
-              l10n.hubAboutBilibili,
-              AppInfo.authorBilibiliName,
-              AppInfo.authorBilibiliUrl,
-            ),
-            _authorLink(context, ref, 'about-author-x', l10n.hubAboutX, AppInfo.authorXHandle, AppInfo.authorXUrl),
-            _authorLink(
-              context,
-              ref,
-              'about-author-github',
-              l10n.hubAboutGithub,
-              '@${AppInfo.author}',
-              AppInfo.authorGithubUrl,
-            ),
-          ],
-        ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+          padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
           child: Column(
             children: [
-              BrandMark(size: 18, color: colors.textDisabled),
-              const SizedBox(height: 10),
+              const BrandMark(size: 32, tile: true),
+              const SizedBox(height: 12),
               Text(
                 AppInfo.slogan,
                 textAlign: TextAlign.center,
@@ -111,35 +84,21 @@ class AboutPage extends ConsumerWidget {
     );
   }
 
-  Widget _authorLink(BuildContext context, WidgetRef ref, String key, String title, String handle, String url) =>
-      Semantics(
-        link: true,
-        child: SettingsTile(
-          key: ValueKey(key),
-          title: title,
-          subtitle: handle,
-          trailing: Icon(AppIcons.openExternal, size: 18, color: DshColors.of(context).textTertiary),
-          onTap: () => unawaited(_openAuthorLink(context, ref, Uri.parse(url))),
-        ),
-      );
-
-  Future<void> _openAuthorLink(BuildContext context, WidgetRef ref, Uri url) async {
+  Future<void> _openOfficialSite(BuildContext context, WidgetRef ref) async {
     final l10n = context.l10n;
     final messenger = ScaffoldMessenger.maybeOf(context);
     try {
-      if (await ref.read(starLinkOpenerProvider)(url)) return;
-    } catch (_) {
-      // As with the project's link, fall back to copying when no browser opens.
-    }
+      if (await ref.read(starLinkOpenerProvider)(_officialSite)) return;
+    } catch (_) {}
     var copied = true;
     try {
-      await Clipboard.setData(ClipboardData(text: url.toString()));
+      await Clipboard.setData(ClipboardData(text: _officialSite.toString()));
     } catch (_) {
       copied = false;
     }
     if (messenger?.mounted ?? false) {
       messenger!.showSnackBar(
-        SnackBar(content: Text(copied ? l10n.shellBrowserUrlCopied : l10n.stateBrowserOpenFailed)),
+        SnackBar(content: Text(copied ? l10n.shellBrowserUrlCopied : _officialSite.toString())),
       );
     }
   }

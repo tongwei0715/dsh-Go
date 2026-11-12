@@ -148,8 +148,7 @@ class FeatureSection {
 String _session(String? id) => id ?? '';
 
 /// 社区, with the forum card at its top opening the forum's home.
-Widget communityPage() =>
-    Builder(builder: (context) => CommunityPage(onOpenForum: () => Navigator.of(context).push(ForumHomePage.route())));
+Widget communityPage() => const CommunityPage();
 
 /// Back to the chat, where the composer does the rest (`@`, the mic).
 void _backToChat(BuildContext context, WidgetRef ref, String? _) =>

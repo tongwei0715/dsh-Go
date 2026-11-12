@@ -1,3 +1,4 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -5,7 +6,7 @@ import '../../state/app_info.dart';
 import '../theme/theme.dart';
 import 'brand_glyph.g.dart';
 
-/// 问问Ai (wenwenai.cn) 完整品牌图标绘制组件（1:1 比例，完整呈现蓝底+黄白双气泡+问号+AI耳机胶囊）。
+/// 问问Ai (wenwenai.cn) 方案 C 品牌图标组件（一问一答·对称叙事版，1:1 比例）。
 class BrandMark extends StatelessWidget {
   const BrandMark({super.key, this.size = 28, this.color, this.tile = false});
 
@@ -13,12 +14,8 @@ class BrandMark extends StatelessWidget {
   final Color? color;
   final bool tile;
 
-  /// 正方形 1:1 比例，保证在任何容器（欢迎页、侧边栏、网页悬浮球、关于页）中绝不裁切变形。
   static const aspect = 1.0;
-
-  /// 视觉中心严格居中。
   static const visualCentre = Offset(0.5, 0.5);
-
   static Offset opticalShift(double size) => Offset.zero;
 
   @override
@@ -57,72 +54,76 @@ class _BrandPainter extends CustomPainter {
     canvas.scale(scaleX, scaleY);
 
     if (style != _Style.mono) {
-      // 始终绘制 #2F5BFF 圆角蓝底，确保白色气泡与右上角深蓝AI耳机胶囊在浅色/深色背景下都 100% 清晰完整
-      final bgPaint = Paint()..color = const Color(0xFF2F5BFF);
+      final bgPaint = Paint()
+        ..shader = ui.Gradient.linear(
+          const Offset(0, 0),
+          const Offset(120, 120),
+          const [Color(0xFF3B66FF), Color(0xFF1E40AF)],
+        );
       canvas.drawRRect(
         RRect.fromRectAndRadius(const Rect.fromLTWH(0, 0, 120, 120), const Radius.circular(28)),
         bgPaint,
       );
     }
 
-    final Color leftColor = style == _Style.mono ? color! : const Color(0xFFFFC93C);
-    final Color rightColor = style == _Style.mono ? color!.withValues(alpha: 0.88) : const Color(0xFFFFFFFF);
-    final Color qColor = style == _Style.mono ? const Color(0xFF2F5BFF) : const Color(0xFF2F5BFF);
+    final Paint pLeft = style == _Style.mono
+        ? (Paint()..color = color!)
+        : (Paint()
+          ..shader = ui.Gradient.linear(
+            const Offset(24, 24),
+            const Offset(74, 62),
+            const [Color(0xFFFFD859), Color(0xFFF5B118)],
+          ));
+    final Paint pRight = Paint()
+      ..color = style == _Style.mono ? color!.withValues(alpha: 0.88) : const Color(0xFFFFFFFF);
 
-    // 1. 左上黄色气泡 + 尖角
-    final pLeft = Paint()..color = leftColor;
+    // 1. 左上暖阳金提问气泡 + 圆润尾巴
     canvas.drawRRect(
-      RRect.fromRectAndRadius(const Rect.fromLTWH(18, 20, 58, 46), const Radius.circular(16)),
+      RRect.fromRectAndRadius(const Rect.fromLTWH(24, 24, 50, 38), const Radius.circular(13)),
       pLeft,
     );
     final tailLeft = Path()
-      ..moveTo(26, 62)
-      ..lineTo(40, 62)
-      ..lineTo(24, 78)
+      ..moveTo(24, 50)
+      ..lineTo(39, 61)
+      ..lineTo(25.5, 70)
       ..close();
     canvas.drawPath(tailLeft, pLeft);
 
-    // 2. 右下白色气泡 + 尖角
-    final pRight = Paint()..color = rightColor;
+    if (style != _Style.mono) {
+      final linePaint = Paint()
+        ..color = const Color(0xFF14213D)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 4.5
+        ..strokeCap = StrokeCap.round;
+      canvas.drawLine(const Offset(36, 39), const Offset(60, 39), linePaint);
+      canvas.drawLine(const Offset(36, 48.5), const Offset(50, 48.5), linePaint);
+    }
+
+    // 2. 右下纯白解答气泡 + 圆润尾巴
     canvas.drawRRect(
-      RRect.fromRectAndRadius(const Rect.fromLTWH(40, 44, 62, 48), const Radius.circular(17)),
+      RRect.fromRectAndRadius(const Rect.fromLTWH(46, 43, 50, 40), const Radius.circular(13)),
       pRight,
     );
     final tailRight = Path()
-      ..moveTo(72, 90)
-      ..lineTo(92, 90)
-      ..lineTo(94, 106)
+      ..moveTo(74, 82)
+      ..lineTo(85, 82)
+      ..lineTo(90.5, 92.5)
       ..close();
     canvas.drawPath(tailRight, pRight);
 
-    // 3. 问号曲线与圆点
+    // 3. 右下气泡内居中电光蓝问号
     if (style != _Style.mono) {
       final qPaint = Paint()
-        ..color = qColor
+        ..color = const Color(0xFF2F5BFF)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 5.0
         ..strokeCap = StrokeCap.round;
       final qPath = Path()
-        ..moveTo(62, 62)
-        ..cubicTo(62, 54, 80, 54, 80, 63)
-        ..cubicTo(80, 70, 71, 70, 71, 76);
+        ..moveTo(64.5, 57.5)
+        ..cubicTo(64.5, 51.5, 77.5, 51.5, 77.5, 58.5)
+        ..cubicTo(77.5, 63.2, 71.0, 63.5, 71.0, 68.5);
       canvas.drawPath(qPath, qPaint);
-      canvas.drawCircle(const Offset(71, 85), 3.2, Paint()..color = qColor);
-
-      // 4. 右上角深蓝胶囊与金色 AI 字样/光点（完整还原 wenwen-icon.svg）
-      canvas.drawRRect(
-        RRect.fromRectAndRadius(const Rect.fromLTWH(74, 12, 36, 22), const Radius.circular(11)),
-        Paint()..color = const Color(0xFF14213D),
-      );
-      final aiStroke = Paint()
-        ..color = const Color(0xFFFFC93C)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.6
-        ..strokeCap = StrokeCap.round;
-      canvas.drawCircle(const Offset(88.5, 23.2), 4.2, aiStroke);
-      canvas.drawLine(const Offset(92.7, 18.4), const Offset(92.7, 28.0), aiStroke);
-      canvas.drawLine(const Offset(99.5, 18.4), const Offset(99.5, 28.0), aiStroke);
-      canvas.drawCircle(const Offset(99.5, 14.8), 1.6, Paint()..color = const Color(0xFFFFC93C));
+      canvas.drawCircle(const Offset(71.0, 75.8), 3.1, Paint()..color = const Color(0xFF2F5BFF));
     }
 
     canvas.restore();

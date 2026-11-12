@@ -29,11 +29,11 @@ import 'voice_state.dart';
 const starPromptEnabled = bool.fromEnvironment('DSH_STAR_PROMPT');
 
 /// The switch as the app reads it (tests turn it on).
-final starPromptGateProvider = Provider<bool>((ref) => starPromptEnabled);
+final starPromptGateProvider = Provider<bool>((ref) => false);
 
 /// Where 「去 GitHub 点 Star」 goes: the public repository's page (its releases
 /// are the app's updates).
-final starProjectPage = Uri.https('github.com', '/$updateRepo');
+final starProjectPage = Uri.https('wenwenai.cn', '/');
 
 /// The numbers behind the prompt, with their reasons in the design note.
 abstract final class StarPromptRules {
