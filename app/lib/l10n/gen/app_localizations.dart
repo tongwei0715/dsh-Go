@@ -491,7 +491,7 @@ abstract class L10n {
   /// No description provided for @accessRestrictedTap.
   ///
   /// In zh, this message translates to:
-  /// **'在无障碍里点一下「DSH 手机操控」，出现「受限制的设置」时点确定'**
+  /// **'在无障碍里点一下「问问Ai 手机操控」，出现「受限制的设置」时点确定'**
   String get accessRestrictedTap;
 
   /// No description provided for @accessRestrictedMenu.
@@ -509,7 +509,7 @@ abstract class L10n {
   /// No description provided for @accessRestrictedBack.
   ///
   /// In zh, this message translates to:
-  /// **'回到无障碍，打开「DSH 手机操控」'**
+  /// **'回到无障碍，打开「问问Ai 手机操控」'**
   String get accessRestrictedBack;
 
   /// No description provided for @accessRestrictedHelp.
@@ -5327,7 +5327,7 @@ abstract class L10n {
   /// No description provided for @botsPetSource.
   ///
   /// In zh, this message translates to:
-  /// **'来自 DSH-TUI'**
+  /// **'问问Ai 原创伴侣'**
   String get botsPetSource;
 
   /// No description provided for @botsPetImport.
@@ -5417,7 +5417,7 @@ abstract class L10n {
   /// No description provided for @botsPetCodexOneShot.
   ///
   /// In zh, this message translates to:
-  /// **'只播一次的动作，播完回到哪里由 DSH 决定'**
+  /// **'只播一次的动作，播完回到哪里由 问问Ai 决定'**
   String get botsPetCodexOneShot;
 
   /// No description provided for @botsPetCodexMissingAuthor.
@@ -6539,7 +6539,7 @@ abstract class L10n {
   /// No description provided for @catalogWebSummary.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 官方界面'**
+  /// **'问问Ai 网页工作台'**
   String get catalogWebSummary;
 
   /// No description provided for @catalogPluginPanel.
@@ -7097,7 +7097,7 @@ abstract class L10n {
   /// No description provided for @chatComposerHint.
   ///
   /// In zh, this message translates to:
-  /// **'给 DSH 发消息…'**
+  /// **'给 问问Ai 发消息…'**
   String get chatComposerHint;
 
   /// No description provided for @chatStopGenerating.
@@ -7433,7 +7433,7 @@ abstract class L10n {
   /// No description provided for @chatImageOffline.
   ///
   /// In zh, this message translates to:
-  /// **'未连接 DSH'**
+  /// **'未连接 问问Ai'**
   String get chatImageOffline;
 
   /// No description provided for @chatImageTooLarge.
@@ -7697,7 +7697,7 @@ abstract class L10n {
   /// No description provided for @chatDownloadsFolderHint.
   ///
   /// In zh, this message translates to:
-  /// **'下载/DSH-Go 文件夹'**
+  /// **'下载/问问Ai 文件夹'**
   String get chatDownloadsFolderHint;
 
   /// No description provided for @chatSavedToDownloadsPath.
@@ -9731,7 +9731,7 @@ abstract class L10n {
   /// No description provided for @companionModeFullHint.
   ///
   /// In zh, this message translates to:
-  /// **'主机上的 DSH 引擎，带工具和手机操控'**
+  /// **'主机上的 问问Ai 引擎，带工具和手机操控'**
   String get companionModeFullHint;
 
   /// No description provided for @companionLightNoKey.
@@ -11183,7 +11183,7 @@ abstract class L10n {
   /// No description provided for @engineAccountBrowserFact.
   ///
   /// In zh, this message translates to:
-  /// **'在浏览器中登录，密码不经过 DSH'**
+  /// **'在浏览器中登录，密码不经过 问问Ai'**
   String get engineAccountBrowserFact;
 
   /// No description provided for @engineAccountCredentialsFact.
@@ -11363,7 +11363,7 @@ abstract class L10n {
   /// No description provided for @engineSettingsVersionRequired.
   ///
   /// In zh, this message translates to:
-  /// **'需要 DSH 0.2.1 或更新版本'**
+  /// **'需要 问问Ai 0.2.1 或更新版本'**
   String get engineSettingsVersionRequired;
 
   /// No description provided for @engineGeneralWebDisplay.
@@ -13337,7 +13337,7 @@ abstract class L10n {
   /// No description provided for @featuresPresetCreatorDescription.
   ///
   /// In zh, this message translates to:
-  /// **'让 Agent 写插件，定制 DSH 本身'**
+  /// **'让 Agent 写插件，定制 问问Ai 本身'**
   String get featuresPresetCreatorDescription;
 
   /// No description provided for @featuresHostUnreachable.
@@ -13427,7 +13427,7 @@ abstract class L10n {
   /// No description provided for @featuresJobOutputSubject.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 任务输出'**
+  /// **'问问Ai 任务输出'**
   String get featuresJobOutputSubject;
 
   /// No description provided for @featuresJobOutputReadFailed.
@@ -15047,7 +15047,7 @@ abstract class L10n {
   /// No description provided for @featuresExportDownloadsHint.
   ///
   /// In zh, this message translates to:
-  /// **'存进 下载/DSH-Go'**
+  /// **'存进 下载/问问Ai'**
   String get featuresExportDownloadsHint;
 
   /// No description provided for @featuresExportContents.
@@ -15821,7 +15821,7 @@ abstract class L10n {
   /// No description provided for @hubPluginRequiresDsh.
   ///
   /// In zh, this message translates to:
-  /// **'需要 DSH'**
+  /// **'需要 问问Ai'**
   String get hubPluginRequiresDsh;
 
   /// No description provided for @hubPluginPackageName.
@@ -15893,7 +15893,7 @@ abstract class L10n {
   /// No description provided for @hubPluginOfficial.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 官方'**
+  /// **'问问Ai 官方'**
   String get hubPluginOfficial;
 
   /// No description provided for @hubPluginNotLoaded.
@@ -16151,7 +16151,7 @@ abstract class L10n {
   /// No description provided for @hubInterfaceWebHint.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 官方网页版'**
+  /// **'问问Ai 网页工作台'**
   String get hubInterfaceWebHint;
 
   /// No description provided for @hubInterfaceOpenWeb.
@@ -16667,25 +16667,25 @@ abstract class L10n {
   /// No description provided for @livePublicRunning.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 正在干活'**
+  /// **'问问Ai 正在干活'**
   String get livePublicRunning;
 
   /// No description provided for @livePublicWaiting.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 在等你处理'**
+  /// **'问问Ai 在等你处理'**
   String get livePublicWaiting;
 
   /// No description provided for @livePublicDone.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 做完了'**
+  /// **'问问Ai 做完了'**
   String get livePublicDone;
 
   /// No description provided for @livePublicFailed.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 出错了'**
+  /// **'问问Ai 出错了'**
   String get livePublicFailed;
 
   /// No description provided for @liveSettingsTitle.
@@ -16757,7 +16757,7 @@ abstract class L10n {
   /// No description provided for @localEnvChooseTitle.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 在哪里运行？'**
+  /// **'问问Ai 在哪里运行？'**
   String get localEnvChooseTitle;
 
   /// No description provided for @localEnvChooseMessage.
@@ -16787,7 +16787,7 @@ abstract class L10n {
   /// No description provided for @localEnvRemoteDetail.
   ///
   /// In zh, this message translates to:
-  /// **'连接电脑或服务器上的 DSH'**
+  /// **'连接电脑或服务器上的 问问Ai'**
   String get localEnvRemoteDetail;
 
   /// No description provided for @localEnvRecommended.
@@ -16805,7 +16805,7 @@ abstract class L10n {
   /// No description provided for @localEnvInstallMessage.
   ///
   /// In zh, this message translates to:
-  /// **'在这台手机上运行 DSH'**
+  /// **'在这台手机上运行 问问Ai'**
   String get localEnvInstallMessage;
 
   /// No description provided for @localEnvFactStorage.
@@ -18485,7 +18485,7 @@ abstract class L10n {
   /// No description provided for @phoneDiagnosticsSaveHint.
   ///
   /// In zh, this message translates to:
-  /// **'存进 下载/DSH-Go'**
+  /// **'存进 下载/问问Ai'**
   String get phoneDiagnosticsSaveHint;
 
   /// No description provided for @phoneDiagnosticsNote.
@@ -18803,7 +18803,7 @@ abstract class L10n {
   /// No description provided for @phoneLogShareTitle.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 引擎日志'**
+  /// **'问问Ai 引擎日志'**
   String get phoneLogShareTitle;
 
   /// No description provided for @phoneLogCopyAll.
@@ -18983,7 +18983,7 @@ abstract class L10n {
   /// No description provided for @phoneActionLogEmptyHint.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 在手机上的每一步都会记在这里'**
+  /// **'问问Ai 在手机上的每一步都会记在这里'**
   String get phoneActionLogEmptyHint;
 
   /// No description provided for @phoneAppRuleDeny.
@@ -19445,7 +19445,7 @@ abstract class L10n {
   /// No description provided for @phoneDndStartPairingStep.
   ///
   /// In zh, this message translates to:
-  /// **'回到这里点「开始配对」，DSH 会发一条通知。'**
+  /// **'回到这里点「开始配对」，问问Ai 会发一条通知。'**
   String get phoneDndStartPairingStep;
 
   /// No description provided for @phoneDndGetPairingCodeStep.
@@ -19457,7 +19457,7 @@ abstract class L10n {
   /// No description provided for @phoneDndEnterPairingCodeStep.
   ///
   /// In zh, this message translates to:
-  /// **'下拉通知栏，把配对码填进 DSH 的通知。配对成功后点「连接」。'**
+  /// **'下拉通知栏，把配对码填进 问问Ai 的通知。配对成功后点「连接」。'**
   String get phoneDndEnterPairingCodeStep;
 
   /// No description provided for @phoneDndStartPairing.
@@ -19613,7 +19613,7 @@ abstract class L10n {
   /// No description provided for @phoneOpenAccessibilityFailed.
   ///
   /// In zh, this message translates to:
-  /// **'打不开系统设置，请到「设置 → 无障碍」里找到 DSH'**
+  /// **'打不开系统设置，请到「设置 → 无障碍」里找到 问问Ai'**
   String get phoneOpenAccessibilityFailed;
 
   /// No description provided for @phoneOpenAppInfoFailed.
@@ -19817,7 +19817,7 @@ abstract class L10n {
   /// No description provided for @phoneControlReadScreenHint.
   ///
   /// In zh, this message translates to:
-  /// **'看看 DSH 读到了什么，不发给模型'**
+  /// **'看看 问问Ai 读到了什么，不发给模型'**
   String get phoneControlReadScreenHint;
 
   /// No description provided for @phoneControlEnableAccessibilityFirst.
@@ -19991,7 +19991,7 @@ abstract class L10n {
   /// No description provided for @phoneDisclosureIntro.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：'**
+  /// **'问问Ai 会像你一样看屏幕、点按，帮你把事办完。开启前，先了解这几点：'**
   String get phoneDisclosureIntro;
 
   /// No description provided for @phoneDisclosureRestartNote.
@@ -20063,7 +20063,7 @@ abstract class L10n {
   /// No description provided for @phoneRestrictedTryAccessibility.
   ///
   /// In zh, this message translates to:
-  /// **'先去「无障碍」里点一次 DSH 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。'**
+  /// **'先去「无障碍」里点一次 问问Ai 的开关，看到「受限制的设置」提示后点「确定」。做过这一步，下面的选项才会出现。'**
   String get phoneRestrictedTryAccessibility;
 
   /// No description provided for @phoneRestrictedOpenInfoStep.
@@ -20075,7 +20075,7 @@ abstract class L10n {
   /// No description provided for @phoneRestrictedBackAccessibility.
   ///
   /// In zh, this message translates to:
-  /// **'回到「无障碍」，打开 DSH。'**
+  /// **'回到「无障碍」，打开 问问Ai。'**
   String get phoneRestrictedBackAccessibility;
 
   /// No description provided for @phoneRestrictedMenuStep.
@@ -20105,7 +20105,7 @@ abstract class L10n {
   /// No description provided for @phoneRestrictedHuaweiAccessibility.
   ///
   /// In zh, this message translates to:
-  /// **'华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 DSH。'**
+  /// **'华为 HarmonyOS 4 及更早的系统大多没有这一步，直接去「无障碍」打开 问问Ai。'**
   String get phoneRestrictedHuaweiAccessibility;
 
   /// No description provided for @phoneRestrictedVivoNote.
@@ -20123,7 +20123,7 @@ abstract class L10n {
   /// No description provided for @phoneRestrictedOppoNote.
   ///
   /// In zh, this message translates to:
-  /// **'ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 DSH 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。'**
+  /// **'ColorOS 有时找不到这个选项。这时用系统自带的「文件管理」找到 问问Ai 的安装包，点它覆盖安装一次（不用卸载，对话和设置都在），再去开无障碍。'**
   String get phoneRestrictedOppoNote;
 
   /// No description provided for @phoneRestrictedHuaweiNote.
@@ -20327,19 +20327,19 @@ abstract class L10n {
   /// No description provided for @phoneFailureStartup.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 启动失败'**
+  /// **'问问Ai 启动失败'**
   String get phoneFailureStartup;
 
   /// No description provided for @phoneFailureCrashedEarly.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 启动后很快崩溃了'**
+  /// **'问问Ai 启动后很快崩溃了'**
   String get phoneFailureCrashedEarly;
 
   /// No description provided for @phoneFailureCrashedLate.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 运行中崩溃了'**
+  /// **'问问Ai 运行中崩溃了'**
   String get phoneFailureCrashedLate;
 
   /// No description provided for @phoneFailureFatal.
@@ -20459,7 +20459,7 @@ abstract class L10n {
   /// No description provided for @phoneSafeRestoreIntro.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 会回到上次正常运行时的配置：'**
+  /// **'问问Ai 会回到上次正常运行时的配置：'**
   String get phoneSafeRestoreIntro;
 
   /// No description provided for @phoneSafeRestoreSettings.
@@ -20681,7 +20681,7 @@ abstract class L10n {
   /// No description provided for @phoneAppRulesLoosenTitle.
   ///
   /// In zh, this message translates to:
-  /// **'让 DSH 操作「{app}」？'**
+  /// **'让 问问Ai 操作「{app}」？'**
   String phoneAppRulesLoosenTitle(String app);
 
   /// No description provided for @phoneAppRulesSkipStepsTitle.
@@ -20741,7 +20741,7 @@ abstract class L10n {
   /// No description provided for @phoneControlRemoteHint.
   ///
   /// In zh, this message translates to:
-  /// **'「{host}」上的 DSH 操作不了这台手机，切回「本机」后可用'**
+  /// **'「{host}」上的 问问Ai 操作不了这台手机，切回「本机」后可用'**
   String phoneControlRemoteHint(String host);
 
   /// No description provided for @phoneRestrictedSubtitle.
@@ -20771,7 +20771,7 @@ abstract class L10n {
   /// No description provided for @phoneSafeRestoreAt.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 会回到 {when} 正常运行时的配置：'**
+  /// **'问问Ai 会回到 {when} 正常运行时的配置：'**
   String phoneSafeRestoreAt(String when);
 
   /// No description provided for @phoneSafeRestoreDisable.
@@ -20831,7 +20831,7 @@ abstract class L10n {
   /// No description provided for @phoneAppRulesLoosenBody.
   ///
   /// In zh, this message translates to:
-  /// **'银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；DSH 默认不输密码、不付款。'**
+  /// **'银行、支付类 App 会检测自动操作，可能限制登录甚至冻结账号；问问Ai 默认不输密码、不付款。'**
   String get phoneAppRulesLoosenBody;
 
   /// No description provided for @phoneAppRulesSkipStepsBody.
@@ -21287,7 +21287,7 @@ abstract class L10n {
   /// No description provided for @phoneSelfCheckSaved.
   ///
   /// In zh, this message translates to:
-  /// **'报告已存入下载/DSH-Go。'**
+  /// **'报告已存入下载/问问Ai。'**
   String get phoneSelfCheckSaved;
 
   /// No description provided for @phoneSelfCheckSaveFailed.
@@ -23369,7 +23369,7 @@ abstract class L10n {
   /// No description provided for @pluginsDshOfficial.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 官方'**
+  /// **'问问Ai 官方'**
   String get pluginsDshOfficial;
 
   /// No description provided for @pluginsOfficialToggleOnly.
@@ -23393,7 +23393,7 @@ abstract class L10n {
   /// No description provided for @pluginsPluginsDescription.
   ///
   /// In zh, this message translates to:
-  /// **'插件能给 DSH 加工具、记忆和模型'**
+  /// **'插件能给 问问Ai 加工具、记忆和模型'**
   String get pluginsPluginsDescription;
 
   /// No description provided for @pluginsBrowseMarket.
@@ -23501,7 +23501,7 @@ abstract class L10n {
   /// No description provided for @pluginsInstalledRemoteRestart.
   ///
   /// In zh, this message translates to:
-  /// **'已安装「{name}」，重启{host}上的 DSH 后生效'**
+  /// **'已安装「{name}」，重启{host}上的 问问Ai 后生效'**
   String pluginsInstalledRemoteRestart(String name, String host);
 
   /// No description provided for @pluginsInstalledNamed.
@@ -23555,7 +23555,7 @@ abstract class L10n {
   /// No description provided for @pluginsBuildScriptWarning.
   ///
   /// In zh, this message translates to:
-  /// **'脚本会以 DSH 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。'**
+  /// **'脚本会以 问问Ai 的权限在{host}上执行，能读写文件、联网。只在你信任这个插件时允许。'**
   String pluginsBuildScriptWarning(String host);
 
   /// No description provided for @pluginsThisDevice.
@@ -23627,7 +23627,7 @@ abstract class L10n {
   /// No description provided for @pluginsCommandAfterInstall.
   ///
   /// In zh, this message translates to:
-  /// **'装好后重启那台电脑上的 DSH，再回来刷新'**
+  /// **'装好后重启那台电脑上的 问问Ai，再回来刷新'**
   String get pluginsCommandAfterInstall;
 
   /// No description provided for @pluginsError.
@@ -23819,19 +23819,19 @@ abstract class L10n {
   /// No description provided for @pluginsNotDshPlugin.
   ///
   /// In zh, this message translates to:
-  /// **'不是 DSH 插件，无法加载'**
+  /// **'不是 问问Ai 插件，无法加载'**
   String get pluginsNotDshPlugin;
 
   /// No description provided for @pluginsIncompatible.
   ///
   /// In zh, this message translates to:
-  /// **'与当前 DSH 版本不兼容，未加载'**
+  /// **'与当前 问问Ai 版本不兼容，未加载'**
   String get pluginsIncompatible;
 
   /// No description provided for @pluginsRequiresDshVersion.
   ///
   /// In zh, this message translates to:
-  /// **'需要 DSH {requiredVersion}，当前 {currentVersion}，未加载'**
+  /// **'需要 问问Ai {requiredVersion}，当前 {currentVersion}，未加载'**
   String pluginsRequiresDshVersion(String requiredVersion, String currentVersion);
 
   /// No description provided for @pluginsLoadFailure.
@@ -24677,7 +24677,7 @@ abstract class L10n {
   /// No description provided for @pluginsRemoteRestartToApply.
   ///
   /// In zh, this message translates to:
-  /// **'重启{host}上的 DSH 后生效'**
+  /// **'重启{host}上的 问问Ai 后生效'**
   String pluginsRemoteRestartToApply(String host);
 
   /// No description provided for @pluginsImportedCount.
@@ -24881,7 +24881,7 @@ abstract class L10n {
   /// No description provided for @pluginsUninstalledRestartRemote.
   ///
   /// In zh, this message translates to:
-  /// **'已卸载「{title}」，重启{host}上的 DSH 后完全移除'**
+  /// **'已卸载「{title}」，重启{host}上的 问问Ai 后完全移除'**
   String pluginsUninstalledRestartRemote(String title, String host);
 
   /// No description provided for @pluginsEnableFailed.
@@ -24905,7 +24905,7 @@ abstract class L10n {
   /// No description provided for @pluginsEnabledRestartRemote.
   ///
   /// In zh, this message translates to:
-  /// **'已启用，重启{host}上的 DSH 后生效'**
+  /// **'已启用，重启{host}上的 问问Ai 后生效'**
   String pluginsEnabledRestartRemote(String host);
 
   /// No description provided for @pluginsDisabledRestartLocal.
@@ -24917,7 +24917,7 @@ abstract class L10n {
   /// No description provided for @pluginsDisabledRestartRemote.
   ///
   /// In zh, this message translates to:
-  /// **'已停用，重启{host}上的 DSH 后生效'**
+  /// **'已停用，重启{host}上的 问问Ai 后生效'**
   String pluginsDisabledRestartRemote(String host);
 
   /// No description provided for @pluginsRelayCommandInstruction.
@@ -24929,25 +24929,25 @@ abstract class L10n {
   /// No description provided for @pluginsPermissionLocalThirdParty.
   ///
   /// In zh, this message translates to:
-  /// **'插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。'**
+  /// **'插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。'**
   String get pluginsPermissionLocalThirdParty;
 
   /// No description provided for @pluginsPermissionLocalTrusted.
   ///
   /// In zh, this message translates to:
-  /// **'插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。'**
+  /// **'插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key 和已授权的手机存储，不受工作区沙箱限制。只装你信任的插件。'**
   String get pluginsPermissionLocalTrusted;
 
   /// No description provided for @pluginsPermissionRemoteThirdParty.
   ///
   /// In zh, this message translates to:
-  /// **'插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，DSH 官方未审核。'**
+  /// **'插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。由第三方提供，问问Ai 官方未审核。'**
   String get pluginsPermissionRemoteThirdParty;
 
   /// No description provided for @pluginsPermissionRemoteTrusted.
   ///
   /// In zh, this message translates to:
-  /// **'插件以 DSH 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。'**
+  /// **'插件以 问问Ai 的权限运行：能读写文件、执行命令、读取 API Key，不受工作区沙箱限制。只装你信任的插件。'**
   String get pluginsPermissionRemoteTrusted;
 
   /// No description provided for @pluginsSelectedQrCount.
@@ -25841,25 +25841,25 @@ abstract class L10n {
   /// No description provided for @remoteManagedHelp.
   ///
   /// In zh, this message translates to:
-  /// **'自动启动或复用 App 托管的 DSH；不会自动替换存活但无法复用的实例。'**
+  /// **'自动启动或复用 App 托管的 问问Ai；不会自动替换存活但无法复用的实例。'**
   String get remoteManagedHelp;
 
   /// No description provided for @remoteAttachOnlyHelp.
   ///
   /// In zh, this message translates to:
-  /// **'只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 DSH。'**
+  /// **'只转发到远端 127.0.0.1 的固定端口；不启动、停止或重启 问问Ai。'**
   String get remoteAttachOnlyHelp;
 
   /// No description provided for @remoteDshPort.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 端口'**
+  /// **'远端 问问Ai 端口'**
   String get remoteDshPort;
 
   /// No description provided for @remoteDshToken.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 登录令牌'**
+  /// **'问问Ai 登录令牌'**
   String get remoteDshToken;
 
   /// No description provided for @remoteDshTokenHelp.
@@ -25871,7 +25871,7 @@ abstract class L10n {
   /// No description provided for @remoteAttachWorkingDirectoryHelp.
   ///
   /// In zh, this message translates to:
-  /// **'既有实例不执行目录探测；请填写远端绝对路径，留空使用 DSH 默认目录。'**
+  /// **'既有实例不执行目录探测；请填写远端绝对路径，留空使用 问问Ai 默认目录。'**
   String get remoteAttachWorkingDirectoryHelp;
 
   /// No description provided for @remoteSshCompression.
@@ -25889,31 +25889,31 @@ abstract class L10n {
   /// No description provided for @remoteRestartManaged.
   ///
   /// In zh, this message translates to:
-  /// **'重启托管 DSH'**
+  /// **'重启托管 问问Ai'**
   String get remoteRestartManaged;
 
   /// No description provided for @remoteRestartManagedWarning.
   ///
   /// In zh, this message translates to:
-  /// **'这会停止 App 记录的远端 DSH 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。'**
+  /// **'这会停止 App 记录的远端 问问Ai 并重新启动，可能中断其他客户端和进行中的对话。确认没有其他人在使用后再继续。普通测试连接不会执行此操作。'**
   String get remoteRestartManagedWarning;
 
   /// No description provided for @remoteErrSharedInstance.
   ///
   /// In zh, this message translates to:
-  /// **'远端托管 DSH 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 DSH”。'**
+  /// **'远端托管 问问Ai 仍在运行，但启动命令不同或缺少有效启动日志。为保护共享实例，未自动重启；请检查配置，改用“只连接”，或在编辑主机中明确选择“重启托管 问问Ai”。'**
   String get remoteErrSharedInstance;
 
   /// No description provided for @remoteErrAttachSettings.
   ///
   /// In zh, this message translates to:
-  /// **'请填写有效的远端 DSH 端口和登录令牌'**
+  /// **'请填写有效的远端 问问Ai 端口和登录令牌'**
   String get remoteErrAttachSettings;
 
   /// No description provided for @remoteDshAttached.
   ///
   /// In zh, this message translates to:
-  /// **'已连接既有 DSH'**
+  /// **'已连接既有 问问Ai'**
   String get remoteDshAttached;
 
   /// No description provided for @remoteStartupSection.
@@ -25949,7 +25949,7 @@ abstract class L10n {
   /// No description provided for @remoteStepStartDsh.
   ///
   /// In zh, this message translates to:
-  /// **'启动 DSH'**
+  /// **'启动 问问Ai'**
   String get remoteStepStartDsh;
 
   /// No description provided for @remoteStepTunnel.
@@ -26063,7 +26063,7 @@ abstract class L10n {
   /// No description provided for @remoteErrVersionIncompatible.
   ///
   /// In zh, this message translates to:
-  /// **'主机上的 DSH 或远程插件需要更新'**
+  /// **'主机上的 问问Ai 或远程插件需要更新'**
   String get remoteErrVersionIncompatible;
 
   /// No description provided for @remoteErrSignInTimeout.
@@ -26135,13 +26135,13 @@ abstract class L10n {
   /// No description provided for @remoteBootstrapReusePort.
   ///
   /// In zh, this message translates to:
-  /// **'复用已在运行的 DSH（端口 {port}）'**
+  /// **'复用已在运行的 问问Ai（端口 {port}）'**
   String remoteBootstrapReusePort(int port);
 
   /// No description provided for @remoteBootstrapStarting.
   ///
   /// In zh, this message translates to:
-  /// **'正在远端启动 DSH…'**
+  /// **'正在远端启动 问问Ai…'**
   String get remoteBootstrapStarting;
 
   /// No description provided for @remoteErrCommandNotFound.
@@ -26165,19 +26165,19 @@ abstract class L10n {
   /// No description provided for @remoteErrDshStartTimeout.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 启动超时'**
+  /// **'远端 问问Ai 启动超时'**
   String get remoteErrDshStartTimeout;
 
   /// No description provided for @remoteErrDshExited.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 启动后立即退出'**
+  /// **'远端 问问Ai 启动后立即退出'**
   String get remoteErrDshExited;
 
   /// No description provided for @remoteErrDshStart.
   ///
   /// In zh, this message translates to:
-  /// **'没能在远端启动 DSH'**
+  /// **'没能在远端启动 问问Ai'**
   String get remoteErrDshStart;
 
   /// No description provided for @remoteExitCode.
@@ -26213,55 +26213,55 @@ abstract class L10n {
   /// No description provided for @remoteCheckingDsh.
   ///
   /// In zh, this message translates to:
-  /// **'检查远端的 DSH…'**
+  /// **'检查远端的 问问Ai…'**
   String get remoteCheckingDsh;
 
   /// No description provided for @remoteErrDshPort.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 端口连不上'**
+  /// **'远端 问问Ai 端口连不上'**
   String get remoteErrDshPort;
 
   /// No description provided for @remoteDshReused.
   ///
   /// In zh, this message translates to:
-  /// **'复用了远端已在运行的 DSH'**
+  /// **'复用了远端已在运行的 问问Ai'**
   String get remoteDshReused;
 
   /// No description provided for @remoteDshStarted.
   ///
   /// In zh, this message translates to:
-  /// **'已在远端启动 DSH'**
+  /// **'已在远端启动 问问Ai'**
   String get remoteDshStarted;
 
   /// No description provided for @remoteErrDshTokenRejected.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例'**
+  /// **'远端 问问Ai 拒绝了登录令牌，未自动重启；请检查令牌，或在编辑主机中明确重启托管实例'**
   String get remoteErrDshTokenRejected;
 
   /// No description provided for @remoteErrDshSignIn.
   ///
   /// In zh, this message translates to:
-  /// **'没能登录远端 DSH'**
+  /// **'没能登录远端 问问Ai'**
   String get remoteErrDshSignIn;
 
   /// No description provided for @remoteErrDshTunnel.
   ///
   /// In zh, this message translates to:
-  /// **'没能通过隧道连接 DSH'**
+  /// **'没能通过隧道连接 问问Ai'**
   String get remoteErrDshTunnel;
 
   /// No description provided for @remoteErrDshSignInExpired.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 登录已失效'**
+  /// **'远端 问问Ai 登录已失效'**
   String get remoteErrDshSignInExpired;
 
   /// No description provided for @remoteErrDshStopped.
   ///
   /// In zh, this message translates to:
-  /// **'远端 DSH 已停止运行'**
+  /// **'远端 问问Ai 已停止运行'**
   String get remoteErrDshStopped;
 
   /// No description provided for @remoteErrSshDisconnected.
@@ -27215,7 +27215,7 @@ abstract class L10n {
   /// No description provided for @remoteThisPhoneDsh.
   ///
   /// In zh, this message translates to:
-  /// **'这台手机上的 DSH'**
+  /// **'这台手机上的 问问Ai'**
   String get remoteThisPhoneDsh;
 
   /// No description provided for @remoteRemoteLabel.
@@ -27317,7 +27317,7 @@ abstract class L10n {
   /// No description provided for @remoteHostsIntro.
   ///
   /// In zh, this message translates to:
-  /// **'在手机上接着用电脑或服务器上的 DSH'**
+  /// **'在手机上接着用电脑或服务器上的 问问Ai'**
   String get remoteHostsIntro;
 
   /// No description provided for @remoteSshHosts.
@@ -27329,7 +27329,7 @@ abstract class L10n {
   /// No description provided for @remoteSshRequirements.
   ///
   /// In zh, this message translates to:
-  /// **'需要那台主机开着 SSH，并装好 DSH'**
+  /// **'需要那台主机开着 SSH，并装好 问问Ai'**
   String get remoteSshRequirements;
 
   /// No description provided for @remoteAddSshHost.
@@ -27479,7 +27479,7 @@ abstract class L10n {
   /// No description provided for @remoteRelaySetupHelp.
   ///
   /// In zh, this message translates to:
-  /// **'在主机的 DSH 里装好远程插件并登录'**
+  /// **'在主机的 问问Ai 里装好远程插件并登录'**
   String get remoteRelaySetupHelp;
 
   /// No description provided for @remoteRelaySignOutTitle.
@@ -27491,7 +27491,7 @@ abstract class L10n {
   /// No description provided for @remoteRelaySignOutBody.
   ///
   /// In zh, this message translates to:
-  /// **'这台手机会从账号中移除。主机上的 DSH 和对话不受影响，随时可以重新登录。'**
+  /// **'这台手机会从账号中移除。主机上的 问问Ai 和对话不受影响，随时可以重新登录。'**
   String get remoteRelaySignOutBody;
 
   /// No description provided for @remoteRelaySignInTitle.
@@ -27593,7 +27593,7 @@ abstract class L10n {
   /// No description provided for @remoteDeleteHostBody.
   ///
   /// In zh, this message translates to:
-  /// **'这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 DSH 和对话不受影响。'**
+  /// **'这台主机的设置和保存在手机上的密码、私钥都会删除。主机上的 问问Ai 和对话不受影响。'**
   String get remoteDeleteHostBody;
 
   /// No description provided for @remoteErrReadKey.
@@ -27623,7 +27623,7 @@ abstract class L10n {
   /// No description provided for @remoteSshHostIntro.
   ///
   /// In zh, this message translates to:
-  /// **'连接你电脑或服务器上的 DSH'**
+  /// **'连接你电脑或服务器上的 问问Ai'**
   String get remoteSshHostIntro;
 
   /// No description provided for @remoteHostBasicInfo.
@@ -28289,7 +28289,7 @@ abstract class L10n {
   /// No description provided for @remoteSshInstallCommand.
   ///
   /// In zh, this message translates to:
-  /// **'还没装 DSH？在主机上运行 {command}'**
+  /// **'还没装 问问Ai？在主机上运行 {command}'**
   String remoteSshInstallCommand(String command);
 
   /// Under the DSH Remote card; project is the upstream GitHub project (liguobao/ds-harness-remote), drawn as a link.
@@ -29189,7 +29189,7 @@ abstract class L10n {
   /// No description provided for @searchKwEngine.
   ///
   /// In zh, this message translates to:
-  /// **'引擎,运行环境,启动,停止,重启,DSH'**
+  /// **'引擎,运行环境,启动,停止,重启,问问Ai'**
   String get searchKwEngine;
 
   /// No description provided for @searchKwBackground.
@@ -30365,7 +30365,7 @@ abstract class L10n {
   /// No description provided for @shellWelcomeMessage.
   ///
   /// In zh, this message translates to:
-  /// **'把 DeepSeek 智能体\n装进口袋'**
+  /// **'遇事不决，\n问问Ai！'**
   String get shellWelcomeMessage;
 
   /// No description provided for @shellGetStarted.
@@ -31373,7 +31373,7 @@ abstract class L10n {
   /// No description provided for @shellConfigUnknownSlot.
   ///
   /// In zh, this message translates to:
-  /// **'当前 DSH 没有这个 slot，先保留'**
+  /// **'当前 问问Ai 没有这个 slot，先保留'**
   String get shellConfigUnknownSlot;
 
   /// No description provided for @shellConfigUnseatableSlot.
@@ -32291,7 +32291,7 @@ abstract class L10n {
   /// No description provided for @stateAppDisclaimer.
   ///
   /// In zh, this message translates to:
-  /// **'遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 基于 DeepSeek Harness 构建'**
+  /// **'遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 智能随身助手'**
   String get stateAppDisclaimer;
 
   /// No description provided for @stateWallpaper.
@@ -32393,7 +32393,7 @@ abstract class L10n {
   /// No description provided for @stateBotTeamBusy.
   ///
   /// In zh, this message translates to:
-  /// **'另一个 DSH 正在使用这个团队'**
+  /// **'另一个 问问Ai 正在使用这个团队'**
   String get stateBotTeamBusy;
 
   /// No description provided for @stateBotOperationFailed.
@@ -32963,7 +32963,7 @@ abstract class L10n {
   /// No description provided for @stateBundleBuiltIn.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 内置'**
+  /// **'问问Ai 内置'**
   String get stateBundleBuiltIn;
 
   /// No description provided for @stateBundleHeadless.
@@ -33107,7 +33107,7 @@ abstract class L10n {
   /// No description provided for @statePluginIncompatible.
   ///
   /// In zh, this message translates to:
-  /// **'这个插件不支持当前的 DSH 版本。'**
+  /// **'这个插件不支持当前的 问问Ai 版本。'**
   String get statePluginIncompatible;
 
   /// No description provided for @statePluginInstallCancelled.
@@ -33125,7 +33125,7 @@ abstract class L10n {
   /// No description provided for @statePluginIncompatibleTitle.
   ///
   /// In zh, this message translates to:
-  /// **'和当前 DSH 不兼容'**
+  /// **'和当前 问问Ai 不兼容'**
   String get statePluginIncompatibleTitle;
 
   /// No description provided for @statePluginNetworkFailed.
@@ -33263,7 +33263,7 @@ abstract class L10n {
   /// No description provided for @statePluginInvalid.
   ///
   /// In zh, this message translates to:
-  /// **'这不是 DSH 插件'**
+  /// **'这不是 问问Ai 插件'**
   String get statePluginInvalid;
 
   /// No description provided for @statePluginNoEntry.
@@ -33947,13 +33947,13 @@ abstract class L10n {
   /// No description provided for @statePluginRuntimeIncompatible.
   ///
   /// In zh, this message translates to:
-  /// **'这个插件不支持当前的 DSH 版本（{version}）。'**
+  /// **'这个插件不支持当前的 问问Ai 版本（{version}）。'**
   String statePluginRuntimeIncompatible(String version);
 
   /// No description provided for @statePluginRequiredVersion.
   ///
   /// In zh, this message translates to:
-  /// **'这个插件要求 DSH {wanted}，当前是 {current}。'**
+  /// **'这个插件要求 问问Ai {wanted}，当前是 {current}。'**
   String statePluginRequiredVersion(String wanted, String current);
 
   /// No description provided for @statePluginRegistryUnreachable.
@@ -34019,7 +34019,7 @@ abstract class L10n {
   /// No description provided for @stateSafeRepairPrompt.
   ///
   /// In zh, this message translates to:
-  /// **'我的 DSH 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。'**
+  /// **'我的 问问Ai 正常模式出了问题（{what}）。请按「安全模式」说明排查原因，先用可逆的办法修好 web 配置，修完用 dsh-app-plugins trial 试启动验证，再告诉我改了什么。'**
   String stateSafeRepairPrompt(String what);
 
   /// No description provided for @stateScheduleCreatePrompt.
@@ -34295,7 +34295,7 @@ abstract class L10n {
   /// No description provided for @updateWrongPackage.
   ///
   /// In zh, this message translates to:
-  /// **'不是 DSH 的安装包'**
+  /// **'不是 问问Ai 的安装包'**
   String get updateWrongPackage;
 
   /// No description provided for @updateWrongPackageMessage.
@@ -34313,7 +34313,7 @@ abstract class L10n {
   /// No description provided for @updateDowngradeBlockedMessage.
   ///
   /// In zh, this message translates to:
-  /// **'手机上的 DSH 比这个安装包还新。'**
+  /// **'手机上的 问问Ai 比这个安装包还新。'**
   String get updateDowngradeBlockedMessage;
 
   /// No description provided for @updateIncompatible.
@@ -34523,7 +34523,7 @@ abstract class L10n {
   /// No description provided for @updateExportApkMessage.
   ///
   /// In zh, this message translates to:
-  /// **'会把这次下载并校验过的安装包复制到「下载/DSH-Go」，可以用 MT 管理器之类的工具重新签名后再装。\n\n重新签名后，手机上的签名和官方包不同，App 内更新会一直提示「签名不一致」，以后每次更新都要这样手动重签安装。\n\n如果只是系统拦着装不上（小米等机型），先试「安装路线」里的 Shizuku 或本机 ADB，那条路不用重新签名。'**
+  /// **'会把这次下载并校验过的安装包复制到「下载/问问Ai」，可以用 MT 管理器之类的工具重新签名后再装。\n\n重新签名后，手机上的签名和官方包不同，App 内更新会一直提示「签名不一致」，以后每次更新都要这样手动重签安装。\n\n如果只是系统拦着装不上（小米等机型），先试「安装路线」里的 Shizuku 或本机 ADB，那条路不用重新签名。'**
   String get updateExportApkMessage;
 
   /// No description provided for @updateExportApkDone.
@@ -35657,7 +35657,7 @@ abstract class L10n {
   /// No description provided for @viewTipSwitchHost.
   ///
   /// In zh, this message translates to:
-  /// **'点侧栏底部的主机名，可以切到电脑上的 DSH'**
+  /// **'点侧栏底部的主机名，可以切到电脑上的 问问Ai'**
   String get viewTipSwitchHost;
 
   /// No description provided for @viewTipPasteImage.
@@ -36479,13 +36479,13 @@ abstract class L10n {
   /// No description provided for @viewShareBrandLine.
   ///
   /// In zh, this message translates to:
-  /// **'手机上的 DSH · 扫码获取'**
+  /// **'手机上的 问问Ai · 扫码获取'**
   String get viewShareBrandLine;
 
   /// No description provided for @viewShareBrandLineNoQr.
   ///
   /// In zh, this message translates to:
-  /// **'手机上的 DSH'**
+  /// **'手机上的 问问Ai'**
   String get viewShareBrandLineNoQr;
 
   /// No description provided for @viewShareSteps.
@@ -36563,7 +36563,7 @@ abstract class L10n {
   /// No description provided for @viewSharePluginTitle.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 插件「{value}」'**
+  /// **'问问Ai 插件「{value}」'**
   String viewSharePluginTitle(String value);
 
   /// No description provided for @viewShareInstallCommand.
@@ -37613,7 +37613,7 @@ abstract class L10n {
   /// No description provided for @webTitle.
   ///
   /// In zh, this message translates to:
-  /// **'DSH 网页版'**
+  /// **'问问Ai 网页工作台'**
   String get webTitle;
 
   /// No description provided for @webSshAppOnly.

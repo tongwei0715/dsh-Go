@@ -225,7 +225,7 @@ class L10nEn extends L10n {
 
   @override
   String get accessRestrictedTap =>
-      'In Accessibility, tap “DSH Phone Control”; when “Restricted setting” appears, tap OK';
+      'In Accessibility, tap “Wenwen.ai Phone Control”; when “Restricted setting” appears, tap OK';
 
   @override
   String get accessRestrictedMenu =>
@@ -236,7 +236,7 @@ class L10nEn extends L10n {
       'In App info, open “Advanced settings” and turn on “Allow restricted settings”';
 
   @override
-  String get accessRestrictedBack => 'Back in Accessibility, turn on “DSH Phone Control”';
+  String get accessRestrictedBack => 'Back in Accessibility, turn on “Wenwen.ai Phone Control”';
 
   @override
   String get accessRestrictedHelp => 'See how';
@@ -3046,7 +3046,7 @@ class L10nEn extends L10n {
   String get botsPets => 'Pets';
 
   @override
-  String get botsPetSource => 'From DSH-TUI';
+  String get botsPetSource => 'Wenwen.ai Companion';
 
   @override
   String get botsPetImport => 'Import';
@@ -3097,7 +3097,7 @@ class L10nEn extends L10n {
   String get botsPetCodexFps => 'Frame rates were rounded to whole milliseconds';
 
   @override
-  String get botsPetCodexOneShot => 'Where a play-once motion returns to is decided by DSH';
+  String get botsPetCodexOneShot => 'Where a play-once motion returns to is decided by Wenwen.ai';
 
   @override
   String get botsPetCodexMissingAuthor => 'The pack names no author';
@@ -3439,10 +3439,10 @@ class L10nEn extends L10n {
   String get botsMobileUnsupportedTitle => 'DS Bot isn\'t on mobile yet';
 
   @override
-  String get botsMobileApiRequired => 'Use it in DSH Web for now';
+  String get botsMobileApiRequired => 'Use it in Wenwen.ai Web for now';
 
   @override
-  String get botsMobileApiMissing => 'Not on mobile yet. Use it in DSH Web for now';
+  String get botsMobileApiMissing => 'Not on mobile yet. Use it in Wenwen.ai Web for now';
 
   @override
   String get botsCreationConnectionChanged => 'The connection changed. Reopen this form to create on the current host.';
@@ -3709,7 +3709,7 @@ class L10nEn extends L10n {
   String get catalogDiagnosticsSummary => 'Export diagnostics bundle';
 
   @override
-  String get catalogWebSummary => 'Official DSH interface';
+  String get catalogWebSummary => 'Wenwen.ai web workspace';
 
   @override
   String get catalogPluginPanel => 'Plugin panel';
@@ -3721,7 +3721,7 @@ class L10nEn extends L10n {
   String get catalogAllFeatures => 'All features';
 
   @override
-  String get catalogAllFeaturesSubtitle => 'DSH Web features, all here';
+  String get catalogAllFeaturesSubtitle => 'Wenwen.ai Web features, all here';
 
   @override
   String get catalogOpenChatFirst => 'Open a chat first';
@@ -4034,7 +4034,7 @@ class L10nEn extends L10n {
   String get chatGeneratingSteerHint => 'Generating · Type to steer';
 
   @override
-  String get chatComposerHint => 'Message DSH…';
+  String get chatComposerHint => 'Message Wenwen.ai…';
 
   @override
   String get chatStopGenerating => 'Stop generating';
@@ -4235,7 +4235,7 @@ class L10nEn extends L10n {
   String get chatImageNotFound => 'Image not found';
 
   @override
-  String get chatImageOffline => 'Not connected to DSH';
+  String get chatImageOffline => 'Not connected to Wenwen.ai';
 
   @override
   String get chatImageTooLarge => 'Image too large';
@@ -4383,7 +4383,7 @@ class L10nEn extends L10n {
   String get chatOpenInDefaultApp => 'Open in default app';
 
   @override
-  String get chatDownloadsFolderHint => 'Downloads/DSH-Go folder';
+  String get chatDownloadsFolderHint => 'Downloads/Wenwen.ai folder';
 
   @override
   String chatSavedToDownloadsPath(String path) {
@@ -5113,7 +5113,7 @@ class L10nEn extends L10n {
   String get commonOpenWith => 'Open in another app';
 
   @override
-  String get commonOpenInWeb => 'Open in DSH Web';
+  String get commonOpenInWeb => 'Open in Wenwen.ai Web';
 
   @override
   String get commonUntitledChat => 'Untitled chat';
@@ -5590,7 +5590,7 @@ class L10nEn extends L10n {
   String get companionModeFull => 'Full';
 
   @override
-  String get companionModeFullHint => 'DSH on the host, with tools and phone control';
+  String get companionModeFullHint => 'Wenwen.ai on the host, with tools and phone control';
 
   @override
   String get companionLightNoKey => 'Light mode needs a DeepSeek API key. Add one in Settings and we can talk.';
@@ -6367,7 +6367,7 @@ class L10nEn extends L10n {
   String get engineAccountUsageFact => 'Usage is charged to your account balance';
 
   @override
-  String get engineAccountBrowserFact => 'Sign in with your browser. DSH never sees your password';
+  String get engineAccountBrowserFact => 'Sign in with your browser. Wenwen.ai never sees your password';
 
   @override
   String get engineAccountCredentialsFact => 'Sign-in credentials stay on this phone';
@@ -6457,7 +6457,7 @@ class L10nEn extends L10n {
   String get engineGeneralMissing => 'This host has no general settings';
 
   @override
-  String get engineSettingsVersionRequired => 'Requires DSH 0.2.1 or later';
+  String get engineSettingsVersionRequired => 'Requires Wenwen.ai 0.2.1 or later';
 
   @override
   String get engineGeneralWebDisplay => 'Web display';
@@ -6920,7 +6920,7 @@ class L10nEn extends L10n {
   String get engineProviderNoModels => 'No models yet';
 
   @override
-  String get engineProviderWebConfigured => 'Configured in DSH Web. You can view or delete it here';
+  String get engineProviderWebConfigured => 'Configured in Wenwen.ai Web. You can view or delete it here';
 
   @override
   String get engineProviderDelete => 'Delete provider';
@@ -7594,7 +7594,7 @@ class L10nEn extends L10n {
   String get featuresPresetMinimalDescription => 'Terminal and image viewing only, for testing and comparison';
 
   @override
-  String get featuresPresetCreatorDescription => 'Have the agent write plugins to customize DSH';
+  String get featuresPresetCreatorDescription => 'Have the agent write plugins to customize Wenwen.ai';
 
   @override
   String featuresHostUnreachable(String name) {
@@ -7649,7 +7649,7 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get featuresJobOutputSubject => 'DSH job output';
+  String get featuresJobOutputSubject => 'Wenwen.ai job output';
 
   @override
   String get featuresJobOutputReadFailed => 'Couldn’t read output';
@@ -8528,7 +8528,7 @@ class L10nEn extends L10n {
 
   @override
   String get featuresExportRemoteHint =>
-      'Logs aren’t available over DSH Remote. Export them from DSH Web on your computer.';
+      'Logs aren’t available over DSH Remote. Export them from Wenwen.ai Web on your computer.';
 
   @override
   String get featuresExportShareHint => 'Attach to feedback or send to yourself';
@@ -8537,7 +8537,7 @@ class L10nEn extends L10n {
   String get featuresExportSaveDownloads => 'Save to Downloads';
 
   @override
-  String get featuresExportDownloadsHint => 'Save in Downloads/DSH-Go';
+  String get featuresExportDownloadsHint => 'Save in Downloads/Wenwen.ai';
 
   @override
   String get featuresExportContents => 'All records and attachments from this chat and its subagents';
@@ -8941,7 +8941,7 @@ class L10nEn extends L10n {
   String get hubSettingsWebPhoneLayout => 'Web phone layout';
 
   @override
-  String get hubSettingsWebPhoneLayoutHint => 'Adapt DSH Web to phone screens';
+  String get hubSettingsWebPhoneLayoutHint => 'Adapt Wenwen.ai Web to phone screens';
 
   @override
   String get hubSettingsEngineExtensions => 'Engine and extensions';
@@ -9013,7 +9013,7 @@ class L10nEn extends L10n {
   String get hubPluginInstalledVersion => 'Installed version';
 
   @override
-  String get hubPluginRequiresDsh => 'Requires DSH';
+  String get hubPluginRequiresDsh => 'Requires Wenwen.ai';
 
   @override
   String get hubPluginPackageName => 'Package name';
@@ -9049,7 +9049,7 @@ class L10nEn extends L10n {
   String get hubPluginRetryInstall => 'Retry install';
 
   @override
-  String get hubPluginOfficial => 'Official DSH';
+  String get hubPluginOfficial => 'Official Wenwen.ai';
 
   @override
   String get hubPluginNotLoaded => 'Couldn’t load';
@@ -9250,7 +9250,7 @@ class L10nEn extends L10n {
   String get hubInterfaceHome => 'Home';
 
   @override
-  String get hubInterfaceWebHint => 'DSH\'s own web app';
+  String get hubInterfaceWebHint => 'Wenwen.ai web workspace';
 
   @override
   String get hubInterfaceOpenWeb => 'Open the web app';
@@ -9528,16 +9528,16 @@ class L10nEn extends L10n {
   String get liveChipFailed => 'Failed';
 
   @override
-  String get livePublicRunning => 'DSH is working';
+  String get livePublicRunning => 'Wenwen.ai is working';
 
   @override
-  String get livePublicWaiting => 'DSH is waiting for you';
+  String get livePublicWaiting => 'Wenwen.ai needs your input';
 
   @override
-  String get livePublicDone => 'DSH is done';
+  String get livePublicDone => 'Wenwen.ai finished';
 
   @override
-  String get livePublicFailed => 'DSH ran into an error';
+  String get livePublicFailed => 'Wenwen.ai ran into an issue';
 
   @override
   String get liveSettingsTitle => 'Live activity';
@@ -9547,7 +9547,7 @@ class L10nEn extends L10n {
 
   @override
   String get liveSettingsSubtitle =>
-      'While DSH works, waits on you or controls the phone: in the status bar chip and on the lock screen, and in the island on phones that have one';
+      'While Wenwen.ai works, waits on you or controls the phone: in the status bar chip and on the lock screen, and in the island on phones that have one';
 
   @override
   String get liveSettingsFooter =>
@@ -9576,7 +9576,7 @@ class L10nEn extends L10n {
   String get localeEn => 'English';
 
   @override
-  String get localEnvChooseTitle => 'Where should DSH run?';
+  String get localEnvChooseTitle => 'Where should Wenwen.ai run?';
 
   @override
   String get localEnvChooseMessage => 'You can change this later in Settings';
@@ -9597,7 +9597,7 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get localEnvRemoteDetail => 'Use DSH on your computer or server';
+  String get localEnvRemoteDetail => 'Connect to Wenwen.ai on a computer or server';
 
   @override
   String get localEnvRecommended => 'Recommended';
@@ -9606,7 +9606,7 @@ class L10nEn extends L10n {
   String get localEnvInstallTitle => 'Install on this phone';
 
   @override
-  String get localEnvInstallMessage => 'Run DSH right on this phone';
+  String get localEnvInstallMessage => 'Run Wenwen.ai on this phone';
 
   @override
   String localEnvFactStorage(int storage) {
@@ -9647,7 +9647,7 @@ class L10nEn extends L10n {
   String get localEnvPhoneNeedsRuntime => 'Available after installing on this phone';
 
   @override
-  String get localEnvSignInNeedsRuntime => 'Needs DSH on this phone';
+  String get localEnvSignInNeedsRuntime => 'Needs Wenwen.ai on this phone';
 
   @override
   String get localEnvSignInInstallFirst => 'Install it to sign in';
@@ -10531,7 +10531,7 @@ class L10nEn extends L10n {
   String get phoneDiagnosticsSave => 'Save to Downloads';
 
   @override
-  String get phoneDiagnosticsSaveHint => 'Save in Downloads/DSH-Go';
+  String get phoneDiagnosticsSaveHint => 'Save in Downloads/Wenwen.ai';
 
   @override
   String get phoneDiagnosticsNote =>
@@ -10674,7 +10674,7 @@ class L10nEn extends L10n {
   String get phoneEngineError => 'Something went wrong';
 
   @override
-  String get phoneEngineRuntimeCorrupt => 'The bundled runtime is damaged. Reinstall DSH.';
+  String get phoneEngineRuntimeCorrupt => 'The bundled runtime is damaged. Reinstall Wenwen.ai.';
 
   @override
   String get phoneEngineExited => 'The engine quit unexpectedly';
@@ -10683,16 +10683,16 @@ class L10nEn extends L10n {
   String get phoneEngineRuntimeMissing => 'The runtime isn’t installed yet';
 
   @override
-  String get phoneEngineSafeUnsupported => 'This runtime doesn’t support Safe mode. Update DSH.';
+  String get phoneEngineSafeUnsupported => 'This runtime doesn’t support Safe mode. Update Wenwen.ai.';
 
   @override
-  String get phoneEngineRuntimeIncomplete => 'The bundled runtime is incomplete. Reinstall DSH.';
+  String get phoneEngineRuntimeIncomplete => 'The bundled runtime is incomplete. Reinstall Wenwen.ai.';
 
   @override
   String get phoneLogEmpty => 'No logs yet';
 
   @override
-  String get phoneLogShareTitle => 'DSH engine logs';
+  String get phoneLogShareTitle => 'Wenwen.ai engine logs';
 
   @override
   String get phoneLogCopyAll => 'Copy all';
@@ -10782,7 +10782,7 @@ class L10nEn extends L10n {
   String get phoneActionLogEmpty => 'No actions yet';
 
   @override
-  String get phoneActionLogEmptyHint => 'Every step DSH takes on your phone appears here';
+  String get phoneActionLogEmptyHint => 'Every step Wenwen.ai takes on your phone appears here';
 
   @override
   String get phoneAppRuleDeny => 'Hands off';
@@ -11024,7 +11024,7 @@ class L10nEn extends L10n {
       'Turn on “Wireless debugging” in Developer options while connected to Wi-Fi. Developer options is usually in “System” or “Additional settings”.';
 
   @override
-  String get phoneDndStartPairingStep => 'Return here and tap “Start pairing”. DSH sends a notification.';
+  String get phoneDndStartPairingStep => 'Return here and tap “Start pairing”. Wenwen.ai sends a notification.';
 
   @override
   String get phoneDndGetPairingCodeStep =>
@@ -11032,7 +11032,7 @@ class L10nEn extends L10n {
 
   @override
   String get phoneDndEnterPairingCodeStep =>
-      'Pull down notifications and enter the code in DSH’s notification. Once paired, tap “Connect”.';
+      'Pull down notifications and enter the code in Wenwen.ai’s notification. Once paired, tap “Connect”.';
 
   @override
   String get phoneDndStartPairing => 'Start pairing';
@@ -11111,7 +11111,7 @@ class L10nEn extends L10n {
   String get phoneDisabled => 'Off';
 
   @override
-  String get phoneOpenAccessibilityFailed => 'Can’t open settings. Find DSH in Settings → Accessibility.';
+  String get phoneOpenAccessibilityFailed => 'Can’t open settings. Find Wenwen.ai in Settings → Accessibility.';
 
   @override
   String get phoneOpenAppInfoFailed => 'Can’t open app info. Find Wenwen.ai in Settings → Apps.';
@@ -11215,7 +11215,7 @@ class L10nEn extends L10n {
   String get phoneControlReadScreen => 'Read current screen';
 
   @override
-  String get phoneControlReadScreenHint => 'See what DSH reads, without sending it to the model';
+  String get phoneControlReadScreenHint => 'See what Wenwen.ai reads, without sending it to the model';
 
   @override
   String get phoneControlEnableAccessibilityFirst => 'Turn on the accessibility service first';
@@ -11307,7 +11307,7 @@ class L10nEn extends L10n {
 
   @override
   String get phoneDisclosureIntro =>
-      'DSH reads the screen and taps like you do to get things done. Before turning it on, here’s what to know:';
+      'Wenwen.ai reads the screen and taps like you do to get things done. Before turning it on, here’s what to know:';
 
   @override
   String get phoneDisclosureRestartNote => 'The engine will restart, interrupting any reply in progress';
@@ -11344,13 +11344,13 @@ class L10nEn extends L10n {
 
   @override
   String get phoneRestrictedTryAccessibility =>
-      'First try turning on DSH in “Accessibility”. When “Restricted setting” appears, tap “OK”. The option below appears only after this step.';
+      'First try turning on Wenwen.ai in “Accessibility”. When “Restricted setting” appears, tap “OK”. The option below appears only after this step.';
 
   @override
   String get phoneRestrictedOpenInfoStep => 'Return here and tap “Open app info”.';
 
   @override
-  String get phoneRestrictedBackAccessibility => 'Return to “Accessibility” and turn on DSH.';
+  String get phoneRestrictedBackAccessibility => 'Return to “Accessibility” and turn on Wenwen.ai.';
 
   @override
   String get phoneRestrictedMenuStep =>
@@ -11369,7 +11369,7 @@ class L10nEn extends L10n {
 
   @override
   String get phoneRestrictedHuaweiAccessibility =>
-      'HarmonyOS 4 and earlier usually skip this step. Turn on DSH directly in “Accessibility”.';
+      'HarmonyOS 4 and earlier usually skip this step. Turn on Wenwen.ai directly in “Accessibility”.';
 
   @override
   String get phoneRestrictedVivoNote =>
@@ -11380,7 +11380,7 @@ class L10nEn extends L10n {
 
   @override
   String get phoneRestrictedOppoNote =>
-      'ColorOS may hide this option. Use the built-in Files app to find DSH’s installer and install over the existing app (no need to uninstall; chats and settings stay). Then turn on accessibility.';
+      'ColorOS may hide this option. Use the built-in Files app to find Wenwen.ai’s installer and install over the existing app (no need to uninstall; chats and settings stay). Then turn on accessibility.';
 
   @override
   String get phoneRestrictedHuaweiNote =>
@@ -11489,13 +11489,13 @@ class L10nEn extends L10n {
   String get phoneFailureNoSpaceHint => 'Free up some space and try again';
 
   @override
-  String get phoneFailureStartup => 'DSH couldn’t start';
+  String get phoneFailureStartup => 'Wenwen.ai couldn’t start';
 
   @override
-  String get phoneFailureCrashedEarly => 'DSH crashed soon after starting';
+  String get phoneFailureCrashedEarly => 'Wenwen.ai crashed soon after starting';
 
   @override
-  String get phoneFailureCrashedLate => 'DSH crashed while running';
+  String get phoneFailureCrashedLate => 'Wenwen.ai crashed while running';
 
   @override
   String get phoneFailureFatal => 'The engine reported a fatal error';
@@ -11558,7 +11558,7 @@ class L10nEn extends L10n {
       'The configuration operation finished, but the engine has not stopped or restarted. Wait for it to stop before starting it again.';
 
   @override
-  String get phoneSafeRestoreIntro => 'DSH will restore the last working configuration:';
+  String get phoneSafeRestoreIntro => 'Wenwen.ai will restore the last working configuration:';
 
   @override
   String get phoneSafeRestoreSettings => '• Restore settings to that version (save current settings as a backup)';
@@ -11690,7 +11690,7 @@ class L10nEn extends L10n {
 
   @override
   String phoneAppRulesLoosenTitle(String app) {
-    return 'Let DSH operate “$app”?';
+    return 'Let Wenwen.ai operate “$app”?';
   }
 
   @override
@@ -11766,7 +11766,7 @@ class L10nEn extends L10n {
 
   @override
   String phoneControlRemoteHint(String host) {
-    return 'DSH on “$host” can’t control this phone. Switch to “This phone” to use it.';
+    return 'Wenwen.ai on “$host” can’t control this phone. Switch to “This phone” to use it.';
   }
 
   @override
@@ -11791,7 +11791,7 @@ class L10nEn extends L10n {
 
   @override
   String phoneSafeRestoreAt(String when) {
-    return 'DSH will restore the working configuration from $when:';
+    return 'Wenwen.ai will restore the working configuration from $when:';
   }
 
   @override
@@ -11837,7 +11837,7 @@ class L10nEn extends L10n {
 
   @override
   String get phoneAppRulesLoosenBody =>
-      'Banking and payment apps detect automation and may restrict sign-in or freeze your account. By default, DSH won’t enter passwords or pay.';
+      'Banking and payment apps detect automation and may restrict sign-in or freeze your account. By default, Wenwen.ai won’t enter passwords or pay.';
 
   @override
   String get phoneAppRulesSkipStepsBody =>
@@ -12090,7 +12090,7 @@ class L10nEn extends L10n {
   String get phoneSelfCheckSaving => 'Saving…';
 
   @override
-  String get phoneSelfCheckSaved => 'Report saved to Downloads/DSH-Go.';
+  String get phoneSelfCheckSaved => 'Report saved to Downloads/Wenwen.ai.';
 
   @override
   String get phoneSelfCheckSaveFailed => 'Could not save the report.';
@@ -12637,7 +12637,7 @@ class L10nEn extends L10n {
   String get phoneSkillUnavailable => 'Skill drafts are unavailable. Check the local engine state and try again.';
 
   @override
-  String get phoneModeTitle => 'How DSH confirms';
+  String get phoneModeTitle => 'How Wenwen.ai confirms';
 
   @override
   String get phoneModeMessage => 'You can change this in Settings anytime';
@@ -13342,7 +13342,7 @@ class L10nEn extends L10n {
   String get pluginsReadingPlugins => 'Reading plugins…';
 
   @override
-  String get pluginsDshOfficial => 'DSH official';
+  String get pluginsDshOfficial => 'Wenwen.ai official';
 
   @override
   String get pluginsOfficialToggleOnly =>
@@ -13355,7 +13355,7 @@ class L10nEn extends L10n {
   String get pluginsNoThirdParty => 'No third-party plugins yet';
 
   @override
-  String get pluginsPluginsDescription => 'Add tools, memory, and models to DSH';
+  String get pluginsPluginsDescription => 'Add tools, memory, and models to Wenwen.ai';
 
   @override
   String get pluginsBrowseMarket => 'Browse plugins';
@@ -13427,7 +13427,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsInstalledRemoteRestart(String name, String host) {
-    return 'Installed “$name”. Restart DSH on $host to apply.';
+    return 'Installed “$name”. Restart Wenwen.ai on $host to apply.';
   }
 
   @override
@@ -13462,7 +13462,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsBuildScriptWarning(String host) {
-    return 'Scripts run with DSH’s permissions on $host and can read and write files and access the internet. Only allow this if you trust the plugin.';
+    return 'Scripts run with Wenwen.ai’s permissions on $host and can read and write files and access the internet. Only allow this if you trust the plugin.';
   }
 
   @override
@@ -13507,7 +13507,7 @@ class L10nEn extends L10n {
   String get pluginsThatComputer => 'That computer';
 
   @override
-  String get pluginsCommandAfterInstall => 'After installing, restart DSH on that computer, then refresh here';
+  String get pluginsCommandAfterInstall => 'After installing, restart Wenwen.ai on that computer, then refresh here';
 
   @override
   String get pluginsError => 'Error';
@@ -13619,14 +13619,14 @@ class L10nEn extends L10n {
   String get pluginsMissingFiles => 'Plugin files are missing. Reinstall to fix.';
 
   @override
-  String get pluginsNotDshPlugin => 'Not a DSH plugin, can’t load';
+  String get pluginsNotDshPlugin => 'Not a Wenwen.ai plugin, can’t load';
 
   @override
-  String get pluginsIncompatible => 'Incompatible with this DSH version, not loaded';
+  String get pluginsIncompatible => 'Incompatible with this Wenwen.ai version, not loaded';
 
   @override
   String pluginsRequiresDshVersion(String requiredVersion, String currentVersion) {
-    return 'Requires DSH $requiredVersion, currently $currentVersion, not loaded';
+    return 'Requires Wenwen.ai $requiredVersion, currently $currentVersion, not loaded';
   }
 
   @override
@@ -14102,7 +14102,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsRemoteRestartToApply(String host) {
-    return 'Restart DSH on $host to apply';
+    return 'Restart Wenwen.ai on $host to apply';
   }
 
   @override
@@ -14235,7 +14235,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsUninstalledRestartRemote(String title, String host) {
-    return 'Uninstalled “$title”. Restart DSH on $host to finish removing it.';
+    return 'Uninstalled “$title”. Restart Wenwen.ai on $host to finish removing it.';
   }
 
   @override
@@ -14249,7 +14249,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsEnabledRestartRemote(String host) {
-    return 'Enabled. Restart DSH on $host to apply.';
+    return 'Enabled. Restart Wenwen.ai on $host to apply.';
   }
 
   @override
@@ -14257,7 +14257,7 @@ class L10nEn extends L10n {
 
   @override
   String pluginsDisabledRestartRemote(String host) {
-    return 'Disabled. Restart DSH on $host to apply.';
+    return 'Disabled. Restart Wenwen.ai on $host to apply.';
   }
 
   @override
@@ -14267,19 +14267,19 @@ class L10nEn extends L10n {
 
   @override
   String get pluginsPermissionLocalThirdParty =>
-      'Plugins run with DSH’s permissions: they can read and write files, run commands, and read API keys and phone storage you’ve granted access to. They aren’t restricted by the workspace sandbox. Provided by a third party and not reviewed by DSH.';
+      'Plugins run with Wenwen.ai’s permissions: they can read and write files, run commands, and read API keys and phone storage you’ve granted access to. They aren’t restricted by the workspace sandbox. Provided by a third party and not reviewed by Wenwen.ai.';
 
   @override
   String get pluginsPermissionLocalTrusted =>
-      'Plugins run with DSH’s permissions: they can read and write files, run commands, and read API keys and phone storage you’ve granted access to. They aren’t restricted by the workspace sandbox. Only install plugins you trust.';
+      'Plugins run with Wenwen.ai’s permissions: they can read and write files, run commands, and read API keys and phone storage you’ve granted access to. They aren’t restricted by the workspace sandbox. Only install plugins you trust.';
 
   @override
   String get pluginsPermissionRemoteThirdParty =>
-      'Plugins run with DSH’s permissions: they can read and write files, run commands, and read API keys. They aren’t restricted by the workspace sandbox. Provided by a third party and not reviewed by DSH.';
+      'Plugins run with Wenwen.ai’s permissions: they can read and write files, run commands, and read API keys. They aren’t restricted by the workspace sandbox. Provided by a third party and not reviewed by Wenwen.ai.';
 
   @override
   String get pluginsPermissionRemoteTrusted =>
-      'Plugins run with DSH’s permissions: they can read and write files, run commands, and read API keys. They aren’t restricted by the workspace sandbox. Only install plugins you trust.';
+      'Plugins run with Wenwen.ai’s permissions: they can read and write files, run commands, and read API keys. They aren’t restricted by the workspace sandbox. Only install plugins you trust.';
 
   @override
   String pluginsSelectedQrCount(int count) {
@@ -14620,7 +14620,7 @@ class L10nEn extends L10n {
   String get plugslotsPickerFailed => 'Could not share the files with this plugin. Try again';
 
   @override
-  String get plugslotsWebPlacesTitle => 'In DSH Web';
+  String get plugslotsWebPlacesTitle => 'In Wenwen.ai Web';
 
   @override
   String get plugslotsPlaceBesideComposer => 'Beside the composer';
@@ -14840,17 +14840,17 @@ class L10nEn extends L10n {
 
   @override
   String get remoteManagedHelp =>
-      'Start or reuse app-managed DSH. A live instance that cannot be reused is never replaced automatically.';
+      'Start or reuse app-managed Wenwen.ai. A live instance that cannot be reused is never replaced automatically.';
 
   @override
   String get remoteAttachOnlyHelp =>
-      'Forward only to a fixed port on remote 127.0.0.1. Never start, stop or restart DSH.';
+      'Forward only to a fixed port on remote 127.0.0.1. Never start, stop or restart Wenwen.ai.';
 
   @override
-  String get remoteDshPort => 'Remote DSH port';
+  String get remoteDshPort => 'Remote Wenwen.ai port';
 
   @override
-  String get remoteDshToken => 'DSH launch token';
+  String get remoteDshToken => 'Wenwen.ai launch token';
 
   @override
   String get remoteDshTokenHelp =>
@@ -14858,7 +14858,7 @@ class L10nEn extends L10n {
 
   @override
   String get remoteAttachWorkingDirectoryHelp =>
-      'Existing instances are not probed for a home directory. Use a remote absolute path, or leave empty for DSH’s default.';
+      'Existing instances are not probed for a home directory. Use a remote absolute path, or leave empty for Wenwen.ai’s default.';
 
   @override
   String get remoteSshCompression => 'SSH compression';
@@ -14868,21 +14868,21 @@ class L10nEn extends L10n {
       'On by default. Negotiate compression after authentication; use uncompressed transport if unsupported.';
 
   @override
-  String get remoteRestartManaged => 'Restart managed DSH';
+  String get remoteRestartManaged => 'Restart managed Wenwen.ai';
 
   @override
   String get remoteRestartManagedWarning =>
-      'This stops the remote DSH recorded by the app and starts it again. Other clients and active chats may be interrupted. Continue only after checking nobody else is using it. Normal connection tests never do this.';
+      'This stops the remote Wenwen.ai recorded by the app and starts it again. Other clients and active chats may be interrupted. Continue only after checking nobody else is using it. Normal connection tests never do this.';
 
   @override
   String get remoteErrSharedInstance =>
-      'Remote managed DSH is still running, but its start command differs or its launch log is missing. To protect shared use, it was not restarted. Check the settings, use Attach only, or explicitly choose Restart managed DSH in Edit host.';
+      'Remote managed Wenwen.ai is still running, but its start command differs or its launch log is missing. To protect shared use, it was not restarted. Check the settings, use Attach only, or explicitly choose Restart managed Wenwen.ai in Edit host.';
 
   @override
-  String get remoteErrAttachSettings => 'Enter a valid remote DSH port and launch token';
+  String get remoteErrAttachSettings => 'Enter a valid remote Wenwen.ai port and launch token';
 
   @override
-  String get remoteDshAttached => 'Connected to existing DSH';
+  String get remoteDshAttached => 'Connected to existing Wenwen.ai';
 
   @override
   String get remoteStartupSection => 'On launch';
@@ -14900,7 +14900,7 @@ class L10nEn extends L10n {
   String get remoteStepVerifyHostKey => 'Verify host fingerprint';
 
   @override
-  String get remoteStepStartDsh => 'Start DSH';
+  String get remoteStepStartDsh => 'Start Wenwen.ai';
 
   @override
   String get remoteStepTunnel => 'Create tunnel';
@@ -14961,7 +14961,7 @@ class L10nEn extends L10n {
   String get remoteErrUpdateNeeded => 'Version mismatch. Update Wenwen.ai and the host’s remote plugin';
 
   @override
-  String get remoteErrVersionIncompatible => 'Update DSH or the remote plugin on the host';
+  String get remoteErrVersionIncompatible => 'Update Wenwen.ai or the remote plugin on the host';
 
   @override
   String get remoteErrSignInTimeout => 'Sign-in timed out';
@@ -14998,11 +14998,11 @@ class L10nEn extends L10n {
 
   @override
   String remoteBootstrapReusePort(int port) {
-    return 'Using running DSH (port $port)';
+    return 'Using running Wenwen.ai (port $port)';
   }
 
   @override
-  String get remoteBootstrapStarting => 'Starting remote DSH…';
+  String get remoteBootstrapStarting => 'Starting remote Wenwen.ai…';
 
   @override
   String remoteErrCommandNotFound(String command) {
@@ -15017,13 +15017,13 @@ class L10nEn extends L10n {
   String get remoteStartCommandExample => 'Example start command: ~/.nvm/versions/node/v22.0.0/bin/dsh web';
 
   @override
-  String get remoteErrDshStartTimeout => 'Remote DSH took too long to start';
+  String get remoteErrDshStartTimeout => 'Remote Wenwen.ai took too long to start';
 
   @override
-  String get remoteErrDshExited => 'Remote DSH exited right after starting';
+  String get remoteErrDshExited => 'Remote Wenwen.ai exited right after starting';
 
   @override
-  String get remoteErrDshStart => 'Couldn’t start remote DSH';
+  String get remoteErrDshStart => 'Couldn’t start remote Wenwen.ai';
 
   @override
   String remoteExitCode(int code) {
@@ -15043,32 +15043,32 @@ class L10nEn extends L10n {
   String get remoteHostTrustCancelled => 'Host trust cancelled';
 
   @override
-  String get remoteCheckingDsh => 'Checking remote DSH…';
+  String get remoteCheckingDsh => 'Checking remote Wenwen.ai…';
 
   @override
-  String get remoteErrDshPort => 'Can’t reach the remote DSH port';
+  String get remoteErrDshPort => 'Can’t reach the remote Wenwen.ai port';
 
   @override
-  String get remoteDshReused => 'Using DSH already running on the host';
+  String get remoteDshReused => 'Using Wenwen.ai already running on the host';
 
   @override
-  String get remoteDshStarted => 'Started DSH on the host';
+  String get remoteDshStarted => 'Started Wenwen.ai on the host';
 
   @override
   String get remoteErrDshTokenRejected =>
-      'Remote DSH rejected the token; it was not restarted. Check the token, or explicitly restart the managed instance in Edit host.';
+      'Remote Wenwen.ai rejected the token; it was not restarted. Check the token, or explicitly restart the managed instance in Edit host.';
 
   @override
-  String get remoteErrDshSignIn => 'Couldn’t sign in to remote DSH';
+  String get remoteErrDshSignIn => 'Couldn’t sign in to remote Wenwen.ai';
 
   @override
-  String get remoteErrDshTunnel => 'Couldn’t connect to DSH through the tunnel';
+  String get remoteErrDshTunnel => 'Couldn’t connect to Wenwen.ai through the tunnel';
 
   @override
-  String get remoteErrDshSignInExpired => 'Remote DSH sign-in expired';
+  String get remoteErrDshSignInExpired => 'Remote Wenwen.ai sign-in expired';
 
   @override
-  String get remoteErrDshStopped => 'Remote DSH stopped running';
+  String get remoteErrDshStopped => 'Remote Wenwen.ai stopped running';
 
   @override
   String get remoteErrSshDisconnected => 'SSH disconnected';
@@ -15638,7 +15638,7 @@ class L10nEn extends L10n {
   }
 
   @override
-  String get remoteHostKeyChangeWarning => 'DSH will refuse to connect if the fingerprint changes.';
+  String get remoteHostKeyChangeWarning => 'Wenwen.ai will refuse to connect if the fingerprint changes.';
 
   @override
   String get remoteHostKeyTrustAgain => 'Trust again';
@@ -15655,7 +15655,7 @@ class L10nEn extends L10n {
   String get remoteSwitchHost => 'Switch host';
 
   @override
-  String get remoteThisPhoneDsh => 'DSH on this phone';
+  String get remoteThisPhoneDsh => 'Wenwen.ai on this phone';
 
   @override
   String get remoteRemoteLabel => 'Remote';
@@ -15710,13 +15710,13 @@ class L10nEn extends L10n {
   String get remoteConsole => 'Remote console';
 
   @override
-  String get remoteHostsIntro => 'Keep using DSH from your computer or server on your phone';
+  String get remoteHostsIntro => 'Keep using Wenwen.ai from your computer or server on your phone';
 
   @override
   String get remoteSshHosts => 'SSH hosts';
 
   @override
-  String get remoteSshRequirements => 'Host needs SSH enabled and DSH installed';
+  String get remoteSshRequirements => 'Host needs SSH enabled and Wenwen.ai installed';
 
   @override
   String get remoteAddSshHost => 'Add SSH host';
@@ -15799,14 +15799,14 @@ class L10nEn extends L10n {
   String get remoteNoHosts => 'No hosts yet';
 
   @override
-  String get remoteRelaySetupHelp => 'Install the remote plugin in the host’s DSH and sign in';
+  String get remoteRelaySetupHelp => 'Install the remote plugin in the host’s Wenwen.ai and sign in';
 
   @override
   String get remoteRelaySignOutTitle => 'Sign out of DSH Remote?';
 
   @override
   String get remoteRelaySignOutBody =>
-      'This phone will be removed from your account. DSH and chats on the host stay. You can sign in again anytime.';
+      'This phone will be removed from your account. Wenwen.ai and chats on the host stay. You can sign in again anytime.';
 
   @override
   String get remoteRelaySignInTitle => 'Sign in to DSH Remote';
@@ -15863,7 +15863,7 @@ class L10nEn extends L10n {
 
   @override
   String get remoteDeleteHostBody =>
-      'This host’s settings and the password and private key saved on this phone will be deleted. DSH and chats on the host stay.';
+      'This host’s settings and the password and private key saved on this phone will be deleted. Wenwen.ai and chats on the host stay.';
 
   @override
   String remoteErrReadKey(String error) {
@@ -15880,7 +15880,7 @@ class L10nEn extends L10n {
   String get remoteEditHost => 'Edit host';
 
   @override
-  String get remoteSshHostIntro => 'Connect to DSH on your computer or server';
+  String get remoteSshHostIntro => 'Connect to Wenwen.ai on your computer or server';
 
   @override
   String get remoteHostBasicInfo => 'Basic information';
@@ -15953,7 +15953,7 @@ class L10nEn extends L10n {
   String get remoteTestConnection => 'Test';
 
   @override
-  String get remoteHostedUpdateRequired => 'Update DSH to open this link';
+  String get remoteHostedUpdateRequired => 'Update Wenwen.ai to open this link';
 
   @override
   String get remoteHostedCannotOpen => 'Can’t open this link';
@@ -16305,12 +16305,12 @@ class L10nEn extends L10n {
 
   @override
   String remoteHostKeyVerifyCommand(String command) {
-    return 'Run $command on that host to see the same fingerprint. DSH will refuse to connect if it changes.';
+    return 'Run $command on that host to see the same fingerprint. Wenwen.ai will refuse to connect if it changes.';
   }
 
   @override
   String remoteSshInstallCommand(String command) {
-    return 'DSH not installed? Run $command on the host.';
+    return 'Wenwen.ai not installed? Run $command on the host.';
   }
 
   @override
@@ -16818,7 +16818,7 @@ class L10nEn extends L10n {
   String get searchKwDnd => 'dnd,shizuku,sui,root,adb,background';
 
   @override
-  String get searchKwEngine => 'engine,runtime,start,stop,restart,DSH';
+  String get searchKwEngine => 'engine,runtime,start,stop,restart,Wenwen.ai';
 
   @override
   String get searchKwBackground => 'keep alive,background activity,battery optimization,autostart,killed';
@@ -17481,7 +17481,7 @@ class L10nEn extends L10n {
   String get shellEngineLogs => 'Engine logs';
 
   @override
-  String get shellWelcomeMessage => 'The DeepSeek agent,\nin your pocket';
+  String get shellWelcomeMessage => 'When in doubt,\nask Wenwen.ai!';
 
   @override
   String get shellGetStarted => 'Start';
@@ -17884,7 +17884,7 @@ class L10nEn extends L10n {
   String get shellSeatIsland => 'Embedded Web';
 
   @override
-  String get shellSeatWeb => 'Open in DSH Web';
+  String get shellSeatWeb => 'Open in Wenwen.ai Web';
 
   @override
   String get shellPlugins => 'Plugins';
@@ -18096,7 +18096,7 @@ class L10nEn extends L10n {
   String get shellConfigSlotName => 'Invalid slot name format';
 
   @override
-  String get shellConfigUnknownSlot => 'This slot isn’t in DSH yet, kept for later';
+  String get shellConfigUnknownSlot => 'This slot isn’t in Wenwen.ai yet, kept for later';
 
   @override
   String get shellConfigUnseatableSlot => 'Plugins aren’t supported here';
@@ -18618,7 +18618,7 @@ class L10nEn extends L10n {
   String get stateIconInk => 'Ink';
 
   @override
-  String get stateAppDisclaimer => 'When in doubt, ask Wenwen.ai! (https://wenwenai.cn) · Built on DeepSeek Harness';
+  String get stateAppDisclaimer => 'When in doubt, ask Wenwen.ai! (https://wenwenai.cn)';
 
   @override
   String get stateWallpaper => 'Wallpaper';
@@ -18669,7 +18669,7 @@ class L10nEn extends L10n {
   String get statePrivateKeyTooLarge => 'File is too large to be a private key';
 
   @override
-  String get stateBotTeamBusy => 'Another DSH is using this team';
+  String get stateBotTeamBusy => 'Another Wenwen.ai is using this team';
 
   @override
   String get stateBotOperationFailed => 'Couldn’t finish. Try again.';
@@ -18803,7 +18803,7 @@ class L10nEn extends L10n {
   String get stateAllFeatures => 'All features';
 
   @override
-  String get stateCommandFeaturesDescription => 'Access every feature in DSH Web';
+  String get stateCommandFeaturesDescription => 'Access every feature in Wenwen.ai Web';
 
   @override
   String get stateCompactLabel => 'Compact';
@@ -18959,7 +18959,7 @@ class L10nEn extends L10n {
   String get stateInventoryConditional => 'Conditional';
 
   @override
-  String get stateBundleBuiltIn => 'Built into DSH';
+  String get stateBundleBuiltIn => 'Built into Wenwen.ai';
 
   @override
   String get stateBundleHeadless => 'Headless';
@@ -19031,7 +19031,7 @@ class L10nEn extends L10n {
   String get stateRegistryMirror => 'npmmirror mirror';
 
   @override
-  String get statePluginIncompatible => 'This plugin doesn’t support the current DSH version.';
+  String get statePluginIncompatible => 'This plugin doesn’t support the current Wenwen.ai version.';
 
   @override
   String get statePluginInstallCancelled => 'Installation cancelled';
@@ -19040,7 +19040,7 @@ class L10nEn extends L10n {
   String get statePluginNoChanges => 'Nothing was changed';
 
   @override
-  String get statePluginIncompatibleTitle => 'Incompatible with this DSH';
+  String get statePluginIncompatibleTitle => 'Incompatible with this Wenwen.ai';
 
   @override
   String get statePluginNetworkFailed => 'Can’t connect';
@@ -19109,7 +19109,7 @@ class L10nEn extends L10n {
   String get statePluginUninstallFirst => 'Uninstall before switching versions';
 
   @override
-  String get statePluginInvalid => 'Not a DSH plugin';
+  String get statePluginInvalid => 'Not a Wenwen.ai plugin';
 
   @override
   String get statePluginNoEntry => 'This package has no plugin entry. Installation rolled back.';
@@ -19583,12 +19583,12 @@ class L10nEn extends L10n {
 
   @override
   String statePluginRuntimeIncompatible(String version) {
-    return 'This plugin doesn’t support the current DSH version ($version).';
+    return 'This plugin doesn’t support the current Wenwen.ai version ($version).';
   }
 
   @override
   String statePluginRequiredVersion(String wanted, String current) {
-    return 'This plugin requires DSH $wanted. Current version: $current.';
+    return 'This plugin requires Wenwen.ai $wanted. Current version: $current.';
   }
 
   @override
@@ -19639,7 +19639,7 @@ class L10nEn extends L10n {
 
   @override
   String stateSafeRepairPrompt(String what) {
-    return 'My DSH has a problem in normal mode ($what). Follow the Safe mode instructions to find the cause. Fix the web configuration using reversible changes, verify startup with dsh-app-plugins trial, then tell me what changed.';
+    return 'My Wenwen.ai has a problem in normal mode ($what). Follow the Safe mode instructions to find the cause. Fix the web configuration using reversible changes, verify startup with dsh-app-plugins trial, then tell me what changed.';
   }
 
   @override
@@ -19805,7 +19805,7 @@ class L10nEn extends L10n {
       'The Wenwen.ai on your phone has a different signature (usually a test build). Uninstall it before installing this version. Uninstalling erases your chats, Linux environment, and settings.';
 
   @override
-  String get updateWrongPackage => 'This isn’t a DSH package';
+  String get updateWrongPackage => 'This isn’t a Wenwen.ai package';
 
   @override
   String get updateWrongPackageMessage => 'The wrong file was downloaded and deleted. Try again later.';
@@ -19814,7 +19814,7 @@ class L10nEn extends L10n {
   String get updateDowngradeBlocked => 'Can’t install an older version';
 
   @override
-  String get updateDowngradeBlockedMessage => 'The DSH on your phone is newer than this package.';
+  String get updateDowngradeBlockedMessage => 'The Wenwen.ai on your phone is newer than this package.';
 
   @override
   String get updateIncompatible => 'Incompatible with this phone';
@@ -19931,7 +19931,7 @@ class L10nEn extends L10n {
 
   @override
   String get updateExportApkMessage =>
-      'Copies the package downloaded and verified now into Downloads/DSH-Go, so you can sign it yourself (MT Manager and the like) and install that.\n\nA package you signed has a different signature from ours: in-app updates then always report a signature mismatch, and every later version has to be signed and installed by hand.\n\nIf the system simply blocks the install (Xiaomi and other vendors), try Shizuku or on-device ADB under Installation route first; that needs no signing.';
+      'Copies the package downloaded and verified now into Downloads/Wenwen.ai, so you can sign it yourself (MT Manager and the like) and install that.\n\nA package you signed has a different signature from ours: in-app updates then always report a signature mismatch, and every later version has to be signed and installed by hand.\n\nIf the system simply blocks the install (Xiaomi and other vendors), try Shizuku or on-device ADB under Installation route first; that needs no signing.';
 
   @override
   String updateExportApkDone(String path) {
@@ -20717,7 +20717,7 @@ class L10nEn extends L10n {
   String get viewTipFolderNewChat => 'Long-press a folder in the sidebar to start a chat inside it';
 
   @override
-  String get viewTipSwitchHost => 'Tap the host name at the sidebar\'s foot to switch to DSH on your computer';
+  String get viewTipSwitchHost => 'Tap the host name at the sidebar\'s foot to switch to Wenwen.ai on your computer';
 
   @override
   String get viewTipPasteImage => 'Screenshots and stickers from your keyboard can go straight into the composer';
@@ -21187,10 +21187,10 @@ class L10nEn extends L10n {
   String get viewShareProjectQr => 'Project QR code';
 
   @override
-  String get viewShareBrandLine => 'DSH on your phone · Scan to get it';
+  String get viewShareBrandLine => 'Wenwen.ai on mobile · Scan to get';
 
   @override
-  String get viewShareBrandLineNoQr => 'DSH on your phone';
+  String get viewShareBrandLineNoQr => 'Wenwen.ai on mobile';
 
   @override
   String viewShareSteps(int count) {
@@ -21233,7 +21233,7 @@ class L10nEn extends L10n {
 
   @override
   String viewSharePluginTitle(String value) {
-    return 'DSH plugin “$value”';
+    return 'Wenwen.ai plugin “$value”';
   }
 
   @override
@@ -21495,7 +21495,7 @@ class L10nEn extends L10n {
 
   @override
   String viewUiDialectWebOnly(String kind) {
-    return '$kind · View in DSH Web';
+    return '$kind · View in Wenwen.ai Web';
   }
 
   @override
@@ -21529,10 +21529,10 @@ class L10nEn extends L10n {
   String get viewUiDialectKindOther => 'This part';
 
   @override
-  String get viewUiDialectInvalid => 'This block shows in DSH Web';
+  String get viewUiDialectInvalid => 'This block shows in Wenwen.ai Web';
 
   @override
-  String get viewUiDialectNote => 'Shown in DSH Web';
+  String get viewUiDialectNote => 'Shown in Wenwen.ai Web';
 
   @override
   String get voiceSettingsTitle => 'Voice input';
@@ -21883,13 +21883,13 @@ class L10nEn extends L10n {
   String get searchKwWallpaper => 'background,background image,chat background,custom background,backdrop,blur,photo';
 
   @override
-  String get webTitle => 'DSH Web';
+  String get webTitle => 'Wenwen.ai Web';
 
   @override
   String get webSshAppOnly => 'SSH tunnel links only open in the app';
 
   @override
-  String get webRelayUnavailable => 'DSH Web isn’t available through DSH Remote. Open it on that computer.';
+  String get webRelayUnavailable => 'Wenwen.ai Web isn’t available through DSH Remote. Open it on that computer.';
 
   @override
   String get webSshHost => 'SSH host';
@@ -21913,10 +21913,10 @@ class L10nEn extends L10n {
   String get webEngineProblem => 'The engine ran into a problem';
 
   @override
-  String get webStartingSoon => 'DSH Web will be ready in a moment';
+  String get webStartingSoon => 'Wenwen.ai Web will be ready in a moment';
 
   @override
-  String get webStartToOpen => 'Start this phone’s engine to open DSH Web';
+  String get webStartToOpen => 'Start this phone’s engine to open Wenwen.ai Web';
 
   @override
   String get webRestart => 'Restart';
@@ -21940,16 +21940,16 @@ class L10nEn extends L10n {
   String get webSwitchHost => 'Switch host';
 
   @override
-  String get webAttachmentTooLarge => 'Attachment is too large for DSH Web';
+  String get webAttachmentTooLarge => 'Attachment is too large for Wenwen.ai Web';
 
   @override
   String get webTextCopied => 'Text copied. Paste it into the input box.';
 
   @override
-  String get webAttachmentFailed => 'Couldn’t add attachments to DSH Web';
+  String get webAttachmentFailed => 'Couldn’t add attachments to Wenwen.ai Web';
 
   @override
-  String get webHostUnavailable => 'DSH Web isn’t available on this host';
+  String get webHostUnavailable => 'Wenwen.ai Web isn’t available on this host';
 
   @override
   String get webChatGone => 'This chat is gone';
@@ -21979,10 +21979,10 @@ class L10nEn extends L10n {
   String get webCheckConnection => 'Check your network or engine status and try again';
 
   @override
-  String get webTargetSessionMissing => 'Couldn’t find this chat in DSH Web. You’re on the home page.';
+  String get webTargetSessionMissing => 'Couldn’t find this chat in Wenwen.ai Web. You’re on the home page.';
 
   @override
-  String get webTargetNotLoaded => 'DSH Web hasn’t finished loading';
+  String get webTargetNotLoaded => 'Wenwen.ai Web hasn’t finished loading';
 
   @override
   String get webTargetSettingsMissing => 'Couldn’t find these settings. You may need to sign in or enable the plugin.';
@@ -21991,20 +21991,20 @@ class L10nEn extends L10n {
   String get webTargetPluginMissing => 'Couldn’t find this plugin. It may be missing from this profile.';
 
   @override
-  String get webTargetSidebarFailed => 'Couldn’t open the sidebar. Open this chat in DSH Web and try again.';
+  String get webTargetSidebarFailed => 'Couldn’t open the sidebar. Open this chat in Wenwen.ai Web and try again.';
 
   @override
   String get webTargetCordisMissing => 'Couldn’t find the Cordis panel. The plugin may have been removed.';
 
   @override
-  String get webTargetNewChatFailed => 'Couldn’t start a chat. You’re on the DSH Web home page.';
+  String get webTargetNewChatFailed => 'Couldn’t start a chat. You’re on the Wenwen.ai Web home page.';
 
   @override
-  String get webTargetPageFailed => 'Couldn’t open this page. You’re on the DSH Web home page.';
+  String get webTargetPageFailed => 'Couldn’t open this page. You’re on the Wenwen.ai Web home page.';
 
   @override
   String webConnectHostFirst(String name) {
-    return 'Connect to “$name” to open DSH Web';
+    return 'Connect to “$name” to open Wenwen.ai Web';
   }
 
   @override
