@@ -2832,7 +2832,7 @@ class L10nEn extends L10n {
   String get botsProjectHome => 'Wenwen.ai project home';
 
   @override
-  String get botsOpenSource => 'Open-source project';
+  String get botsOpenSource => 'Official Website https://wenwenai.cn';
 
   @override
   String get botsPluginCatalogFailed => 'Couldn’t open the plugin catalog';
@@ -9283,7 +9283,7 @@ class L10nEn extends L10n {
   String get hubAbout => 'About Wenwen.ai';
 
   @override
-  String get hubAboutAuthor => 'Original upstream author of dsh-Go';
+  String get hubAboutAuthor => 'Official Website';
 
   @override
   String get hubAboutBilibili => 'Bilibili profile';

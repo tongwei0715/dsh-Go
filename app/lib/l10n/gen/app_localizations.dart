@@ -4973,7 +4973,7 @@ abstract class L10n {
   /// No description provided for @botsOpenSource.
   ///
   /// In zh, this message translates to:
-  /// **'开源项目'**
+  /// **'官方网站 https://wenwenai.cn'**
   String get botsOpenSource;
 
   /// No description provided for @botsPluginCatalogFailed.
@@ -16217,7 +16217,7 @@ abstract class L10n {
   /// No description provided for @hubAboutAuthor.
   ///
   /// In zh, this message translates to:
-  /// **'dsh-Go 上游原作者'**
+  /// **'官方网站'**
   String get hubAboutAuthor;
 
   /// No description provided for @hubAboutBilibili.
@@ -32291,7 +32291,7 @@ abstract class L10n {
   /// No description provided for @stateAppDisclaimer.
   ///
   /// In zh, this message translates to:
-  /// **'遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 智能随身助手'**
+  /// **'遇事不决，问问Ai！（官方网站 https://wenwenai.cn）'**
   String get stateAppDisclaimer;
 
   /// No description provided for @stateWallpaper.

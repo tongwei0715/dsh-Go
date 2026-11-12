@@ -2681,7 +2681,7 @@ class L10nZh extends L10n {
   String get botsProjectHome => '问问Ai 项目主页';
 
   @override
-  String get botsOpenSource => '开源项目';
+  String get botsOpenSource => '官方网站 https://wenwenai.cn';
 
   @override
   String get botsPluginCatalogFailed => '插件目录没打开';
@@ -8794,7 +8794,7 @@ class L10nZh extends L10n {
   String get hubAbout => '关于 问问Ai';
 
   @override
-  String get hubAboutAuthor => 'dsh-Go 上游原作者';
+  String get hubAboutAuthor => '官方网站';
 
   @override
   String get hubAboutBilibili => 'B站主页';
@@ -17644,7 +17644,7 @@ class L10nZh extends L10n {
   String get stateIconInk => '墨';
 
   @override
-  String get stateAppDisclaimer => '遇事不决，问问Ai！（官方网站 https://wenwenai.cn）· 智能随身助手';
+  String get stateAppDisclaimer => '遇事不决，问问Ai！（官方网站 https://wenwenai.cn）';
 
   @override
   String get stateWallpaper => '壁纸';
