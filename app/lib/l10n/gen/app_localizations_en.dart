@@ -1102,6 +1102,15 @@ class L10nEn extends L10n {
   String get activitySlashEnterArgs => 'Enter arguments, then send';
 
   @override
+  String get activitySlashRunIntent => 'Command · Run';
+
+  @override
+  String get activitySlashInsertIntent => 'Command · Insert';
+
+  @override
+  String get activitySlashSkillIntent => 'Skill · Insert';
+
+  @override
   String get activityStepTitle => 'Step details';
 
   @override
@@ -6867,6 +6876,39 @@ class L10nEn extends L10n {
 
   @override
   String get engineProviderConnection => 'Connection';
+
+  @override
+  String get engineProviderHeaders => 'Request headers (optional)';
+
+  @override
+  String get engineProviderHeadersWarning =>
+      'Headers are stored as plain text and are not redacted from logs. Use API Key or a credential reference for sensitive credentials.';
+
+  @override
+  String get engineProviderHeaderName => 'Name';
+
+  @override
+  String get engineProviderHeaderValue => 'Value';
+
+  @override
+  String get engineProviderHeaderAdd => 'Add header';
+
+  @override
+  String get engineProviderHeaderInvalidName =>
+      'Use letters, digits or HTTP token symbols in header names; no spaces or colons';
+
+  @override
+  String get engineProviderHeaderReserved => 'User-Agent is set by the engine; remove this header';
+
+  @override
+  String get engineProviderHeaderLocked => 'Managed by the engine; the existing setting is preserved';
+
+  @override
+  String get engineProviderHeaderDuplicate => 'Header names must be unique (case-insensitive)';
+
+  @override
+  String get engineProviderHeaderInvalidValue =>
+      'Use single-line Latin-1 values without control characters (tabs are allowed)';
 
   @override
   String get engineProviderDefaultUrl => 'Default URL';
@@ -18319,6 +18361,18 @@ class L10nEn extends L10n {
   String get starSettingsTitle => 'Star Wenwen.ai on GitHub';
 
   @override
+  String get hubStartPage => 'Start page';
+
+  @override
+  String get hubChatSuggestions => 'Chat suggestions';
+
+  @override
+  String get hubChatSuggestionsHint => 'Show chat suggestions on the start page';
+
+  @override
+  String get searchKwChatSuggestions => 'start page,empty page,new chat,chat suggestions,suggestion cards';
+
+  @override
   String get phoneStartupFailureStopping => 'Startup failed; stopping';
 
   @override
@@ -18842,6 +18896,10 @@ class L10nEn extends L10n {
 
   @override
   String get stateChatMissing => 'This chat is gone';
+
+  @override
+  String get stateChatFormatUnsupported =>
+      'This engine cannot read this chat\'s log format. Export diagnostics to investigate.';
 
   @override
   String get stateEngineUnsupported => 'Not supported by this engine version';

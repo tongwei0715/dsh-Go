@@ -1354,17 +1354,8 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
     _dismissSlashPalette();
     final value = _input.value;
     final caret = atCaret && value.selection.isValid ? value.selection.end : value.text.length;
-    final leading = value.text.length - value.text.trimLeft().length;
-    final full = parseSlashInput(value.text);
-    // Completing inside an already known command replaces its whole name.
-    // Otherwise preserve the draft to the right of the cursor (e.g. /|hello).
-    final end = full != null && resolveSlashCommand(_commands, full.token) != null
-        ? leading + 1 + full.token.length
-        : caret;
-    final suffix = value.text.substring(end);
-    if ((command.kind == SlashCommandKind.host && command.takesInput) ||
-        command.kind == SlashCommandKind.skill ||
-        suffix.isNotEmpty) {
+    final (:leading, :suffix) = slashCompletionContext(_commands, value.text, caret);
+    if (slashPickInsertsText(command, hasSuffix: suffix.isNotEmpty)) {
       final prefix = '${value.text.substring(0, leading)}/${command.name}';
       final separator = suffix.isEmpty || !RegExp(r'^\s').hasMatch(suffix) ? ' ' : '';
       final text = '$prefix$separator$suffix';
@@ -1569,6 +1560,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
                 singleQuestion: s.singleQuestion != null,
                 model: s.model,
                 error: s.error,
+                syncError: s.syncError,
                 defaultModelSaveFailed: s.defaultModelSaveFailed,
                 notice: s.notice,
                 autoApprove: s.autoApprove,
@@ -1753,6 +1745,9 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
                                       const EngineFailureCard(padding: EdgeInsets.fromLTRB(16, 0, 16, 20)),
                                     ChatEmptyState(
                                       connected: connected,
+                                      suggestions: ref.watch(settingsProvider.select((s) => s.chatSuggestions))
+                                          ? defaultSuggestions
+                                          : const [],
                                       connecting: connAsync.isLoading,
                                       starting: starting,
                                       tidying: tidying,
@@ -1958,9 +1953,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
                                         ? Padding(
                                             padding: const EdgeInsets.only(bottom: 8),
                                             child: ErrorBanner(
+                                              maxLines: null,
                                               info: !(chat?.streamLost ?? false),
                                               message: chat?.streamLost ?? false
-                                                  ? l10n.stateChatSyncInterrupted
+                                                  ? chat?.syncError ?? l10n.stateChatSyncInterrupted
                                                   : l10n.stateChatSynchronizing,
                                               action: chat?.resyncing ?? false
                                                   ? null
