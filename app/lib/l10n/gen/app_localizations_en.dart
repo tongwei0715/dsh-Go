@@ -3034,10 +3034,10 @@ class L10nEn extends L10n {
   String get botsPetSettings => 'Pet settings';
 
   @override
-  String get botsPetWenWen Bot => 'WenWen Bot';
+  String get botsPetDeepy => 'WenWen Bot';
 
   @override
-  String get botsPetWhaleGirl => 'Whale girl';
+  String get botsPetWhaleGirl => 'WenWen Pixel';
 
   @override
   String get botsPetNone => 'None';
@@ -9724,7 +9724,8 @@ class L10nEn extends L10n {
   String get marketFlagNotAdapted => 'Not made for Wenwen.ai';
 
   @override
-  String get marketFlagNotAdaptedBody => 'Declares no Wenwen.ai native protocol, so it has no native screens in the app';
+  String get marketFlagNotAdaptedBody =>
+      'Declares no Wenwen.ai native protocol, so it has no native screens in the app';
 
   @override
   String get marketFlagOtherBody => 'Another trait the automatic checks reported';
@@ -18343,7 +18344,7 @@ class L10nEn extends L10n {
 
   @override
   String get starPromptBody =>
-      'Wenwen.ai is free and open source. If it’s made your phone a little nicer to use, please give it a Star — it means so much to this little whale!';
+      'Wenwen.ai is free and open source. If it’s made your phone a little nicer to use, please give it a Star — it means so much to this WenWen Bot!';
 
   @override
   String get starPromptPlea => 'Pretty please~ It really matters!!';
