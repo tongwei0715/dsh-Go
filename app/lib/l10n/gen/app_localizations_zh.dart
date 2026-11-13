@@ -16588,7 +16588,7 @@ class L10nZh extends L10n {
   String get shellEngineLogs => '引擎日志';
 
   @override
-  String get shellWelcomeMessage => '遇事不决，\n问问Ai！';
+  String get shellWelcomeMessage => '遇事不决，问问Ai';
 
   @override
   String get shellGetStarted => '开始';

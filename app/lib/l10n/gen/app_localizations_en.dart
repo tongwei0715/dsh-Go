@@ -17481,7 +17481,7 @@ class L10nEn extends L10n {
   String get shellEngineLogs => 'Engine logs';
 
   @override
-  String get shellWelcomeMessage => 'When in doubt,\nask Wenwen.ai!';
+  String get shellWelcomeMessage => 'When in doubt, ask Wenwen.ai';
 
   @override
   String get shellGetStarted => 'Start';

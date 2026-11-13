@@ -30365,7 +30365,7 @@ abstract class L10n {
   /// No description provided for @shellWelcomeMessage.
   ///
   /// In zh, this message translates to:
-  /// **'遇事不决，\n问问Ai！'**
+  /// **'遇事不决，问问Ai'**
   String get shellWelcomeMessage;
 
   /// No description provided for @shellGetStarted.
