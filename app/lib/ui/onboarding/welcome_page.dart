@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyMedium?.copyWith(
               fontSize: 14.5,
-              color: colors.textSecondary,
+              color: colors.textTertiary,
               height: 1.45,
             ),
           ),
