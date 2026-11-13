@@ -135,7 +135,7 @@ jobs:
           - **全能内置 Linux 容器**：免 Root、免 Termux，手机本机直接运行 Ubuntu 24.04 + Node.js 24.22.1 + DSH 引擎，支持远程接管电脑主机。
           - **专属四状态像素桌宠「问问仔」**：干活敲代码、完成欢呼、敏感操作举手待确认、待机休眠打盹，支持 App 外桌面悬浮窗陪伴。
           - **平滑覆盖升级**：使用固定永久证书签名，升级仅替换受管引擎目录，完整保留已安装的 apt/npm/pip 工具包与对话数据。
-          - **开源致谢**：基于上游 [ccch1mneyyy/dsh-Go](https://github.com/ccch1mneyyy/dsh-Go) (${TAG}) 同步构建，遵循 GNU AGPL-3.0 协议。
+          - **官方网站**：https://wenwenai.cn · 数据与密钥留在本机，随身而行。
           EOF
 
           python3 tooling/release_assets.py \
@@ -151,10 +151,10 @@ jobs:
           if gh release view "${TAG}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
             gh release upload "${TAG}" dist/* --clobber --repo "${{ github.repository }}"
           else
-            gh release create "${TAG}" dist/* --repo "${{ github.repository }}" -t "问问Ai ${TAG} (dsh-Go 全能桌宠版)" -F /tmp/notes.md
+            gh release create "${TAG}" dist/* --repo "${{ github.repository }}" -t "问问Ai ${TAG} 全能工作站版" -F /tmp/notes.md
           fi
 
           rm -rf runtime/out dist
           git add app/ brand_assets/ docs/ scripts/ tooling/ NOTICE_DERIVATIVE.md .github/workflows/sync-and-release.yml
-          git commit -m "chore(release): 问问Ai ${TAG} synced from upstream ccch1mneyyy/dsh-Go" || true
+          git commit -m "chore(release): 问问Ai ${TAG}" || true
           git push origin HEAD:main
