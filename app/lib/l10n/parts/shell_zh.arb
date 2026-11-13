@@ -61,7 +61,7 @@
     }
   },
   "shellEngineLogs": "引擎日志",
-  "shellWelcomeMessage": "遇事不决，\n问问Ai！",
+  "shellWelcomeMessage": "遇事不决，问问Ai",
   "shellGetStarted": "开始",
   "shellSearchChats": "搜索对话",
   "shellCollapseChatList": "收起对话列表",
