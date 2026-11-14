@@ -50,6 +50,7 @@ jobs:
             echo "should_build=false" >> "$GITHUB_OUTPUT"
           else
             git merge --no-edit "${UPSTREAM_TAG}" -X theirs || true
+            git checkout HEAD~1 -- .github/workflows/ 2>/dev/null || true
             echo "should_build=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -162,7 +163,8 @@ jobs:
             gh release create "${TAG}" dist/* --repo "${{ github.repository }}" -t "问问Ai ${TAG} 全能工作站版" -F /tmp/notes.md
           fi
 
-          rm -rf runtime/out dist
-          git add app/ brand_assets/ docs/ scripts/ tooling/ NOTICE_DERIVATIVE.md .github/workflows/sync-and-release.yml
+          rm -rf runtime/out runtime/out-tawcroot dist
+          git checkout HEAD -- runtime/tawcroot/build.py 2>/dev/null || true
+          git add app/ brand_assets/ docs/ scripts/ tooling/ NOTICE_DERIVATIVE.md
           git commit -m "chore(release): 问问Ai ${TAG}" || true
-          git push origin HEAD:main
+          git push origin HEAD:main || true
