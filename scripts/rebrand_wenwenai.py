@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-问问Ai (wenwenai.cn) — 针对 ccch1mneyyy/dsh-Go 的全方位品牌重塑、方案 C 图标注入与 1～7 项深度净化脚本
+问问Ai (wenwenai.cn) — 针对 ccch1mneyyy/dsh-Go 的全方位品牌重塑、方案 C 四款高定图标与全量深度优化脚本
 """
 import argparse
 import json
@@ -221,453 +221,6 @@ class BrandLockup extends StatelessWidget {
 }
 """
 
-# 净化后的 AboutPage（移除原作者、B站、X、GitHub 与点 Star 按钮，改为官方网站 https://wenwenai.cn）
-CLEAN_ABOUT_PAGE_DART = """import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../l10n/l10n.dart';
-import '../../state/app_info.dart';
-import '../../state/star_prompt.dart' show starLinkOpenerProvider;
-import '../../state/update_state.dart';
-import '../shell/brand_mark.dart';
-import '../shell/page_frame.dart';
-import '../theme/app_icons.dart';
-import '../theme/theme.dart';
-import '../update/update_tiles.dart';
-import 'settings_widgets.dart';
-
-String installedVersionLabel(WidgetRef ref) {
-  final installed = ref.watch(appUpdateProvider.select((s) => s.current));
-  return installed.build == null ? installed.name : '${installed.name} (${installed.build})';
-}
-
-class AboutPage extends ConsumerWidget {
-  const AboutPage({super.key});
-
-  static final Uri _officialSite = Uri.parse('https://wenwenai.cn');
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = context.l10n;
-    final theme = Theme.of(context);
-    final colors = DshColors.of(context);
-    final version = installedVersionLabel(ref);
-    return AppPage.list(
-      title: l10n.hubAbout,
-      children: [
-        SettingsSection(
-          children: [
-            SettingsTile(
-              spot: Spots.version,
-              value: Text(version, style: AppType.tabular(theme.textTheme.bodyMedium!)),
-            ),
-            const AppUpdateTiles(),
-            SettingsTile(
-              key: const ValueKey('about-official-website'),
-              title: '官方网站',
-              subtitle: 'https://wenwenai.cn',
-              trailing: Icon(AppIcons.openExternal, size: 18, color: colors.textTertiary),
-              onTap: () => unawaited(_openOfficialSite(context, ref)),
-            ),
-            SettingsTile(
-              spot: Spots.licenses,
-              onTap: () => showLicensePage(
-                context: context,
-                applicationName: AppInfo.name,
-                applicationVersion: version,
-                applicationIcon: const Padding(padding: EdgeInsets.all(12), child: BrandMark(size: 56, tile: true)),
-                applicationLegalese: AppInfo.disclaimer,
-              ),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-          child: Column(
-            children: [
-              const BrandMark(size: 32, tile: true),
-              const SizedBox(height: 12),
-              Text(
-                AppInfo.slogan,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.labelSmall?.copyWith(color: colors.textTertiary),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                AppInfo.disclaimer,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.labelSmall?.copyWith(color: colors.textTertiary),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Future<void> _openOfficialSite(BuildContext context, WidgetRef ref) async {
-    final l10n = context.l10n;
-    final messenger = ScaffoldMessenger.maybeOf(context);
-    try {
-      if (await ref.read(starLinkOpenerProvider)(_officialSite)) return;
-    } catch (_) {}
-    var copied = true;
-    try {
-      await Clipboard.setData(ClipboardData(text: _officialSite.toString()));
-    } catch (_) {
-      copied = false;
-    }
-    if (messenger?.mounted ?? false) {
-      messenger!.showSnackBar(
-        SnackBar(content: Text(copied ? l10n.shellBrowserUrlCopied : _officialSite.toString())),
-      );
-    }
-  }
-}
-"""
-
-CLEAN_COMMUNITY_JSON = """{
-  "schema": 1,
-  "revision": 2,
-  "updatedAt": "2026-11-12T00:00:00Z",
-  "tagline": "遇事不决，问问Ai · 官方网站 wenwenai.cn",
-  "plugins": [
-    { "name": "@liustack/modsearch", "note": "免费的联网搜索" },
-    { "name": "@liustack/modlens", "note": "让纯文本模型看懂图片" },
-    { "name": "dsh-context", "note": "看清并管理上下文用量" },
-    { "name": "@xmanrui/dsh-im", "note": "把飞书、微信、QQ 机器人接进 问问Ai" },
-    { "name": "dsh-univer-office", "note": "表格和文档的办公环境" }
-  ],
-  "prompts": [
-    {
-      "title": "整理周报",
-      "summary": "按提交记录写一份周报",
-      "icon": "doc",
-      "prompt": "看看工作区里最近一周的 Git 提交，按项目整理成一份周报：完成了什么、遇到的问题、下周计划。用 Markdown 输出。"
-    },
-    {
-      "title": "读懂报错",
-      "summary": "原因、修法和验证",
-      "icon": "bug",
-      "prompt": "我贴一段报错信息，帮我解释原因，给出最可能的修复办法，并说明怎么确认修好了。报错如下：\\n\\n"
-    },
-    {
-      "title": "数据做成图表",
-      "summary": "表格、合计和一张图",
-      "icon": "chart",
-      "prompt": "把我接下来给的数据整理成表格，算出合计和环比，再画一张合适的图表。数据如下：\\n\\n"
-    },
-    {
-      "title": "两周入门一门语言",
-      "summary": "按天的计划和练习",
-      "icon": "school",
-      "prompt": "我想在两周内入门 Rust。给我一份按天的学习计划，每天一个小练习，现在就带我做第一天的练习。"
-    },
-    {
-      "title": "给项目写 README",
-      "summary": "介绍、安装和用法",
-      "icon": "code",
-      "prompt": "读一下工作区里的项目，写一份 README：一句话介绍、功能、安装、使用示例和目录结构。"
-    },
-    {
-      "title": "规划一次旅行",
-      "summary": "三天行程和预算",
-      "icon": "travel",
-      "prompt": "帮我规划一次三天的杭州旅行：每天的路线、交通、吃什么，再估一份预算。我喜欢人少的地方。"
-    }
-  ],
-  "groups": [],
-  "updates": []
-}
-"""
-
-
-def draw_round_line(draw, p1, p2, width, color):
-    draw.line([p1, p2], fill=color, width=width)
-    r = width / 2.0
-    for x, y in (p1, p2):
-        draw.ellipse([x - r, y - r, x + r, y + r], fill=color)
-
-
-def cubic_bezier(p0, p1, p2, p3, steps=80):
-    pts = []
-    for i in range(steps + 1):
-        t = i / steps
-        mt = 1.0 - t
-        x = (mt**3)*p0[0] + 3*(mt**2)*t*p1[0] + 3*mt*(t**2)*p2[0] + (t**3)*p3[0]
-        y = (mt**3)*p0[1] + 3*(mt**2)*t*p1[1] + 3*mt*(t**2)*p2[1] + (t**3)*p3[1]
-        pts.append((x, y))
-    return pts
-
-
-def draw_thick_curve(draw, pts, width, color):
-    r = width / 2.0
-    for i in range(len(pts) - 1):
-        draw.line([pts[i], pts[i+1]], fill=color, width=int(round(width)))
-    for x, y in pts:
-        draw.ellipse([x - r, y - r, x + r, y + r], fill=color)
-
-
-def render_scheme_c(size: int, with_bg: bool = True, circle_mask: bool = False) -> Image.Image:
-    """4x 超采样渲染方案 C 图标（一问一答·对称叙事版）。"""
-    SS = 4
-    W = size * SS
-    if not with_bg:
-        scale = (W * 0.72) / 120.0
-        ox = (W - 120.0 * scale) / 2.0
-        oy = (W - 120.0 * scale) / 2.0
-    else:
-        scale = W / 120.0
-        ox = 0.0
-        oy = 0.0
-
-    def tx(x): return ox + x * scale
-    def ty(y): return oy + y * scale
-    def tr(v): return v * scale
-
-    img = Image.new("RGBA", (W, W), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
-
-    if with_bg:
-        bg = Image.new("RGBA", (W, W), (0, 0, 0, 0))
-        bg_px = bg.load()
-        for y in range(W):
-            for x in range(W):
-                t = (x + y) / (2.0 * W)
-                r = int(round(59 * (1 - t) + 30 * t))
-                g = int(round(102 * (1 - t) + 64 * t))
-                b = int(round(255 * (1 - t) + 175 * t))
-                bg_px[x, y] = (r, g, b, 255)
-        mask = Image.new("L", (W, W), 0)
-        mdraw = ImageDraw.Draw(mask)
-        if circle_mask:
-            mdraw.ellipse([0, 0, W - 1, W - 1], fill=255)
-        else:
-            mdraw.rounded_rectangle([0, 0, W - 1, W - 1], radius=int(round(tr(26))), fill=255)
-        img.paste(bg, (0, 0), mask)
-        draw = ImageDraw.Draw(img)
-
-    gold_color = (255, 204, 64, 255)
-    draw.rounded_rectangle([tx(24), ty(24), tx(74), ty(62)], radius=int(round(tr(13))), fill=gold_color)
-    draw.polygon([(tx(24), ty(50)), (tx(39), ty(61)), (tx(25), ty(70))], fill=gold_color)
-    draw.ellipse([tx(24), ty(67), tx(28), ty(71)], fill=gold_color)
-
-    navy = (20, 33, 61, 255)
-    lw = int(round(tr(4.6)))
-    draw_round_line(draw, (tx(36), ty(39)), (tx(60), ty(39)), lw, navy)
-    draw_round_line(draw, (tx(36), ty(48.5)), (tx(50), ty(48.5)), lw, navy)
-
-    white = (255, 255, 255, 255)
-    draw.rounded_rectangle([tx(46), ty(43), tx(96), ty(83)], radius=int(round(tr(13))), fill=white)
-    draw.polygon([(tx(74), ty(82)), (tx(85), ty(82)), (tx(91), ty(92.5))], fill=white)
-    draw.ellipse([tx(88), ty(90), tx(92.5), ty(94.5)], fill=white)
-
-    blue = (47, 91, 255, 255)
-    qw = tr(5.0)
-    c1 = cubic_bezier((tx(64.5), ty(57.5)), (tx(64.5), ty(51.5)), (tx(77.5), ty(51.5)), (tx(77.5), ty(58.5)))
-    c2 = cubic_bezier((tx(77.5), ty(58.5)), (tx(77.5), ty(63.2)), (tx(71.0), ty(63.5)), (tx(71.0), ty(68.5)))
-    draw_thick_curve(draw, c1 + c2, qw, blue)
-    dr = tr(3.2)
-    draw.ellipse([tx(71) - dr, ty(75.8) - dr, tx(71) + dr, ty(75.8) + dr], fill=blue)
-
-    return img.resize((size, size), Image.Resampling.LANCZOS)
-
-
-def pick_pet_source(sheet_name: str, pet_dir: Path) -> Path:
-    n = sheet_name.lower()
-    if any(k in n for k in ["sleep", "rest"]):
-        return pet_dir / "pet_sleeping.png"
-    if any(k in n for k in ["happy", "smile", "thumb", "music", "swim", "hop", "double"]):
-        return pet_dir / "pet_completed.png"
-    if any(k in n for k in ["notif", "error", "poke", "drag", "carry", "tickle", "wake", "look", "spout"]):
-        return pet_dir / "pet_confirm.png"
-    return pet_dir / "pet_working.png"
-
-
-def render_cell(src_img: Image.Image, cell_w: int, cell_h: int, dy: int = 0) -> Image.Image:
-    cell = Image.new("RGBA", (cell_w, cell_h), (0, 0, 0, 0))
-    avail_w = max(8, cell_w - 4)
-    avail_h = max(8, cell_h - 6)
-    scale = min(avail_w / src_img.width, avail_h / src_img.height)
-    new_w = max(1, int(round(src_img.width * scale)))
-    new_h = max(1, int(round(src_img.height * scale)))
-    resized = src_img.resize((new_w, new_h), Image.Resampling.NEAREST)
-    x = (cell_w - new_w) // 2
-    y = max(0, min(cell_h - new_h, (cell_h - new_h) // 2 + dy))
-    cell.alpha_composite(resized, (x, y))
-    return cell
-
-
-def rebuild_pet_pack_sheets(pack_dir: Path, pet_src_dir: Path, new_name: str) -> int:
-    pack_file = pack_dir / "pack.json"
-    if not pack_file.is_file():
-        return 0
-    pack = json.loads(pack_file.read_text(encoding="utf-8"))
-    pack["name"] = new_name
-    pack["author"] = "wenwenai.cn"
-    pack["license"] = "问问Ai (wenwenai.cn) 原创像素桌宠"
-    pack["source"] = "wenwenai.cn"
-    pack_file.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    sheet_specs = {}
-    for anim in pack.get("animations", {}).values():
-        sheet_specs[anim["sheet"]] = (int(anim["frameW"]), int(anim["frameH"]), int(anim["cols"]))
-
-    count = 0
-    for sheet_name, (fw, fh, cols) in sheet_specs.items():
-        sheet_path = pack_dir / sheet_name
-        if not sheet_path.is_file():
-            continue
-        with Image.open(sheet_path) as orig:
-            sw, sh = orig.size
-        src_png = pick_pet_source(sheet_name, pet_src_dir)
-        with Image.open(src_png).convert("RGBA") as pet_img:
-            new_sheet = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
-            rows = max(1, sh // fh)
-            actual_cols = max(1, min(cols, sw // fw))
-            idx = 0
-            for r in range(rows):
-                for c in range(actual_cols):
-                    dy = (-1, 0, 1, 0)[idx % 4]
-                    cell = render_cell(pet_img, fw, fh, dy=dy)
-                    new_sheet.alpha_composite(cell, (c * fw, r * fh))
-                    idx += 1
-            new_sheet.save(sheet_path, format="PNG", optimize=True)
-            count += 1
-    return count
-
-
-def rebuild_whale_and_widgets(repo_root: Path, pet_src_dir: Path) -> None:
-    whale_dir = repo_root / "app" / "assets" / "whale"
-    whale_json = whale_dir / "whale.json"
-    if whale_json.is_file():
-        meta = json.loads(whale_json.read_text(encoding="utf-8"))
-        fw, fh, cols = int(meta["frameWidth"]), int(meta["frameHeight"]), int(meta["columns"])
-        for level in meta.get("levels", []):
-            img_path = whale_dir / level["image"]
-            if not img_path.is_file():
-                continue
-            with Image.open(img_path) as orig:
-                sw, sh = orig.size
-            src_png = pet_src_dir / ("pet_completed.png" if level["level"] == 1 else "pet_working.png")
-            with Image.open(src_png).convert("RGBA") as pet_img:
-                sheet = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
-                rows = max(1, sh // fh)
-                for r in range(rows):
-                    for c in range(min(cols, sw // fw)):
-                        dy = (-1, 0, 1, 0)[(r * cols + c) % 4]
-                        cell = render_cell(pet_img, fw, fh, dy=dy)
-                        sheet.alpha_composite(cell, (c * fw, r * fh))
-                sheet.save(img_path, format="PNG", optimize=True)
-
-    wt_dart = repo_root / "app" / "lib" / "ui" / "chat" / "widgets" / "whale_tail.dart"
-    if wt_dart.is_file():
-        wtxt = wt_dart.read_text(encoding="utf-8")
-        wtxt = re.sub(
-            r'\.\.(?:colorFilter|color)\s*=[^\n]+',
-            '..color = Color.fromRGBO(255, 255, 255, weight),',
-            wtxt,
-        )
-        wt_dart.write_text(wtxt, encoding="utf-8")
-
-    es_dart = repo_root / "app" / "lib" / "ui" / "chat" / "empty_state.dart"
-    if es_dart.is_file():
-        etxt = es_dart.read_text(encoding="utf-8")
-        etxt = etxt.replace("color: whaleColorFor(theme.brightness).withValues(alpha: 0.4),", "color: const Color(0xFFFFFFFF),")
-        etxt = etxt.replace("color: Colors.white,", "color: const Color(0xFFFFFFFF),")
-        es_dart.write_text(etxt, encoding="utf-8")
-
-    star_webp = repo_root / "app" / "assets" / "star" / "star_whale.webp"
-    if star_webp.is_file():
-        with Image.open(pet_src_dir / "pet_completed.png").convert("RGBA") as img:
-            img.save(star_webp, format="WEBP", lossless=True)
-
-    nodpi = repo_root / "app" / "android" / "app" / "src" / "main" / "res" / "drawable-nodpi"
-    mapping = {
-        "companion_widget_idle.png": "pet_working.png",
-        "companion_widget_happy.png": "pet_completed.png",
-        "companion_widget_sleeping.png": "pet_sleeping.png",
-    }
-    for dst_name, src_name in mapping.items():
-        dst = nodpi / dst_name
-        if dst.is_file():
-            with Image.open(pet_src_dir / src_name).convert("RGBA") as img:
-                img.resize((240, 240), Image.Resampling.NEAREST).save(dst, format="PNG", optimize=True)
-
-
-def replace_android_icons(repo_root: Path) -> None:
-    res_dir = repo_root / "app" / "android" / "app" / "src" / "main" / "res"
-    densities = {
-        "mipmap-mdpi": (48, 108),
-        "mipmap-hdpi": (72, 162),
-        "mipmap-xhdpi": (96, 216),
-        "mipmap-xxhdpi": (144, 324),
-        "mipmap-xxxhdpi": (192, 432),
-    }
-    for density, (launcher_px, fg_px) in densities.items():
-        ddir = res_dir / density
-        if not ddir.is_dir():
-            continue
-        ic_main = render_scheme_c(launcher_px, with_bg=True, circle_mask=False)
-        ic_round = render_scheme_c(launcher_px, with_bg=True, circle_mask=True)
-        ic_fg = render_scheme_c(fg_px, with_bg=False)
-        for variant in ["", "_night", "_frost", "_ink"]:
-            ic_main.save(ddir / f"ic_launcher{variant}.png", format="PNG", optimize=True)
-            ic_round.save(ddir / f"ic_launcher{variant}_round.png", format="PNG", optimize=True)
-            ic_fg.save(ddir / f"ic_launcher{variant}_foreground.png", format="PNG", optimize=True)
-
-    drawable_dir = res_dir / "drawable"
-    for bg_name, color in [
-        ("ic_launcher_background.xml", "#2F5BFF"),
-        ("ic_launcher_frost_background.xml", "#2F5BFF"),
-        ("ic_launcher_ink_background.xml", "#14213D"),
-        ("ic_launcher_night_background.xml", "#14213D"),
-    ]:
-        bg_file = drawable_dir / bg_name
-        if bg_file.is_file():
-            bg_file.write_text(
-                f'<?xml version="1.0" encoding="utf-8"?>\n'
-                f'<shape xmlns:android="http://schemas.android.com/apk/res/android">\n'
-                f'    <solid android:color="{color}" />\n'
-                f'</shape>\n',
-                encoding="utf-8",
-            )
-    (drawable_dir / "ic_launcher_monochrome.xml").write_text(MONOCHROME_XML, encoding="utf-8")
-    (drawable_dir / "ic_stat_dsh.xml").write_text(IC_STAT_XML, encoding="utf-8")
-
-
-def patch_app_icon_picker(repo_root: Path) -> None:
-    picker = repo_root / "app" / "lib" / "ui" / "settings" / "appearance" / "app_icon_picker.dart"
-    if not picker.is_file():
-        return
-    txt = picker.read_text(encoding="utf-8")
-    txt = txt.replace(
-        "AppIcon.mist => const AppIconArt._(Color(0xFF9AB0E8), Color(0xFF405AAD), AppIconGlyph.glassDark),",
-        "AppIcon.mist => const AppIconArt._(Color(0xFF3B66FF), Color(0xFF1E40AF), AppIconGlyph.glassDark),",
-    )
-    if "    switch (art.glyph) {" in txt:
-        old_switch_start = txt.index("    switch (art.glyph) {")
-        old_switch_end = txt.index("    canvas\n      ..restore()")
-        new_switch = """    // 绘制方案 C：左上提问气泡 + 右下问号气泡
-    final pLeft = Paint()..color = const Color(0xFFFFCC40);
-    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(28, 28, 30, 23), const Radius.circular(8)), pLeft);
-    final lineP = Paint()..color = const Color(0xFF14213D)..style = PaintingStyle.stroke..strokeWidth = 2.8..strokeCap = StrokeCap.round;
-    canvas.drawLine(const Offset(35, 37), const Offset(50, 37), lineP);
-    canvas.drawLine(const Offset(35, 43), const Offset(44, 43), lineP);
-    final pRight = Paint()..color = const Color(0xFFFFFFFF);
-    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(44, 42, 32, 25), const Radius.circular(8)), pRight);
-    final qPaint = Paint()..color = const Color(0xFF2F5BFF)..style = PaintingStyle.stroke..strokeWidth = 3.0..strokeCap = StrokeCap.round;
-    final qPath = Path()..moveTo(56, 51)..cubicTo(56, 47, 64, 47, 64, 51.5)..cubicTo(64, 54.5, 60, 55, 60, 58);
-    canvas.drawPath(qPath, qPaint);
-    canvas.drawCircle(const Offset(60, 62.5), 1.9, Paint()..color = const Color(0xFF2F5BFF));
-"""
-        txt = txt[:old_switch_start] + new_switch + txt[old_switch_end:]
-    picker.write_text(txt, encoding="utf-8")
-
-
 CLEAN_WELCOME_PAGE_DART = """import 'package:flutter/material.dart';
 
 import '../../l10n/l10n.dart';
@@ -825,15 +378,551 @@ class _BrandArrivalState extends State<_BrandArrival> with SingleTickerProviderS
 }
 """
 
-def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
-    """落实 1～7 项全量深度净化与优化 + 极简欢迎页重构。"""
-    # 0️⃣ 重构极简欢迎页 WelcomePage（移除重复的 问问Ai、统计开关与底部重复口号）
-    (root / "app/lib/ui/onboarding/welcome_page.dart").write_text(CLEAN_WELCOME_PAGE_DART, encoding="utf-8")
+CLEAN_ABOUT_PAGE_DART = """import 'dart:async';
 
-    # 1️⃣ 彻底重写 AboutPage（删除 dsh-Go 上游原作者、B站、X、GitHub 与点 Star 按钮，改为官方网站 https://wenwenai.cn）
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../l10n/l10n.dart';
+import '../../state/app_info.dart';
+import '../../state/star_prompt.dart' show starLinkOpenerProvider;
+import '../../state/update_state.dart';
+import '../shell/brand_mark.dart';
+import '../shell/page_frame.dart';
+import '../theme/app_icons.dart';
+import '../theme/theme.dart';
+import '../update/update_tiles.dart';
+import 'settings_widgets.dart';
+
+String installedVersionLabel(WidgetRef ref) {
+  final installed = ref.watch(appUpdateProvider.select((s) => s.current));
+  return installed.build == null ? installed.name : '${installed.name} (${installed.build})';
+}
+
+class AboutPage extends ConsumerWidget {
+  const AboutPage({super.key});
+
+  static final Uri _officialSite = Uri.parse('https://wenwenai.cn');
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final theme = Theme.of(context);
+    final colors = DshColors.of(context);
+    final version = installedVersionLabel(ref);
+    return AppPage.list(
+      title: l10n.hubAbout,
+      children: [
+        SettingsSection(
+          children: [
+            SettingsTile(
+              spot: Spots.version,
+              value: Text(version, style: AppType.tabular(theme.textTheme.bodyMedium!)),
+            ),
+            const AppUpdateTiles(),
+            SettingsTile(
+              key: const ValueKey('about-official-website'),
+              title: '官方网站',
+              subtitle: 'https://wenwenai.cn',
+              trailing: Icon(AppIcons.openExternal, size: 18, color: colors.textTertiary),
+              onTap: () => unawaited(_openOfficialSite(context, ref)),
+            ),
+            SettingsTile(
+              spot: Spots.licenses,
+              onTap: () => showLicensePage(
+                context: context,
+                applicationName: AppInfo.name,
+                applicationVersion: version,
+                applicationIcon: const Padding(padding: EdgeInsets.all(12), child: BrandMark(size: 56, tile: true)),
+                applicationLegalese: AppInfo.disclaimer,
+              ),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+          child: Column(
+            children: [
+              const BrandMark(size: 32, tile: true),
+              const SizedBox(height: 12),
+              Text(
+                AppInfo.slogan,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.labelSmall?.copyWith(color: colors.textTertiary),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                AppInfo.disclaimer,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.labelSmall?.copyWith(color: colors.textTertiary),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> _openOfficialSite(BuildContext context, WidgetRef ref) async {
+    final l10n = context.l10n;
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    try {
+      if (await ref.read(starLinkOpenerProvider)(_officialSite)) return;
+    } catch (_) {}
+    var copied = true;
+    try {
+      await Clipboard.setData(ClipboardData(text: _officialSite.toString()));
+    } catch (_) {
+      copied = false;
+    }
+    if (messenger?.mounted ?? false) {
+      messenger!.showSnackBar(
+        SnackBar(content: Text(copied ? l10n.shellBrowserUrlCopied : _officialSite.toString())),
+      );
+    }
+  }
+}
+"""
+
+CLEAN_COMMUNITY_JSON = """{
+  "schema": 1,
+  "revision": 2,
+  "updatedAt": "2026-11-14T00:00:00Z",
+  "tagline": "遇事不决，问问Ai · 官方网站 wenwenai.cn",
+  "plugins": [
+    { "name": "@liustack/modsearch", "note": "免费的联网搜索" },
+    { "name": "@liustack/modlens", "note": "让纯文本模型看懂图片" },
+    { "name": "dsh-context", "note": "看清并管理上下文用量" },
+    { "name": "@xmanrui/dsh-im", "note": "把飞书、微信、QQ 机器人接进 问问Ai" },
+    { "name": "dsh-univer-office", "note": "表格和文档的办公环境" }
+  ],
+  "prompts": [
+    {
+      "title": "整理周报",
+      "summary": "按提交记录写一份周报",
+      "icon": "doc",
+      "prompt": "看看工作区里最近一周的 Git 提交，按项目整理成一份周报：完成了什么、遇到的问题、下周计划。用 Markdown 输出。"
+    },
+    {
+      "title": "读懂报错",
+      "summary": "原因、修法和验证",
+      "icon": "bug",
+      "prompt": "我贴一段报错信息，帮我解释原因，给出最可能的修复办法，并说明怎么确认修好了。报错如下：\\n\\n"
+    },
+    {
+      "title": "数据做成图表",
+      "summary": "表格、合计和一张图",
+      "icon": "chart",
+      "prompt": "把我接下来给的数据整理成表格，算出合计和环比，再画一张合适的图表。数据如下：\\n\\n"
+    },
+    {
+      "title": "两周入门一门语言",
+      "summary": "按天的计划和练习",
+      "icon": "school",
+      "prompt": "我想在两周内入门 Rust。给我一份按天的学习计划，每天一个小练习，现在就带我做第一天的练习。"
+    },
+    {
+      "title": "给项目写 README",
+      "summary": "介绍、安装和用法",
+      "icon": "code",
+      "prompt": "读一下工作区里的项目，写一份 README：一句话介绍、功能、安装、使用示例和目录结构。"
+    },
+    {
+      "title": "规划一次旅行",
+      "summary": "三天行程和预算",
+      "icon": "travel",
+      "prompt": "帮我规划一次三天的杭州旅行：每天的路线、交通、吃什么，再估一份预算。我喜欢人少的地方。"
+    }
+  ],
+  "groups": [],
+  "updates": []
+}
+"""
+
+
+def draw_round_line(draw, p1, p2, width, color):
+    draw.line([p1, p2], fill=color, width=width)
+    r = width / 2.0
+    for x, y in (p1, p2):
+        draw.ellipse([x - r, y - r, x + r, y + r], fill=color)
+
+
+def cubic_bezier(p0, p1, p2, p3, steps=80):
+    pts = []
+    for i in range(steps + 1):
+        t = i / steps
+        mt = 1.0 - t
+        x = (mt**3)*p0[0] + 3*(mt**2)*t*p1[0] + 3*mt*(t**2)*p2[0] + (t**3)*p3[0]
+        y = (mt**3)*p0[1] + 3*(mt**2)*t*p1[1] + 3*mt*(t**2)*p2[1] + (t**3)*p3[1]
+        pts.append((x, y))
+    return pts
+
+
+def draw_thick_curve(draw, pts, width, color):
+    r = width / 2.0
+    for i in range(len(pts) - 1):
+        draw.line([pts[i], pts[i+1]], fill=color, width=int(round(width)))
+    for x, y in pts:
+        draw.ellipse([x - r, y - r, x + r, y + r], fill=color)
+
+
+# 4 款高定桌面图标皮肤配色表 (mist=经典问问蓝, night=暗夜流金, frost=凝霜白玉, ink=水墨丹青)
+ICON_VARIANTS = {
+    "": {
+        "bg1": (59, 102, 255),
+        "bg2": (30, 64, 175),
+        "left_bubble": (255, 204, 64, 255),
+        "left_line": (20, 33, 61, 255),
+        "right_bubble": (255, 255, 255, 255),
+        "q_mark": (47, 91, 255, 255),
+    },
+    "_night": {
+        "bg1": (23, 35, 68),
+        "bg2": (10, 15, 32),
+        "left_bubble": (255, 204, 64, 255),
+        "left_line": (15, 23, 42, 255),
+        "right_bubble": (232, 240, 255, 255),
+        "q_mark": (47, 91, 255, 255),
+    },
+    "_frost": {
+        "bg1": (250, 252, 255),
+        "bg2": (219, 230, 250),
+        "left_bubble": (47, 91, 255, 255),
+        "left_line": (255, 255, 255, 255),
+        "right_bubble": (255, 204, 64, 255),
+        "q_mark": (20, 33, 61, 255),
+    },
+    "_ink": {
+        "bg1": (39, 41, 48),
+        "bg2": (14, 15, 19),
+        "left_bubble": (255, 204, 64, 255),
+        "left_line": (18, 19, 24, 255),
+        "right_bubble": (245, 247, 251, 255),
+        "q_mark": (24, 26, 32, 255),
+    },
+}
+
+
+def render_scheme_c(size: int, with_bg: bool = True, circle_mask: bool = False, variant: str = "") -> Image.Image:
+    """4x 超采样渲染方案 C 图标（支持 4 款差异化桌面图标皮肤）。"""
+    pal = ICON_VARIANTS.get(variant, ICON_VARIANTS[""])
+    SS = 4
+    W = size * SS
+    if not with_bg:
+        scale = (W * 0.72) / 120.0
+        ox = (W - 120.0 * scale) / 2.0
+        oy = (W - 120.0 * scale) / 2.0
+    else:
+        scale = W / 120.0
+        ox = 0.0
+        oy = 0.0
+
+    def tx(x): return ox + x * scale
+    def ty(y): return oy + y * scale
+    def tr(v): return v * scale
+
+    img = Image.new("RGBA", (W, W), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    if with_bg:
+        c1_rgb, c2_rgb = pal["bg1"], pal["bg2"]
+        bg = Image.new("RGBA", (W, W), (0, 0, 0, 0))
+        bg_px = bg.load()
+        for y in range(W):
+            for x in range(W):
+                t = (x + y) / (2.0 * W)
+                r = int(round(c1_rgb[0] * (1 - t) + c2_rgb[0] * t))
+                g = int(round(c1_rgb[1] * (1 - t) + c2_rgb[1] * t))
+                b = int(round(c1_rgb[2] * (1 - t) + c2_rgb[2] * t))
+                bg_px[x, y] = (r, g, b, 255)
+        mask = Image.new("L", (W, W), 0)
+        mdraw = ImageDraw.Draw(mask)
+        if circle_mask:
+            mdraw.ellipse([0, 0, W - 1, W - 1], fill=255)
+        else:
+            mdraw.rounded_rectangle([0, 0, W - 1, W - 1], radius=int(round(tr(26))), fill=255)
+        img.paste(bg, (0, 0), mask)
+        draw = ImageDraw.Draw(img)
+
+    left_b = pal["left_bubble"]
+    draw.rounded_rectangle([tx(24), ty(24), tx(74), ty(62)], radius=int(round(tr(13))), fill=left_b)
+    draw.polygon([(tx(24), ty(50)), (tx(39), ty(61)), (tx(25), ty(70))], fill=left_b)
+    draw.ellipse([tx(24), ty(67), tx(28), ty(71)], fill=left_b)
+
+    line_c = pal["left_line"]
+    lw = int(round(tr(4.6)))
+    draw_round_line(draw, (tx(36), ty(39)), (tx(60), ty(39)), lw, line_c)
+    draw_round_line(draw, (tx(36), ty(48.5)), (tx(50), ty(48.5)), lw, line_c)
+
+    right_b = pal["right_bubble"]
+    draw.rounded_rectangle([tx(46), ty(43), tx(96), ty(83)], radius=int(round(tr(13))), fill=right_b)
+    draw.polygon([(tx(74), ty(82)), (tx(85), ty(82)), (tx(91), ty(92.5))], fill=right_b)
+    draw.ellipse([tx(88), ty(90), tx(92.5), ty(94.5)], fill=right_b)
+
+    qm_c = pal["q_mark"]
+    qw = tr(5.0)
+    c1 = cubic_bezier((tx(64.5), ty(57.5)), (tx(64.5), ty(51.5)), (tx(77.5), ty(51.5)), (tx(77.5), ty(58.5)))
+    c2 = cubic_bezier((tx(77.5), ty(58.5)), (tx(77.5), ty(63.2)), (tx(71.0), ty(63.5)), (tx(71.0), ty(68.5)))
+    draw_thick_curve(draw, c1 + c2, qw, qm_c)
+    dr = tr(3.2)
+    draw.ellipse([tx(71) - dr, ty(75.8) - dr, tx(71) + dr, ty(75.8) + dr], fill=qm_c)
+
+    return img.resize((size, size), Image.Resampling.LANCZOS)
+
+
+def pick_pet_source(sheet_name: str, pet_dir: Path) -> Path:
+    n = sheet_name.lower()
+    if any(k in n for k in ["sleep", "rest"]):
+        return pet_dir / "pet_sleeping.png"
+    if any(k in n for k in ["happy", "smile", "thumb", "music", "swim", "hop", "double"]):
+        return pet_dir / "pet_completed.png"
+    if any(k in n for k in ["notif", "error", "poke", "drag", "carry", "tickle", "wake", "look", "spout"]):
+        return pet_dir / "pet_confirm.png"
+    return pet_dir / "pet_working.png"
+
+
+def render_cell(src_img: Image.Image, cell_w: int, cell_h: int, dy: int = 0) -> Image.Image:
+    cell = Image.new("RGBA", (cell_w, cell_h), (0, 0, 0, 0))
+    avail_w = max(8, cell_w - 4)
+    avail_h = max(8, cell_h - 6)
+    scale = min(avail_w / src_img.width, avail_h / src_img.height)
+    new_w = max(1, int(round(src_img.width * scale)))
+    new_h = max(1, int(round(src_img.height * scale)))
+    resized = src_img.resize((new_w, new_h), Image.Resampling.NEAREST)
+    x = (cell_w - new_w) // 2
+    y = max(0, min(cell_h - new_h, (cell_h - new_h) // 2 + dy))
+    cell.alpha_composite(resized, (x, y))
+    return cell
+
+
+def rebuild_pet_pack_sheets(pack_dir: Path, pet_src_dir: Path, new_name: str) -> int:
+    pack_file = pack_dir / "pack.json"
+    if not pack_file.is_file():
+        return 0
+    pack = json.loads(pack_file.read_text(encoding="utf-8"))
+    pack["name"] = new_name
+    pack["author"] = "wenwenai.cn"
+    pack["license"] = "问问Ai (wenwenai.cn) 原创像素桌宠"
+    pack["source"] = "wenwenai.cn"
+    pack_file.write_text(json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    sheet_specs = {}
+    for anim in pack.get("animations", {}).values():
+        sheet_specs[anim["sheet"]] = (int(anim["frameW"]), int(anim["frameH"]), int(anim["cols"]))
+
+    count = 0
+    for sheet_name, (fw, fh, cols) in sheet_specs.items():
+        sheet_path = pack_dir / sheet_name
+        if not sheet_path.is_file():
+            continue
+        with Image.open(sheet_path) as orig:
+            sw, sh = orig.size
+        src_png = pick_pet_source(sheet_name, pet_src_dir)
+        with Image.open(src_png).convert("RGBA") as pet_img:
+            new_sheet = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
+            rows = max(1, sh // fh)
+            actual_cols = max(1, min(cols, sw // fw))
+            idx = 0
+            for r in range(rows):
+                for c in range(actual_cols):
+                    dy = (-1, 0, 1, 0)[idx % 4]
+                    cell = render_cell(pet_img, fw, fh, dy=dy)
+                    new_sheet.alpha_composite(cell, (c * fw, r * fh))
+                    idx += 1
+            new_sheet.save(sheet_path, format="PNG", optimize=True)
+            count += 1
+    return count
+
+
+def rebuild_whale_and_widgets(repo_root: Path, pet_src_dir: Path) -> None:
+    whale_dir = repo_root / "app" / "assets" / "whale"
+    whale_json = whale_dir / "whale.json"
+    if whale_json.is_file():
+        meta = json.loads(whale_json.read_text(encoding="utf-8"))
+        fw, fh, cols = int(meta["frameWidth"]), int(meta["frameHeight"]), int(meta["columns"])
+        for level in meta.get("levels", []):
+            img_path = whale_dir / level["image"]
+            if not img_path.is_file():
+                continue
+            with Image.open(img_path) as orig:
+                sw, sh = orig.size
+            src_png = pet_src_dir / ("pet_completed.png" if level["level"] == 1 else "pet_working.png")
+            with Image.open(src_png).convert("RGBA") as pet_img:
+                sheet = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
+                rows = max(1, sh // fh)
+                for r in range(rows):
+                    for c in range(min(cols, sw // fw)):
+                        dy = (-1, 0, 1, 0)[(r * cols + c) % 4]
+                        cell = render_cell(pet_img, fw, fh, dy=dy)
+                        sheet.alpha_composite(cell, (c * fw, r * fh))
+                sheet.save(img_path, format="PNG", optimize=True)
+
+    wt_dart = repo_root / "app" / "lib" / "ui" / "chat" / "widgets" / "whale_tail.dart"
+    if wt_dart.is_file():
+        wtxt = wt_dart.read_text(encoding="utf-8")
+        wtxt = re.sub(
+            r'\.\.(?:colorFilter|color)\s*=[^\n]+',
+            '..color = Color.fromRGBO(255, 255, 255, weight),',
+            wtxt,
+        )
+        wt_dart.write_text(wtxt, encoding="utf-8")
+
+    # 2️⃣ 新对话首页正中央的「问问仔」放大到 68dp 且全彩 100% 不透明
+    es_dart = repo_root / "app" / "lib" / "ui" / "chat" / "empty_state.dart"
+    if es_dart.is_file():
+        etxt = es_dart.read_text(encoding="utf-8")
+        etxt = etxt.replace("color: whaleColorFor(theme.brightness).withValues(alpha: 0.4),", "color: const Color(0xFFFFFFFF),")
+        etxt = etxt.replace("color: Colors.white,", "color: const Color(0xFFFFFFFF),")
+        etxt = re.sub(
+            r"WhaleTail\(\s*still:\s*true,\s*height:\s*\d+(?:\.\d+)?,",
+            "WhaleTail(\n                        still: true,\n                        height: 68,",
+            etxt,
+        )
+        es_dart.write_text(etxt, encoding="utf-8")
+
+    star_webp = repo_root / "app" / "assets" / "star" / "star_whale.webp"
+    if star_webp.is_file():
+        with Image.open(pet_src_dir / "pet_completed.png").convert("RGBA") as img:
+            img.save(star_webp, format="WEBP", lossless=True)
+
+    nodpi = repo_root / "app" / "android" / "app" / "src" / "main" / "res" / "drawable-nodpi"
+    mapping = {
+        "companion_widget_idle.png": "pet_working.png",
+        "companion_widget_happy.png": "pet_completed.png",
+        "companion_widget_sleeping.png": "pet_sleeping.png",
+    }
+    for dst_name, src_name in mapping.items():
+        dst = nodpi / dst_name
+        if dst.is_file():
+            with Image.open(pet_src_dir / src_name).convert("RGBA") as img:
+                img.resize((240, 240), Image.Resampling.NEAREST).save(dst, format="PNG", optimize=True)
+
+
+def replace_android_icons(repo_root: Path) -> None:
+    """3️⃣ 生成 4 款真正不同配色的桌面图标（经典问问蓝、暗夜流金、凝霜白玉、水墨丹青）。"""
+    res_dir = repo_root / "app" / "android" / "app" / "src" / "main" / "res"
+    densities = {
+        "mipmap-mdpi": (48, 108),
+        "mipmap-hdpi": (72, 162),
+        "mipmap-xhdpi": (96, 216),
+        "mipmap-xxhdpi": (144, 324),
+        "mipmap-xxxhdpi": (192, 432),
+    }
+    for density, (launcher_px, fg_px) in densities.items():
+        ddir = res_dir / density
+        if not ddir.is_dir():
+            continue
+        for variant in ["", "_night", "_frost", "_ink"]:
+            ic_main = render_scheme_c(launcher_px, with_bg=True, circle_mask=False, variant=variant)
+            ic_round = render_scheme_c(launcher_px, with_bg=True, circle_mask=True, variant=variant)
+            ic_fg = render_scheme_c(fg_px, with_bg=False, variant=variant)
+            ic_main.save(ddir / f"ic_launcher{variant}.png", format="PNG", optimize=True)
+            ic_round.save(ddir / f"ic_launcher{variant}_round.png", format="PNG", optimize=True)
+            ic_fg.save(ddir / f"ic_launcher{variant}_foreground.png", format="PNG", optimize=True)
+
+    drawable_dir = res_dir / "drawable"
+    for bg_name, color in [
+        ("ic_launcher_background.xml", "#2F5BFF"),
+        ("ic_launcher_night_background.xml", "#141E3C"),
+        ("ic_launcher_frost_background.xml", "#EEF4FF"),
+        ("ic_launcher_ink_background.xml", "#16171C"),
+    ]:
+        bg_file = drawable_dir / bg_name
+        if bg_file.is_file():
+            bg_file.write_text(
+                f'<?xml version="1.0" encoding="utf-8"?>\n'
+                f'<shape xmlns:android="http://schemas.android.com/apk/res/android">\n'
+                f'    <solid android:color="{color}" />\n'
+                f'</shape>\n',
+                encoding="utf-8",
+            )
+    (drawable_dir / "ic_launcher_monochrome.xml").write_text(MONOCHROME_XML, encoding="utf-8")
+    (drawable_dir / "ic_stat_dsh.xml").write_text(IC_STAT_XML, encoding="utf-8")
+
+
+def patch_app_icon_picker(repo_root: Path) -> None:
+    """将设置 -> 外观 -> 桌面图标选择器中的预览图同步支持 4 款差异化配色。"""
+    picker = repo_root / "app" / "lib" / "ui" / "settings" / "appearance" / "app_icon_picker.dart"
+    if not picker.is_file():
+        return
+    txt = picker.read_text(encoding="utf-8")
+    txt = re.sub(
+        r"AppIcon\.mist => const AppIconArt\._\([^)]+\),",
+        "AppIcon.mist => const AppIconArt._(Color(0xFF3B66FF), Color(0xFF1E40AF), AppIconGlyph.glassDark),",
+        txt,
+    )
+    new_painter_block = """    // 绘制方案 C 的 4 款差异化桌面图标皮肤预览
+    final isFrost = icon == AppIcon.frost;
+    final isInk = icon == AppIcon.ink;
+    final leftColor = isFrost ? const Color(0xFF2F5BFF) : const Color(0xFFFFCC40);
+    final lineColor = isFrost ? const Color(0xFFFFFFFF) : const Color(0xFF14213D);
+    final rightColor = isFrost ? const Color(0xFFFFCC40) : const Color(0xFFFFFFFF);
+    final qColor = isFrost
+        ? const Color(0xFF14213D)
+        : isInk
+        ? const Color(0xFF181A20)
+        : const Color(0xFF2F5BFF);
+    final pLeft = Paint()..color = leftColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(28, 28, 30, 23), const Radius.circular(8)), pLeft);
+    final lineP = Paint()..color = lineColor..style = PaintingStyle.stroke..strokeWidth = 2.8..strokeCap = StrokeCap.round;
+    canvas.drawLine(const Offset(35, 37), const Offset(50, 37), lineP);
+    canvas.drawLine(const Offset(35, 43), const Offset(44, 43), lineP);
+    final pRight = Paint()..color = rightColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(44, 42, 32, 25), const Radius.circular(8)), pRight);
+    final qPaint = Paint()..color = qColor..style = PaintingStyle.stroke..strokeWidth = 3.0..strokeCap = StrokeCap.round;
+    final qPath = Path()..moveTo(56, 51)..cubicTo(56, 47, 64, 47, 64, 51.5)..cubicTo(64, 54.5, 60, 55, 60, 58);
+    canvas.drawPath(qPath, qPaint);
+    canvas.drawCircle(const Offset(60, 62.5), 1.9, Paint()..color = qColor);
+"""
+    txt = re.sub(
+        r"    (?:switch \(art\.glyph\) \{|// 绘制).*?(?=    canvas\n      \.\.restore\(\))",
+        new_painter_block,
+        txt,
+        flags=re.DOTALL,
+    )
+    picker.write_text(txt, encoding="utf-8")
+
+
+def apply_deep_cleanups_and_1_to_6_enhancements(root: Path, args) -> None:
+    """落实欢迎页重构、原作者净化 + 1～6 项深水区体验升级。"""
+    # 0️⃣ 极简欢迎页 WelcomePage 与纯净 AboutPage
+    (root / "app/lib/ui/onboarding/welcome_page.dart").write_text(CLEAN_WELCOME_PAGE_DART, encoding="utf-8")
     (root / "app/lib/ui/settings/about_page.dart").write_text(CLEAN_ABOUT_PAGE_DART, encoding="utf-8")
 
-    # 2️⃣ 永久关闭半小时求 Star 弹窗
+    # 1️⃣ 【视觉统一】将默认主题色 mist 升级为鲜亮明快的「问问蓝 (#2F5BFF)」
+    acc_dart = root / "app/lib/ui/theme/accent.dart"
+    if acc_dart.is_file():
+        atxt = acc_dart.read_text(encoding="utf-8")
+        new_mist = """  static const mist = AppAccent(
+    id: 'mist',
+    seed: Color(0xFF2F5BFF),
+    pressed: Color(0xFF1E44D8),
+    container: Color(0xFFDCE5FF),
+    onContainer: Color(0xFF142868),
+    bubble: Color(0xFFD8E3FF),
+    glow: Color(0xFF9BB6FF),
+    seedDark: Color(0xFF7B9CFF),
+    pressedDark: Color(0xFF6488F5),
+    onSeedDark: Color(0xFF0C1838),
+    containerDark: Color(0xFF24366E),
+    onContainerDark: Color(0xFFDCE5FF),
+    bubbleDark: Color(0xFF222C4A),
+    glowDark: Color(0xFF4262B8),
+    tintHue: NeutralTones.baseHue,
+    tintChroma: 1.05,
+    haze: Color(0xFFFFEAB3),
+    hazeDark: Color(0xFF4A412A),
+  );"""
+        atxt = re.sub(
+            r"  static const mist = AppAccent\(.*?\n  \);",
+            new_mist,
+            atxt,
+            flags=re.DOTALL,
+        )
+        acc_dart.write_text(atxt, encoding="utf-8")
+
+    # 2️⃣ 永久关闭半小时求 Star 弹窗 & 净社区页 & 分享二维码指向官网 & 隐藏第三方署名
     sp_dart = root / "app/lib/state/star_prompt.dart"
     if sp_dart.is_file():
         stxt = sp_dart.read_text(encoding="utf-8")
@@ -849,7 +938,6 @@ def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
         )
         sp_dart.write_text(stxt, encoding="utf-8")
 
-    # 3️⃣ 改造「社区页」：移除原版论坛跳转与上游 GitHub Issues，锁定使用内置纯净 community.json
     fc_dart = root / "app/lib/ui/features/feature_catalog.dart"
     if fc_dart.is_file():
         ftxt = fc_dart.read_text(encoding="utf-8")
@@ -873,7 +961,6 @@ def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
 
     (root / "app/assets/community/community.json").write_text(CLEAN_COMMUNITY_JSON, encoding="utf-8")
 
-    # 4️⃣ 分享海报二维码与 HTML 回放下载链接全部指向 https://wenwenai.cn
     sc_dart = root / "app/lib/ui/share/share_content.dart"
     if sc_dart.is_file():
         sctxt = sc_dart.read_text(encoding="utf-8")
@@ -890,7 +977,6 @@ def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
         rvtxt = rvtxt.replace("https://github.com/ccch1mneyyy/dsh-go/releases/latest", f"https://{args.domain}")
         rv_dart.write_text(rvtxt, encoding="utf-8")
 
-    # 5️⃣ 手机本地保存文件夹改为 Download/WenWenAi，图片前缀改为 WenWen_
     fp_kt = root / "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/files/FilesPlugin.kt"
     if fp_kt.is_file():
         fptxt = fp_kt.read_text(encoding="utf-8")
@@ -909,7 +995,6 @@ def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
         atxt = atxt.replace("Download/DSH-Go", "Download/WenWenAi")
         art_dart.write_text(atxt, encoding="utf-8")
 
-    # 6️⃣ 隐藏远程连接页底部的 RelayCredit 第三方 GitHub 署名行
     rc_dart = root / "app/lib/ui/remote/relay_credit.dart"
     if rc_dart.is_file():
         rctxt = rc_dart.read_text(encoding="utf-8")
@@ -920,6 +1005,98 @@ def apply_deep_cleanups_1_to_7(root: Path, args) -> None:
             flags=re.DOTALL,
         )
         rc_dart.write_text(rctxt, encoding="utf-8")
+
+    # 4️⃣ 【分享与唤醒协议】导出后缀改为 .wenwen，同时支持 wenwen:// 与 dshgo:// 唤醒协议
+    sn_kt = root / "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/share/ShareNames.kt"
+    if sn_kt.is_file():
+        sntxt = sn_kt.read_text(encoding="utf-8")
+        sntxt = sntxt.replace('const val SHARE_CODE_EXTENSION = "dshgo"', 'const val SHARE_CODE_EXTENSION = "wenwen"')
+        sn_kt.write_text(sntxt, encoding="utf-8")
+
+    sc_codec = root / "app/lib/share_code/share_codec.dart"
+    if sc_codec.is_file():
+        codectxt = sc_codec.read_text(encoding="utf-8")
+        codectxt = codectxt.replace("const shareFileExtension = 'dshgo';", "const shareFileExtension = 'wenwen';")
+        sc_codec.write_text(codectxt, encoding="utf-8")
+
+    so_dart = root / "app/lib/ui/share_code/share_out.dart"
+    if so_dart.is_file():
+        sotxt = so_dart.read_text(encoding="utf-8")
+        sotxt = sotxt.replace("dsh-go-profile-", "wenwen-profile-").replace("dsh-go-plugin-", "wenwen-plugin-")
+        so_dart.write_text(sotxt, encoding="utf-8")
+
+    si_dart = root / "app/lib/links/share_intake.dart"
+    if si_dart.is_file():
+        sitxt = si_dart.read_text(encoding="utf-8")
+        sitxt = sitxt.replace(
+            "name.toLowerCase().endsWith('.$shareFileExtension')",
+            "(name.toLowerCase().endsWith('.$shareFileExtension') || name.toLowerCase().endsWith('.dshgo'))",
+        )
+        si_dart.write_text(sitxt, encoding="utf-8")
+
+    sch_dart = root / "app/lib/ui/share_code/share_code_host.dart"
+    if sch_dart.is_file():
+        schtxt = sch_dart.read_text(encoding="utf-8")
+        if "registerFileHandler('dshgo'" not in schtxt:
+            schtxt = schtxt.replace(
+                "..add(router.registerFileHandler(shareFileExtension, _file));",
+                "..add(router.registerFileHandler(shareFileExtension, _file))\n      ..add(router.registerFileHandler('dshgo', _file));",
+            )
+            sch_dart.write_text(schtxt, encoding="utf-8")
+
+    lp_kt = root / "app/android/app/src/main/kotlin/io/github/ccch1mneyyy/dsh_app/links/LinksPlugin.kt"
+    if lp_kt.is_file():
+        lptxt = lp_kt.read_text(encoding="utf-8")
+        lptxt = lptxt.replace(
+            'SCHEME, "https", "http" -> deliver(mapOf("uri" to data.toString()))',
+            'SCHEME, "wenwen", "https", "http" -> deliver(mapOf("uri" to data.toString().replaceFirst(Regex("^wenwen://"), "dshgo://")))',
+        )
+        lp_kt.write_text(lptxt, encoding="utf-8")
+
+    manifest_xml = root / "app/android/app/src/main/AndroidManifest.xml"
+    if manifest_xml.is_file():
+        mtxt = manifest_xml.read_text(encoding="utf-8")
+        if '<data android:scheme="wenwen" />' not in mtxt:
+            mtxt = mtxt.replace(
+                '<data android:scheme="dshgo" />',
+                '<data android:scheme="dshgo" />\n                <data android:scheme="wenwen" />',
+            )
+            manifest_xml.write_text(mtxt, encoding="utf-8")
+
+    # 5️⃣ 【内置终端体验】首次打开内置终端时打印彩色欢迎横幅
+    ts_dart = root / "app/lib/state/terminal_state.dart"
+    if ts_dart.is_file():
+        tstxt = ts_dart.read_text(encoding="utf-8")
+        old_emu = "    if (screen != null && screen.isNotEmpty) terminal.write(screen);"
+        new_emu = (
+            "    if (screen != null && screen.isNotEmpty) {\n"
+            "      terminal.write(screen);\n"
+            "    } else {\n"
+            "      terminal.write('\\x1b[1;34m⚡ 问问Ai Linux Workstation\\x1b[0m \\x1b[33m(Ubuntu 24.04 · Node.js 24)\\x1b[0m — \\x1b[4;36mhttps://wenwenai.cn\\x1b[0m\\r\\n');\n"
+            "    }"
+        )
+        if "问问Ai Linux Workstation" not in tstxt:
+            tstxt = tstxt.replace(old_emu, new_emu)
+            ts_dart.write_text(tstxt, encoding="utf-8")
+
+    # 6️⃣ 【精简首次开机引导】跳过繁琐的「选外观」步骤，直接使用精心调校的问问蓝主题进入权限与连接步骤
+    rg_dart = root / "app/lib/ui/shell/root_gate.dart"
+    if rg_dart.is_file():
+        rgtxt = rg_dart.read_text(encoding="utf-8")
+        rgtxt = rgtxt.replace(
+            "unawaited(_prefs.setSetupStep(SetupStep.appearance));\n    _startUnpack();\n    _goTo(OnboardingStep.appearance);",
+            "unawaited(_prefs.setSetupStep(SetupStep.access));\n    _startUnpack();\n    _goTo(OnboardingStep.access);",
+        )
+        rg_dart.write_text(rgtxt, encoding="utf-8")
+
+    ob_dart = root / "app/lib/ui/onboarding/onboarding_flow.dart"
+    if ob_dart.is_file():
+        obtxt = ob_dart.read_text(encoding="utf-8")
+        obtxt = obtxt.replace(
+            "? const [OnboardingStep.runtime, OnboardingStep.appearance, OnboardingStep.access, OnboardingStep.apiKey]",
+            "? const [OnboardingStep.runtime, OnboardingStep.access, OnboardingStep.apiKey]",
+        )
+        ob_dart.write_text(obtxt, encoding="utf-8")
 
 
 def main():
@@ -972,14 +1149,14 @@ def main():
                 xml_f.write_text(new_xtxt, encoding="utf-8")
     print(f"[1/6] 已更新 Android 包名 ({args.app_id})、Manifest 与 Kotlin 原生常量")
 
-    # 2. 生成方案 C 全尺寸图标与问问仔精灵表
+    # 2. 生成方案 C 的 4 款差异化桌面图标与问问仔精灵表 (68dp 首页高度)
     replace_android_icons(root)
     c1 = rebuild_pet_pack_sheets(root / "app" / "assets" / "pets" / "deepy-whale", pet_dir, "问问仔 · 活力版")
     c2 = rebuild_pet_pack_sheets(root / "app" / "assets" / "pets" / "whale-girl", pet_dir, "问问仔 · 乖巧版")
     rebuild_whale_and_widgets(root, pet_dir)
-    print(f"[2/6] 已注入方案 C（一问一答·对称叙事版）全套桌面图标并重绘问问仔精灵表 ({c1}+{c2} 张)")
+    print(f"[2/6] 已生成 4 款差异化方案 C 桌面图标皮肤并重绘 68dp 问问仔精灵表 ({c1}+{c2} 张)")
 
-    # 3. 更新 AppInfo、BrandMark、AppIconPreview 与 1～7 项深度净化
+    # 3. 更新 AppInfo、BrandMark、AppIconPreview 与 1～6 项深水区升级
     app_info = root / "app" / "lib" / "state" / "app_info.dart"
     if app_info.is_file():
         itxt = app_info.read_text(encoding="utf-8")
@@ -991,7 +1168,7 @@ def main():
 
     (root / "app" / "lib" / "ui" / "shell" / "brand_mark.dart").write_text(BRAND_MARK_DART, encoding="utf-8")
     patch_app_icon_picker(root)
-    apply_deep_cleanups_1_to_7(root, args)
+    apply_deep_cleanups_and_1_to_6_enhancements(root, args)
 
     for dart_rel, old_d, new_d in [
         ("app/lib/ui/web/web_handle.dart", "const SheetTitleBar('DSH')", f"const SheetTitleBar('{args.app_name}')"),
@@ -1015,14 +1192,20 @@ def main():
         rtxt = re.sub(r'REPO = "[^"]+"', f'REPO = "{args.github_repo}"', rtxt)
         rtxt = rtxt.replace('f"DSH Go {name}"', f'f"{args.app_name} {{name}}"')
         rel_py.write_text(rtxt, encoding="utf-8")
-    print("[3/6] 已完成方案 C BrandMark 矢量绘制器与 1～7 项全量深度净化")
+    print("[3/6] 已完成鲜亮问问蓝主题、.wenwen 分享协议、终端欢迎栏与精简引导流")
 
-    # 4. 全面替换中英文 ARB 词条
+    # 4. 全面替换中英文 ARB 词条（含 4 款图标皮肤命名与主题色命名）
     zh_exact_overrides = {
         "shellWelcomeMessage": "遇事不决，问问Ai",
         "appSlogan": args.slogan,
         "stateAppDisclaimer": f"{args.slogan}（官方网站 https://{args.domain}）",
         "hubAboutAuthor": "官方网站",
+        "phoneAccentMist": "问问蓝",
+        "pluginsIconMist": "问问蓝",
+        "pluginsIconNight": "暗夜金",
+        "pluginsIconFrost": "凝霜白",
+        "pluginsIconInk": "水墨黑",
+        "viewEmptySubtitle": "遇事不决，随时吩咐问问仔替你干活",
         "botsPetDeepy": "问问仔",
         "botsPetWhaleGirl": "问问灵",
         "botsPetSource": "问问Ai 原创伴侣",
@@ -1049,6 +1232,12 @@ def main():
         "appSlogan": args.slogan_en,
         "stateAppDisclaimer": f"{args.slogan_en} (https://{args.domain})",
         "hubAboutAuthor": "Official Website",
+        "phoneAccentMist": "WenWen Blue",
+        "pluginsIconMist": "WenWen Blue",
+        "pluginsIconNight": "Night Gold",
+        "pluginsIconFrost": "Frost White",
+        "pluginsIconInk": "Obsidian Ink",
+        "viewEmptySubtitle": "When in doubt, let WenWen handle it for you",
         "botsPetDeepy": "WenWen Bot",
         "botsPetWhaleGirl": "WenWen Pixel",
         "botsPetSource": "Wenwen.ai Companion",
@@ -1087,12 +1276,13 @@ def main():
                 v = (
                     v.replace("下载/DSH-Go", "下载/WenWenAi")
                     .replace("Download/DSH-Go", "Download/WenWenAi")
+                    .replace(".dshgo", ".wenwen")
                     .replace("DSH Go", target_brand)
                     .replace("DSH-Go", target_brand)
                 )
                 if is_zh:
                     v = (
-                        v.replace("把 DeepSeek 智能体\n装进口袋", "遇事不决，\n问问Ai！")
+                        v.replace("把 DeepSeek 智能体\n装进口袋", "遇事不决，问问Ai")
                         .replace("把 DeepSeek 装进口袋", "遇事不决，问问Ai！")
                         .replace("Deepy 小鲸鱼", "问问仔")
                         .replace("Deepy", "问问仔")
@@ -1103,7 +1293,7 @@ def main():
                     v = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', target_brand, v)
                 else:
                     v = (
-                        v.replace("The DeepSeek agent,\nin your pocket", "When in doubt,\nask Wenwen.ai!")
+                        v.replace("The DeepSeek agent,\nin your pocket", "When in doubt, ask Wenwen.ai")
                         .replace("Deepy", "WenWen Bot")
                         .replace("little whale", "WenWen Bot")
                     )
@@ -1137,10 +1327,11 @@ def main():
                     .replace("问问仔 小鲸鱼", "问问仔")
                     .replace("Deepy", "问问仔")
                     .replace("鲸娘", "问问灵")
+                    .replace("**雾蓝**", "**问问蓝**")
                 )
                 new_mtxt = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', target_brand, new_mtxt)
             else:
-                new_mtxt = new_mtxt.replace("Deepy", "WenWen Bot")
+                new_mtxt = new_mtxt.replace("Deepy", "WenWen Bot").replace("**Mist**", "**WenWen Blue**")
                 new_mtxt = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', target_brand, new_mtxt)
             if new_mtxt != mtxt:
                 md.write_text(new_mtxt, encoding="utf-8")
@@ -1179,7 +1370,7 @@ def main():
         f"- **发布仓库**：https://github.com/{args.github_repo}\n",
         encoding="utf-8",
     )
-    print("[6/6] 方案 C 图标与 1～7 项深度净化全部执行完毕！")
+    print("[6/6] 1～6 项深水区升级全部执行完毕！")
 
 
 if __name__ == "__main__":

@@ -97,7 +97,7 @@ class LinksPlugin : FlutterPlugin, ActivityAware, MethodChannel.MethodCallHandle
             Intent.ACTION_VIEW -> {
                 val data = intent.data ?: return false
                 when (data.scheme?.lowercase()) {
-                    SCHEME, "https", "http" -> deliver(mapOf("uri" to data.toString()))
+                    SCHEME, "wenwen", "https", "http" -> deliver(mapOf("uri" to data.toString().replaceFirst(Regex("^wenwen://"), "dshgo://")))
                     "content", "file" -> copyThenDeliver(data)
                     else -> return false
                 }

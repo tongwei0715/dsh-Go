@@ -156,7 +156,7 @@ class _LimitedSink implements Sink<List<int>> {
 const shareFileMime = 'application/vnd.dshgo+json';
 
 /// File extension (without the dot).
-const shareFileExtension = 'dshgo';
+const shareFileExtension = 'wenwen';
 
 /// A `.dshgo` file (also the Gist file): readable header, the code inside.
 /// A conversation's file is written by `encodeConversationFile`.

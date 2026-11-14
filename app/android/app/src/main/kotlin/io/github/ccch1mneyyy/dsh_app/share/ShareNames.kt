@@ -17,7 +17,7 @@ internal object ShareNames {
 
     /** A share-code file (lib/share_code/share_codec.dart `shareFileExtension`). */
     const val SHARE_CODE_MIME = "application/vnd.dshgo+json"
-    const val SHARE_CODE_EXTENSION = "dshgo"
+    const val SHARE_CODE_EXTENSION = "wenwen"
 
     private val unsafe = Regex("[\\u0000-\\u001f\\\\:*?\"<>|]")
 

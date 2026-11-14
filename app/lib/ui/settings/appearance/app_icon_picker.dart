@@ -212,7 +212,7 @@ class AppIconArt {
   static AppIconArt of(AppIcon icon) => switch (icon) {
     // The default icon; on the phone its glyph is the original art, here the
     // brand master's glass (the same fit).
-    AppIcon.mist => const AppIconArt._(Color(0xFF2F5BFF), Color(0xFF1D44DB), AppIconGlyph.glassDark),
+    AppIcon.mist => const AppIconArt._(Color(0xFF3B66FF), Color(0xFF1E40AF), AppIconGlyph.glassDark), Color(0xFF1D44DB), AppIconGlyph.glassDark),
     AppIcon.night => const AppIconArt._(Color(0xFF2C3D6C), Color(0xFF0C122D), AppIconGlyph.glassDark),
     AppIcon.frost => const AppIconArt._(Color(0xFFFCFDFF), Color(0xFFDDE5F8), AppIconGlyph.glassLight),
     AppIcon.ink => const AppIconArt._(Color(0xFF292B30), Color(0xFF0D0E11), AppIconGlyph.mono, Color(0xFFF5F7FB)),
@@ -261,22 +261,28 @@ class _IconPainter extends CustomPainter {
         const Rect.fromLTWH(0, 0, 108, 108),
         Paint()..shader = ui.Gradient.linear(AppIconArt.start, AppIconArt.end, [art.from, art.to]),
       );
-    // 绘制问问Ai双气泡前景
-    final pLeft = Paint()..color = const Color(0xFFFFC93C);
-    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(28, 30, 32, 25), const Radius.circular(9)), pLeft);
-    final pRight = Paint()..color = const Color(0xFFFFFFFF);
-    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(42, 44, 34, 26), const Radius.circular(9)), pRight);
-    final qPaint = Paint()
-      ..color = const Color(0xFF2F5BFF)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 3.2
-      ..strokeCap = StrokeCap.round;
-    final qPath = Path()
-      ..moveTo(54, 54)
-      ..cubicTo(54, 49, 64, 49, 64, 54.5)
-      ..cubicTo(64, 58, 59, 58, 59, 61.5);
+    // 绘制方案 C 的 4 款差异化桌面图标皮肤预览
+    final isFrost = icon == AppIcon.frost;
+    final isInk = icon == AppIcon.ink;
+    final leftColor = isFrost ? const Color(0xFF2F5BFF) : const Color(0xFFFFCC40);
+    final lineColor = isFrost ? const Color(0xFFFFFFFF) : const Color(0xFF14213D);
+    final rightColor = isFrost ? const Color(0xFFFFCC40) : const Color(0xFFFFFFFF);
+    final qColor = isFrost
+        ? const Color(0xFF14213D)
+        : isInk
+        ? const Color(0xFF181A20)
+        : const Color(0xFF2F5BFF);
+    final pLeft = Paint()..color = leftColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(28, 28, 30, 23), const Radius.circular(8)), pLeft);
+    final lineP = Paint()..color = lineColor..style = PaintingStyle.stroke..strokeWidth = 2.8..strokeCap = StrokeCap.round;
+    canvas.drawLine(const Offset(35, 37), const Offset(50, 37), lineP);
+    canvas.drawLine(const Offset(35, 43), const Offset(44, 43), lineP);
+    final pRight = Paint()..color = rightColor;
+    canvas.drawRRect(RRect.fromRectAndRadius(const Rect.fromLTWH(44, 42, 32, 25), const Radius.circular(8)), pRight);
+    final qPaint = Paint()..color = qColor..style = PaintingStyle.stroke..strokeWidth = 3.0..strokeCap = StrokeCap.round;
+    final qPath = Path()..moveTo(56, 51)..cubicTo(56, 47, 64, 47, 64, 51.5)..cubicTo(64, 54.5, 60, 55, 60, 58);
     canvas.drawPath(qPath, qPaint);
-    canvas.drawCircle(const Offset(59, 66.5), 2.0, Paint()..color = const Color(0xFF2F5BFF));
+    canvas.drawCircle(const Offset(60, 62.5), 1.9, Paint()..color = qColor);
     canvas
       ..restore()
       // Half of it falls outside the clip: a 1 px line just inside the edge.

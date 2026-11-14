@@ -167,9 +167,9 @@ class _RootGateState extends ConsumerState<RootGate> {
   /// 「本机」: unpack in the background, set up meanwhile.
   void _chooseLocal() {
     _beside = true;
-    unawaited(_prefs.setSetupStep(SetupStep.appearance));
+    unawaited(_prefs.setSetupStep(SetupStep.access));
     _startUnpack();
-    _goTo(OnboardingStep.appearance);
+    _goTo(OnboardingStep.access);
   }
 
   void _afterAppearance() {

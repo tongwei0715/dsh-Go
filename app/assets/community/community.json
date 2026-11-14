@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "revision": 2,
-  "updatedAt": "2026-11-12T00:00:00Z",
+  "updatedAt": "2026-11-14T00:00:00Z",
   "tagline": "遇事不决，问问Ai · 官方网站 wenwenai.cn",
   "plugins": [
     { "name": "@liustack/modsearch", "note": "免费的联网搜索" },

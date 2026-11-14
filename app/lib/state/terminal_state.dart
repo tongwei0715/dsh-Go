@@ -578,7 +578,11 @@ class TerminalWorkspace extends Notifier<TerminalWorkspaceState> {
     final scrollback = state.environment?.scrollback ?? TerminalEnvironment.defaults.scrollback;
     final terminal = Terminal(maxLines: (scrollback < 200 ? 200 : scrollback) + 200);
     if (info != null) terminal.resize(info.cols, info.rows);
-    if (screen != null && screen.isNotEmpty) terminal.write(screen);
+    if (screen != null && screen.isNotEmpty) {
+      terminal.write(screen);
+    } else {
+      terminal.write('\x1b[1;34m⚡ 问问Ai Linux Workstation\x1b[0m \x1b[33m(Ubuntu 24.04 · Node.js 24)\x1b[0m — \x1b[4;36mhttps://wenwenai.cn\x1b[0m\r\n');
+    }
     terminal.onOutput = (data) => send(id, data);
     terminal.onResize = (cols, rows, _, _) => resize(id, cols, rows);
     return terminal;

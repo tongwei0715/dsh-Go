@@ -29,7 +29,7 @@ class SharedFile {
   final int? size;
 
   /// A share-code file: the importer opens it.
-  bool get isShareCode => name.toLowerCase().endsWith('.$shareFileExtension') || mime == shareFileMime;
+  bool get isShareCode => (name.toLowerCase().endsWith('.$shareFileExtension') || name.toLowerCase().endsWith('.dshgo')) || mime == shareFileMime;
 }
 
 enum ShareSkipReason { tooLarge, unreadable, tooMany }

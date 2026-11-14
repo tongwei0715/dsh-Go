@@ -116,7 +116,8 @@ class _ShareCodeHostState extends ConsumerState<ShareCodeHost> {
     _off
       ..add(router.registerLinkHandler(shareLinkHost, _link))
       ..add(router.registerLinkHandler(shareLandingRoute, _link))
-      ..add(router.registerFileHandler(shareFileExtension, _file));
+      ..add(router.registerFileHandler(shareFileExtension, _file))
+      ..add(router.registerFileHandler('dshgo', _file));
   }
 
   BuildContext? get _ui {
