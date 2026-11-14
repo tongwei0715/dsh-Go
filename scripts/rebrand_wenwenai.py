@@ -848,7 +848,7 @@ def patch_app_icon_picker(repo_root: Path) -> None:
         return
     txt = picker.read_text(encoding="utf-8")
     txt = re.sub(
-        r"AppIcon\.mist => const AppIconArt\._\([^)]+\),",
+        r"AppIcon\.mist => const AppIconArt\._\([^\n]+",
         "AppIcon.mist => const AppIconArt._(Color(0xFF3B66FF), Color(0xFF1E40AF), AppIconGlyph.glassDark),",
         txt,
     )
