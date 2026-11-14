@@ -87,10 +87,11 @@ jobs:
           unzip -o -j -q /tmp/upstream_apk/upstream.apk \
             "lib/arm64-v8a/libtawcroot.so" \
             -d runtime/out/arm64-v8a/jniLibs/arm64-v8a/ || true
-          mkdir -p app/android/app/src/main/jniLibs/arm64-v8a
-          cp -f runtime/out/arm64-v8a/jniLibs/arm64-v8a/libtawcroot.so app/android/app/src/main/jniLibs/arm64-v8a/ 2>/dev/null || true
-
-          yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --install "ndk;28.2.13676358" >/dev/null 2>&1 || true
+          mkdir -p runtime/out-tawcroot/jniLibs/arm64-v8a
+          cp -f runtime/out/arm64-v8a/jniLibs/arm64-v8a/libtawcroot.so runtime/out-tawcroot/jniLibs/arm64-v8a/ 2>/dev/null || true
+          if [ -f runtime/tawcroot/build.py ] && [ -f runtime/out-tawcroot/jniLibs/arm64-v8a/libtawcroot.so ]; then
+            printf '#!/usr/bin/env python3\nimport sys\nsys.exit(0)\n' > runtime/tawcroot/build.py
+          fi
 
           rm -rf /tmp/upstream_apk
           python3 -I tooling/check_runtime_bundle.py arm64
