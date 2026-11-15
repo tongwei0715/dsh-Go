@@ -1318,6 +1318,7 @@ def main():
             new_mtxt = (
                 mtxt.replace("下载/DSH-Go", "下载/WenWenAi")
                 .replace("Download/DSH-Go", "Download/WenWenAi")
+                .replace(".dshgo", ".wenwen")
                 .replace("DSH Go", target_brand)
                 .replace("DSH-Go", target_brand)
             )
@@ -1328,10 +1329,16 @@ def main():
                     .replace("Deepy", "问问仔")
                     .replace("鲸娘", "问问灵")
                     .replace("**雾蓝**", "**问问蓝**")
+                    .replace("雾蓝、夜幕、霜白、墨", "问问蓝、暗夜金、凝霜白、水墨黑")
+                    .replace("雾蓝、黛青", "问问蓝、黛青")
                 )
                 new_mtxt = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', target_brand, new_mtxt)
             else:
-                new_mtxt = new_mtxt.replace("Deepy", "WenWen Bot").replace("**Mist**", "**WenWen Blue**")
+                new_mtxt = (
+                    new_mtxt.replace("Whale girl", "WenWen Pixel")
+                    .replace("Deepy", "WenWen Bot")
+                    .replace("**Mist**", "**WenWen Blue**")
+                )
                 new_mtxt = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', target_brand, new_mtxt)
             if new_mtxt != mtxt:
                 md.write_text(new_mtxt, encoding="utf-8")
