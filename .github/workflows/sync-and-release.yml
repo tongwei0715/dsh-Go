@@ -50,9 +50,10 @@ jobs:
             echo "should_build=false" >> "$GITHUB_OUTPUT"
           else
             PRE_MERGE_SHA=$(git rev-parse HEAD)
-            git merge --no-edit "${UPSTREAM_TAG}" -X theirs || true
-            # 铁律保护：决不允许上游覆盖我们的重塑脚本、专属品牌图标与桌宠素材、衍生说明及工作流文件
-            git checkout "${PRE_MERGE_SHA}" -- scripts/rebrand_wenwenai.py brand_assets/ NOTICE_DERIVATIVE.md .github/workflows/ 2>/dev/null || true
+            # 100% 对齐上游 Release Tag 的源码树（消除已删文件残留冲突），再叠加我们的品牌资产与重塑引擎
+            git reset --hard "${UPSTREAM_TAG}"
+            git clean -fd
+            git checkout "${PRE_MERGE_SHA}" -- scripts/rebrand_wenwenai.py brand_assets/ NOTICE_DERIVATIVE.md .github/workflows/
             echo "should_build=true" >> "$GITHUB_OUTPUT"
           fi
 
