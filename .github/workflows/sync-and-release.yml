@@ -151,13 +151,33 @@ jobs:
           TAG="${{ steps.upstream_sync.outputs.upstream_tag }}"
           VER="${{ steps.upstream_sync.outputs.upstream_ver }}"
 
-          cat <<EOF > /tmp/notes.md
-          ### 问问Ai v${VER} — 遇事不决，问问Ai！（官方网站 https://wenwenai.cn）
-          - **全能内置 Linux 容器**：免 Root、免 Termux，手机本机直接运行 Ubuntu 24.04 + Node.js 24.22.1 + DSH 引擎，支持远程接管电脑主机。
-          - **专属四状态像素桌宠「问问仔」**：干活敲代码、完成欢呼、敏感操作举手待确认、待机休眠打盹，支持 App 外桌面悬浮窗陪伴。
-          - **平滑覆盖升级**：使用固定永久证书签名，升级仅替换受管引擎目录，完整保留已安装的 apt/npm/pip 工具包与对话数据。
-          - **官方网站**：https://wenwenai.cn · 数据与密钥留在本机，随身而行。
-          EOF
+          # 动态拉取上游真实 Release 更新日志，自动脱敏并品牌化为「问问Ai」专属更新说明
+          python3 - <<PYEOF
+          import re, subprocess
+          raw = subprocess.check_output(
+              ["gh", "release", "view", "${TAG}", "--repo", "ccch1mneyyy/dsh-Go", "--json", "body", "-q", ".body"],
+              text=True,
+          ).strip()
+          # 剥离顶部安装引导说明与末尾未真机测试免责声明
+          if "### 中文" in raw:
+              raw = raw[raw.index("### 中文"):]
+          raw = re.sub(r"\n- \*\*验证情况。\*\*[^\n]*", "", raw)
+          raw = re.sub(r"\n- \*\*Testing\.\*\*[^\n]*", "", raw)
+          # 品牌词替换
+          raw = (
+              raw.replace("https://github.com/ccch1mneyyy/dsh-go", "https://wenwenai.cn")
+              .replace("go.dshtui.com", "wenwenai.cn")
+              .replace("DSH Go", "问问Ai")
+              .replace("DSH-Go", "问问Ai")
+              .replace("dsh-go", "wenwen-ai")
+              .replace("Deepy 小鲸鱼", "问问仔")
+              .replace("Deepy", "问问仔")
+          )
+          raw = re.sub(r'(?<![A-Za-z0-9_$/-])DSH(?!\s*Remote)(?![A-Za-z0-9_/-])', "问问Ai", raw)
+          header = "### 问问Ai v${VER} 更新内容（官方网站 https://wenwenai.cn）\n\n"
+          with open("/tmp/notes.md", "w", encoding="utf-8") as f:
+              f.write(header + raw.strip() + "\n")
+          PYEOF
 
           python3 tooling/release_assets.py \
             --version "${VER}" \
