@@ -218,20 +218,21 @@ jobs:
           if idx.is_file():
               html = idx.read_text(encoding="utf-8")
               html = re.sub(r'releases/download/v[0-9.]+/wenwen-ai-[0-9.]+-arm64\.apk', f'releases/download/${TAG}/wenwen-ai-${VER}-arm64.apk', html)
-              html = re.sub(r'APK \(v1\.[0-9.]+\)', f'APK (v${VER})', html)
-              html = re.sub(r'\(v1\.[0-9.]+\)</span>', f'(v${VER})</span>', html)
-              html = re.sub(r'v1\.[0-9.]+ · Android 8\.0\+', f'v${VER} · Android 8.0+', html)
+              html = re.sub(r'\[v1\.[0-9.]+\]', f'[v${VER}]', html)
+              html = re.sub(r'下载全能工作站版 v1\.[0-9.]+', f'下载全能工作站版 v${VER}', html)
+              html = re.sub(r'Download Full Workstation v1\.[0-9.]+', f'Download Full Workstation v${VER}', html)
+              html = re.sub(r'id="version-badge">v1\.[0-9.]+', f'id="version-badge">v${VER}', html)
+              html = re.sub(r'id="dl-full-tag">v1\.[0-9.]+', f'id="dl-full-tag">v${VER}', html)
               size_mb = f"{u_data['assets']['arm64']['size'] / (1024 * 1024):.1f} MB"
-              html = re.sub(r'体积：[0-9.]+ MB', f'体积：{size_mb}', html)
-              html = re.sub(r'Size: [0-9.]+ MB', f'Size: {size_mb}', html)
-              rel_js = "    // AUTO_RELEASE_INFO_START\n    let RELEASE_INFO = " + json.dumps({
+              html = re.sub(r'id="dl-full-size">[0-9.]+ MB · \.apk', f'id="dl-full-size">{size_mb} · .apk', html)
+              rel_js = "            // AUTO_RELEASE_INFO_START\n            let RELEASE_INFO = " + json.dumps({
                   "version": u_data["version"],
                   "tag": u_data["tag"],
                   "publishedAt": u_data["publishedAt"],
                   "size": u_data["assets"]["arm64"]["size"],
                   "notes": u_data["notes"],
-              }, ensure_ascii=False) + ";\n    // AUTO_RELEASE_INFO_END"
-              html = re.sub(r'    // AUTO_RELEASE_INFO_START.*?    // AUTO_RELEASE_INFO_END', lambda _: rel_js, html, flags=re.DOTALL)
+              }, ensure_ascii=False) + ";\n            // AUTO_RELEASE_INFO_END"
+              html = re.sub(r' *// AUTO_RELEASE_INFO_START.*?// AUTO_RELEASE_INFO_END', lambda _: rel_js, html, flags=re.DOTALL)
               idx.write_text(html, encoding="utf-8")
           PYEOF
             cd /tmp/wenwen_site
