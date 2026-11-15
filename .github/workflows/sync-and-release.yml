@@ -2,8 +2,8 @@ name: Sync Upstream & Build WenWenAi (dsh-Go) Release
 
 on:
   schedule:
-    # 每天北京时间 10:30 (UTC 02:30) 自动检查上游 ccch1mneyyy/dsh-Go 是否有新版本
-    - cron: '30 2 * * *'
+    # 每天北京时间 10:30 与 22:30 自动检查上游 ccch1mneyyy/dsh-Go 是否有新版本，有则自动合并、套壳重塑、签名发布并更新官网
+    - cron: '30 2,14 * * *'
   workflow_dispatch:
     inputs:
       force_build:
@@ -29,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 2. 同步上游 ccch1mneyyy/dsh-Go 最新源码与 Release Tag
+      - name: 2. 同步上游 ccch1mneyyy/dsh-Go 最新源码与 Release Tag（锁定保护品牌层）
         id: upstream_sync
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +37,7 @@ jobs:
           git config user.name "WenWenAi Bot"
           git config user.email "bot@wenwenai.cn"
           git remote add upstream https://github.com/ccch1mneyyy/dsh-Go.git || true
-          git fetch upstream --tags
+          git fetch upstream --tags --force
 
           UPSTREAM_TAG=$(gh release view --repo ccch1mneyyy/dsh-Go --json tagName -q .tagName || git tag -l "v*" --sort=-v:refname | head -n 1)
           UPSTREAM_VER="${UPSTREAM_TAG#v}"
@@ -49,12 +49,14 @@ jobs:
             echo "Release ${UPSTREAM_TAG} already exists on ${{ github.repository }}. Skipping."
             echo "should_build=false" >> "$GITHUB_OUTPUT"
           else
+            PRE_MERGE_SHA=$(git rev-parse HEAD)
             git merge --no-edit "${UPSTREAM_TAG}" -X theirs || true
-            git checkout HEAD~1 -- .github/workflows/ 2>/dev/null || true
+            # 铁律保护：决不允许上游覆盖我们的重塑脚本、专属品牌图标与桌宠素材、衍生说明及工作流文件
+            git checkout "${PRE_MERGE_SHA}" -- scripts/rebrand_wenwenai.py brand_assets/ NOTICE_DERIVATIVE.md .github/workflows/ 2>/dev/null || true
             echo "should_build=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: 3. 安装 Pillow 并执行「问问Ai (wenwenai.cn)」幂等品牌与问问仔桌宠重塑
+      - name: 3. 安装 Pillow 并执行「问问Ai (wenwenai.cn)」幂等品牌与问问仔桌宠重塑 + 防覆盖自检
         if: steps.upstream_sync.outputs.should_build == 'true'
         run: |
           python3 -m pip install --upgrade pip pillow
@@ -67,6 +69,14 @@ jobs:
             --slogan-en "When in doubt, ask Wenwen.ai!" \
             --domain "wenwenai.cn" \
             --github-repo "${{ github.repository }}"
+
+          # 品牌防覆盖硬核门禁自检（若任何一项被上游冲掉则立即中断报错，绝不发出带旧品牌的包）
+          grep -q 'applicationId = "cn.wenwenai.app"' app/android/app/build.gradle.kts
+          grep -q 'android:label="问问Ai"' app/android/app/src/main/AndroidManifest.xml
+          grep -q "static const name = '问问Ai';" app/lib/state/app_info.dart
+          grep -q "万物皆插件 · 住在你手机里的全能智能体" app/lib/ui/onboarding/welcome_page.dart
+          grep -q "seed: Color(0xFF2F5BFF)" app/lib/ui/theme/accent.dart
+          echo "✅ 品牌防覆盖门禁自检全部通过！"
 
       - name: 4. 提取上游 Release 预编译 Ubuntu+Node.js+DSH 运行时并校验完整性
         if: steps.upstream_sync.outputs.should_build == 'true'
@@ -131,10 +141,11 @@ jobs:
 
           rm -f app/android/wenwen-release.jks app/android/key.properties
 
-      - name: 8. 生成 update.json / SHA256SUMS 并发布到 GitHub Releases
+      - name: 8. 生成 update.json / SHA256SUMS、发布 Release 并自动同步更新官网 wenwenai.cn
         if: steps.upstream_sync.outputs.should_build == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_PAT: ${{ secrets.SITE_PAT }}
         run: |
           TAG="${{ steps.upstream_sync.outputs.upstream_tag }}"
           VER="${{ steps.upstream_sync.outputs.upstream_ver }}"
@@ -153,6 +164,16 @@ jobs:
             --delta-from 0 \
             --out dist
 
+          # 为 update.json 补充显式下载直链 url，确保官网自托管与 App 内 OTA 100% 顺畅
+          python3 - <<PYEOF
+          import json
+          from pathlib import Path
+          p = Path("dist/update.json")
+          d = json.loads(p.read_text(encoding="utf-8"))
+          d["assets"]["arm64"]["url"] = "https://github.com/${{ github.repository }}/releases/download/${TAG}/dsh-go-${VER}-arm64.apk"
+          p.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PYEOF
+
           # 同时提供 wenwen-ai-<VER>-arm64.apk 别名方便官网直链下载
           cp "dist/dsh-go-${VER}-arm64.apk" "dist/wenwen-ai-${VER}-arm64.apk"
           (cd dist && sha256sum *.apk > SHA256SUMS)
@@ -163,7 +184,33 @@ jobs:
             gh release create "${TAG}" dist/* --repo "${{ github.repository }}" -t "问问Ai ${TAG} 全能工作站版" -F /tmp/notes.md
           fi
 
-          rm -rf runtime/out runtime/out-tawcroot dist
+          # 自动将最新版本号、下载直链与 update.json 同步推送到 wenwenai.cn 官网 (tongwei0715/WenWen-AI gh-pages)
+          if [ -n "${SITE_PAT}" ]; then
+            git clone --depth 1 -b gh-pages "https://x-access-token:${SITE_PAT}@github.com/tongwei0715/WenWen-AI.git" /tmp/wenwen_site
+            cp dist/update.json /tmp/wenwen_site/dsh-go/update.json
+            cp dist/update.json /tmp/wenwen_site/update.json
+            python3 - <<PYEOF
+          import re
+          from pathlib import Path
+          idx = Path("/tmp/wenwen_site/index.html")
+          if idx.is_file():
+              html = idx.read_text(encoding="utf-8")
+              html = re.sub(r'releases/download/v[0-9.]+/wenwen-ai-[0-9.]+-arm64\.apk', f'releases/download/${TAG}/wenwen-ai-${VER}-arm64.apk', html)
+              html = re.sub(r'APK \(v1\.[0-9.]+\)', f'APK (v${VER})', html)
+              html = re.sub(r'\(v1\.[0-9.]+\)</span>', f'(v${VER})</span>', html)
+              html = re.sub(r'v1\.[0-9.]+ · Android 8\.0\+', f'v${VER} · Android 8.0+', html)
+              idx.write_text(html, encoding="utf-8")
+          PYEOF
+            cd /tmp/wenwen_site
+            git config user.name "WenWenAi Bot"
+            git config user.email "bot@wenwenai.cn"
+            git add index.html dsh-go/update.json update.json
+            git commit -m "chore(auto-sync): 自动同步 问问Ai 全能版 ${TAG} 下载直链与 OTA 清单" || true
+            git push origin gh-pages || true
+            cd -
+          fi
+
+          rm -rf runtime/out runtime/out-tawcroot dist /tmp/wenwen_site
           git checkout HEAD -- runtime/tawcroot/build.py 2>/dev/null || true
           git add app/ brand_assets/ docs/ scripts/ tooling/ NOTICE_DERIVATIVE.md
           git commit -m "chore(release): 问问Ai ${TAG}" || true
